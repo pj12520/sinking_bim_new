@@ -1,2 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}
-\BOOKMARK [1][-]{section.2}{Theoretical Development}{}
+\BOOKMARK [1][-]{section.2}{Theoretical Background}{}
+\BOOKMARK [2][-]{subsection.2.1}{Equations of Motion}{section.2}
+\BOOKMARK [2][-]{subsection.2.2}{Boundary Conditions}{section.2}
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Fluid-Solid Boundary}{subsection.2.2}
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Fluid-Fluid Boundary}{subsection.2.2}
+\BOOKMARK [2][-]{subsection.2.3}{Problem Statement}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Derivation of Boundary Integral Equations}{section.2}

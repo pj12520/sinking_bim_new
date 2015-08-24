@@ -1,0 +1,62 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Batchelor(1967)]{Batchelor67}
+G.~K. Batchelor.
+\newblock \emph{An {I}ntroduction to {F}luid {D}ynamics}.
+\newblock Cambridge {U}niversity {P}ress, first edition, 1967.
+
+\bibitem[Brackbill et~al.(1992)Brackbill, Kothe, and Zemach]{Brackbill92}
+J.U. Brackbill, D.B. Kothe, and C.~Zemach.
+\newblock A {C}ontinuum {M}ethod for {M}odeling {S}urface {T}ension.
+\newblock \emph{Journal of {C}omputational {P}hysics}, 100:\penalty0 334 --
+  354, 1992.
+
+\bibitem[Hobson et~al.(2011)Hobson, Efstathiou, and Lasenby]{Hobson11}
+Mike Hobson, George Efstathiou, and Anthony Lasenby.
+\newblock \emph{General Relativity: An introduction for physicists}.
+\newblock Cambridge {U}niversity {P}ress, 4th edition, 2011.
+
+\bibitem[Kim and Karrila(2005)]{Kim05}
+Sangtae Kim and Seppo~J. Karrila.
+\newblock \emph{Microhydrodynamics: {P}rinciples and {S}elected
+  {A}pplications}.
+\newblock Dover {P}ublications, second edition, 2005.
+
+\bibitem[Lee and Leal(1982)]{Lee82}
+S.~H. Lee and L.~G. Leal.
+\newblock The {M}otion of a {S}phere in the {P}resence of a {D}eformable
+  {I}nterface {II}. {A} {N}umerical {S}tudy of the {T}ranslation of a {S}phere
+  {N}ormal to an {I}nterface.
+\newblock \emph{Journal of {C}olloid and {I}nterface {S}cience}, 87:\penalty0
+  81--106, 1982.
+
+\bibitem[Manga(1994)]{Manga94}
+Michael Manga.
+\newblock \emph{The motion of deformable drops and bubbles at low {R}eynolds
+  number: {A}pplications to selected problems in geology and geophysics}.
+\newblock PhD thesis, Harvard {U}niversity, 1994.
+
+\bibitem[Reynolds(1886)]{Reynolds1886}
+Osborne Reynolds.
+\newblock On the {T}heory of {L}ubrication and its {A}pplication to {M}r
+  {B}eauchamp {T}ower's {E}xperiments, including an {E}xperimental
+  {D}etermination of the {V}iscosity of {O}live {O}il.
+\newblock \emph{Philosophical {T}ransactions of the {R}oyal {S}ociety of
+  {L}ondon}, 177:\penalty0 157--234, 1886.
+
+\bibitem[Riley et~al.(2006)Riley, Hobson, and Bence]{Riley06}
+K.~F. Riley, M.~P. Hobson, and S.~J. Bence.
+\newblock \emph{Mathematical {M}ethods for {P}hysics and {E}ngineering}.
+\newblock Cambridge {U}niversity {P}ress, third edition, 2006.
+
+\bibitem[White(1999)]{White99}
+Frank~M. White.
+\newblock \emph{Fluid {M}echanics}.
+\newblock Mc{g}raw {H}ill, seventh edition, 1999.
+
+\end{thebibliography}
