@@ -18,8 +18,8 @@ int main()
   //Create arrays containing the different values of the dimensionless numbers over which we are sweeping
 
   vector<double> mod_dens_rat_data(3);
-  vector<double> bond_data(24);
-  vector<double> viscos_rat_data(4);
+  vector<double> bond_data(6);
+  vector<double> viscos_rat_data(8);
 
   mod_dens_rat_data[0] = 10;
   mod_dens_rat_data[1] = 100;
