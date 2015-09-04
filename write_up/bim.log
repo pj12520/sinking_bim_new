@@ -1,6 +1,5 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.18)  24 AUG 2015 16:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.18)  3 SEP 2015 16:09
 entering extended mode
- \write18 enabled.
  %&-line parsing enabled.
 **bim.tex
 (./bim.tex
@@ -381,11 +380,13 @@ Package: epstopdf-base 2009/10/17 v2.4 Base part for package epstopdf
 (/usr/share/texmf-texlive/tex/latex/oberdiek/grfext.sty
 Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
 )
+
+Package epstopdf Warning: Shell escape feature is not enabled.
+
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 433.
-
 (/usr/share/texmf-texlive/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2009/10/26 v1.1 Configuration of epstopdf for TeX Live
 )))
@@ -427,7 +428,11 @@ File: lstlang1.sty 2004/09/05 1.3 listings language file
 )
 (/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-) (./bim.aux)
+) (./bim.aux
+
+LaTeX Warning: Label `equ:stress_green' multiply defined.
+
+)
 \openout1 = `bim.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
@@ -445,8 +450,7 @@ LaTeX Font Info:    ... okay on input line 66.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 66.
 LaTeX Font Info:    ... okay on input line 66.
 Package hyperref Info: Link coloring OFF on input line 66.
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
+ (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
@@ -487,9 +491,23 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 82.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [1
+)
+Overfull \hbox (32.09529pt too wide) in alignment at lines 99--122
+ [] [] 
+ []
+
+[1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (32.09529pt too wide) in alignment at lines 122--148
+ [] [] 
+ []
+
+
+Overfull \hbox (32.09529pt too wide) in alignment at lines 148--157
+ [] [] 
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 14.49998pt.
@@ -497,13 +515,13 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [2] [3] [4]
-Overfull \hbox (51.43259pt too wide) detected at line 227
+Overfull \hbox (51.43259pt too wide) detected at line 241
 [][]\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; t\OT1/cmr/m/n/12 ) = [] [] [][]([]\OM
 L/cmm/m/it/12 ; t[]\OT1/cmr/m/n/12 ) = \OML/cmm/m/it/12 p[]\OT1/cmr/m/n/12 ([]\
 OML/cmm/m/it/12 ; t[]\OT1/cmr/m/n/12 )[] + []\OML/cmm/m/it/12 :
  []
 
-[5]
+[5] [6]
 Package epstopdf Info: Source file: <fluid_solid.eps>
 (epstopdf)                    date: 2015-08-24 15:01:45
 (epstopdf)                    size: 18576 bytes
@@ -512,12 +530,12 @@ Package epstopdf Info: Source file: <fluid_solid.eps>
 (epstopdf)                    size: 10680 bytes
 (epstopdf)             Command: <epstopdf --outfile=fluid_solid-eps-converted-t
 o.pdf fluid_solid.eps>
-(epstopdf)             \includegraphics on input line 274.
+(epstopdf)             \includegraphics on input line 288.
 Package epstopdf Info: Output file is already uptodate.
- <fluid_solid-eps-converted-to.pdf, id=114, 464.73625pt x 135.50626pt>
+ <fluid_solid-eps-converted-to.pdf, id=149, 464.73625pt x 135.50626pt>
 File: fluid_solid-eps-converted-to.pdf Graphic file (type pdf)
 
-<use fluid_solid-eps-converted-to.pdf> [6 <./fluid_solid-eps-converted-to.pdf>]
+<use fluid_solid-eps-converted-to.pdf> [7 <./fluid_solid-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <fluid_fluid.eps>
 (epstopdf)                    date: 2015-08-24 15:19:20
 (epstopdf)                    size: 17518 bytes
@@ -526,13 +544,13 @@ Package epstopdf Info: Source file: <fluid_fluid.eps>
 (epstopdf)                    size: 10283 bytes
 (epstopdf)             Command: <epstopdf --outfile=fluid_fluid-eps-converted-t
 o.pdf fluid_fluid.eps>
-(epstopdf)             \includegraphics on input line 303.
+(epstopdf)             \includegraphics on input line 317.
 Package epstopdf Info: Output file is already uptodate.
-<fluid_fluid-eps-converted-to.pdf, id=142, 412.54124pt x 174.6525pt>
+<fluid_fluid-eps-converted-to.pdf, id=177, 412.54124pt x 174.6525pt>
 File: fluid_fluid-eps-converted-to.pdf Graphic file (type pdf)
 
-<use fluid_fluid-eps-converted-to.pdf> [7 <./fluid_fluid-eps-converted-to.pdf>]
-[8]
+<use fluid_fluid-eps-converted-to.pdf> [8 <./fluid_fluid-eps-converted-to.pdf>]
+[9]
 Package epstopdf Info: Source file: <formulation.eps>
 (epstopdf)                    date: 2015-08-23 14:54:58
 (epstopdf)                    size: 28450 bytes
@@ -541,42 +559,47 @@ Package epstopdf Info: Source file: <formulation.eps>
 (epstopdf)                    size: 13643 bytes
 (epstopdf)             Command: <epstopdf --outfile=formulation-eps-converted-t
 o.pdf formulation.eps>
-(epstopdf)             \includegraphics on input line 373.
+(epstopdf)             \includegraphics on input line 387.
 Package epstopdf Info: Output file is already uptodate.
- <formulation-eps-converted-to.pdf, id=191, 301.125pt x 259.97125pt>
+ <formulation-eps-converted-to.pdf, id=226, 301.125pt x 259.97125pt>
 File: formulation-eps-converted-to.pdf Graphic file (type pdf)
 
-<use formulation-eps-converted-to.pdf> [9] [10 <./formulation-eps-converted-to.
-pdf>] [11] [12] (./bim.bbl [13]) [14] (./bim.aux) ) 
+<use formulation-eps-converted-to.pdf> [10 <./formulation-eps-converted-to.pdf>
+] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] (./bim.bbl [22])
+[23] (./bim.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8177 strings out of 495061
- 119753 string characters out of 1182620
- 235424 words of memory out of 3000000
- 11102 multiletter control sequences out of 15000+50000
+ 8311 strings out of 495061
+ 121689 string characters out of 1182620
+ 240424 words of memory out of 3000000
+ 11168 multiletter control sequences out of 15000+50000
  18755 words of font info for 70 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,15n,58p,478b,422s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cmextra/cmbsy8.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmmib10.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cmextra/cmmib8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr1
-2.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/
-type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
-cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on bim.pdf (14 pages, 309248 bytes).
+ 38i,15n,58p,478b,423s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/sh
+are/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
+sfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+mmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type
+1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmti12.pfb>
+Output written on bim.pdf (23 pages, 358126 bytes).
 PDF statistics:
- 355 PDF objects out of 1000 (max. 8388607)
- 82 named destinations out of 1000 (max. 500000)
- 80 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 538 PDF objects out of 1000 (max. 8388607)
+ 150 named destinations out of 1000 (max. 500000)
+ 128 words of extra memory for PDF output out of 10000 (max. 10000000)
 

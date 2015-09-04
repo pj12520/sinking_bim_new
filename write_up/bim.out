@@ -5,4 +5,10 @@
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Fluid-Solid Boundary}{subsection.2.2}
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Fluid-Fluid Boundary}{subsection.2.2}
 \BOOKMARK [2][-]{subsection.2.3}{Problem Statement}{section.2}
-\BOOKMARK [2][-]{subsection.2.4}{Derivation of Boundary Integral Equations}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Greens functions}{section.2}
+\BOOKMARK [1][-]{appendix.A}{Greens Functions for Stokes Flow}{}
+\BOOKMARK [2][-]{subsection.A.1}{Integral for Greens Function for Pressure}{appendix.A}
+\BOOKMARK [2][-]{subsection.A.2}{Integrals for the Greens Function for Velocity}{appendix.A}
+\BOOKMARK [1][-]{appendix.B}{Dirac Delta Function}{}
+\BOOKMARK [1][-]{appendix.C}{Divergence Theorem}{}
+\BOOKMARK [1][-]{appendix.D}{Lorentz Reciprocal Theorem}{}

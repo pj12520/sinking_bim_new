@@ -101,44 +101,58 @@ We present a theoretical construction of the boundary integral equations. Symbol
     \hline
     Symbol & Definition \\  
     \hline % inserts single-line
-    $a$                                                               & Sphere radius           \\
-    $f_{\text{s},i}(\mathbf{x}) = m_{j}(\mathbf{x})T_{1,ij}(\mathbf{x})$   &Traction on surface of sphere \\
-    $f_{\alpha,i}(\mathbf{x}) = n_{j}(\mathbf{x})T_{\alpha,ij}(\mathbf{x})$ & Traction of fluid $\alpha$ on interface \\
-    $\mathcal{F}_{i}$                                                  & Arbitrary constant vector \\
-    $\boldsymbol{F}$                                                  & Force vector \\
-    $\mathbf{g} = (-9.81 \text{m s}^{-2}) \mathbf{\hat{z}}$            & Acceleration due to gravity \\      
-    $\mathcal{I}$                                                     & Surface of interface \\
-    $m$                                                               & Outward normal to sphere surface \\
-    $n$                                                               & Normal to interface (points into fluid 1) \\
-    $p_{\alpha}(\mathbf{x})$                                            & Pressure field of fluid $\alpha$ \\
-    $p_{\text{d},\alpha}(\mathbf{x}) $                                    & Dynamic pressure of fluid $\alpha$ \\
-    $s$                                                               & Arc length along interface measured from axis \\
-    $\mathcal{S}$                                                     & Surface of sphere \\
-    $T_{\alpha,ij}(\mathbf{x})$                                          & Stress tensor field of fluid $\alpha$ \\
-    $\hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'})$             & Stress Greens function for fluid $\alpha$ \\
-    $t$                                                               & Time \\
-    $\mathbf{u}_{\alpha}(\mathbf{x})$                                   & Velocity field of fluid $\alpha$ \\
-    $\mathbf{u}_{\text{s}} = u_{\text{s}} \mathbf{\hat{z}}$                & Velocity of sphere \\
-    $\hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'})$              & Velocity Greens function for fluid $\alpha$ \\
-    $\mathcal{V}_{\alpha}$                                              & Volume of fluid $\alpha$ \\
-    $\mathbf{x}$                                                      & Position vector \\
-    $\mathbf{y}$                                                      & Position vector \\
-    $\mathbf{\hat{z}}$                                                & Unit vector in the upward vertical direction \\
-    $\alpha = 1,2$                                                    & Fluid label \\
+    $a$                                                                           & Sphere radius           \\
+    $\mathrm{e}$                                                                  & Exponential constant \\
+    $\hat{e}_{\alpha,ij}$                                                           & Greens function for strain in fluid $\alpha$ \\
+    $f_{\text{s},i}(\boldsymbol{x}) = m_{j}(\boldsymbol{x})T_{1,ij}(\boldsymbol{x})$   &Traction on surface of sphere \\
+    $f_{\alpha,i}(\boldsymbol{x}) = n_{j}(\boldsymbol{x})T_{\alpha,ij}(\boldsymbol{x})$ & Traction of fluid $\alpha$ on interface \\
+    $\mathcal{F}_{i}$                                                              & Arbitrary constant vector \\
+    $\boldsymbol{F}$                                                              & Force vector \\
+    $\boldsymbol{g} = (-9.81 \text{m s}^{-2}) \boldsymbol{\hat{z}}$                & Acceleration due to gravity \\      
+    $\mathcal{I}$                                                                 & Surface of interface \\
+    $i = \sqrt{-1}$                                                               & The unit imaginary number \\
+    $J_{ij}$                                                                       & Components of tensor kernel for velocity Greens function \\
+    $K_{ijk}$                                                                     & Components of tensor kernel for stress Greens function \\
+    $\boldsymbol{k}$                                                              & Dummy variable in Fourier space \\
+    $k = |\boldsymbol{k}|$                                                        & Magnitude of $\boldsymbol{k}$ \\
+    $m$                                                                           & Outward normal to sphere surface \\
+    $n$                                                                           & Normal to interface (points into fluid 1) \\
+    $P_{\alpha}(\boldsymbol{x})$                                                    & Pressure field of fluid $\alpha$ \\
+    $P_{\text{d},\alpha}(\boldsymbol{x}) $                                            & Dynamic pressure of fluid $\alpha$ \\
+    $\hat{P}_{\alpha}$                                                       & Greens function for dynamic pressure of fluid $\alpha$ \\
+    $\bar{P}_{\alpha, i}(\boldsymbol{\xi})$                                            & Components of the vector of solutions for $\hat{P}_{\alpha}$ in equation~\ref{equ:stokes_green} \\
+    $\tilde{P}_{\alpha, i} (\boldsymbol{k})$                                         & Fourier transform of $\bar{P}_{\alpha, i}(\boldsymbol{\xi})$ \\
+    $s$                                                                           & Arc length along interface measured from axis \\
+    $\mathcal{S}$                                                                 & Surface of sphere \\
+    $T_{\alpha,ij}(\boldsymbol{x})$                                                  & Stress tensor field of fluid $\alpha$ \\
+    $\hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'})$                         & Stress Greens function for fluid $\alpha$ \\
+    $t$                                                                           & Time \\
+    $\boldsymbol{u}_{\alpha}(\boldsymbol{x})$                                       & Velocity field of fluid $\alpha$ \\
+    $\boldsymbol{u}_{\text{s}} = u_{\text{s}} \boldsymbol{\hat{z}}$                    & Velocity of sphere \\
+    $\hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'})$                         & Velocity Greens function for fluid $\alpha$ \\
+    $\bar{u}_{\alpha, i,j}(\boldsymbol{\xi})$                                        & Components of the tensor of solutions for $\hat{u}_{\alpha,i}$ in equation~\ref{equ:stokes_green} \\
+    $\tilde{u}_{\alpha, ij}(\boldsymbol{k})$                                         & Fourier transform of $\bar{u}_{\alpha, i,j}(\boldsymbol{\xi})$ \\
+    $\mathcal{V}_{\alpha}$                                                          & Volume of fluid $\alpha$ \\
+    $\boldsymbol{x}$                                                              & Position vector \\
+    $\boldsymbol{y}$                                                              & Position vector \\
+    $\boldsymbol{\hat{z}}$                                                        & Unit vector in the upward vertical direction \\
+    $\alpha = 1,2$                                                                & Fluid label \\
     $\delta_{ij} = \begin{cases}
     1  & \quad \text{if } i = j\\
     0  & \quad \text{if } i \neq j\\
-  \end{cases}$                                                        & Kronecker delta \\
+  \end{cases}$                                                                    & Kronecker delta \\
     $\delta(\boldsymbol{x'} - \boldsymbol{y'}) = \begin{cases}
     1  & \quad \text{if } \boldsymbol{x} = \boldsymbol{y}\\
     0  & \quad \text{if } \boldsymbol{x} \neq \boldsymbol{y}\\
-  \end{cases}$                                                        & Dirac delta function \\
-    $\eta_{\alpha}$                                                     & Viscosity of fluid $\alpha$ \\ 
-    $\theta$                                                          & Polar angle with respect to sphere centre \\
-    $\rho_{\alpha}$                                                     & Density of fluid $\alpha$   \\
-    $\rho_{\text{s}}$                                                   & Sphere density          \\
-    $\sigma$                                                          & Interfacial Tension     \\
-    $\phi$                                                            & Azimuhtal angle with respect to axis of motion \\
+  \end{cases}$                                                                    & Dirac delta function \\
+    $\eta_{\alpha}$                                                                 & Viscosity of fluid $\alpha$ \\ 
+    $\theta$                                                                      & Polar angle with respect to sphere centre \\
+    $\rho_{\alpha}$                                                                 & Density of fluid $\alpha$   \\
+    $\rho_{\text{s}}$                                                                & Sphere density          \\
+    $\sigma$                                                                      & Interfacial Tension     \\
+    $\phi$                                                                        & Azimuhtal angle with respect to axis of motion \\
+    $\boldsymbol{\xi} = \boldsymbol{x'} - \boldsymbol{y'}$                        & Dimensionless separation vector \\                                   
+    $\xi = |\boldsymbol{\xi}|$                                                    & Magnitude of $\boldsymbol{\xi}$ \\
     \hline % inserts single-line
   \end{longtable}
 
@@ -482,21 +496,410 @@ To summarise, the problem is completely described by equations~\ref{equ:cont} to
 \subsection{Greens functions}
 \label{subsec:BIE_deriv}
 
-In order to derive the boundary integral equations, it is necessary to make use of the Greens functions for Stokes flow, $\hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'})$ and $\hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'})$, defined such that
+In order to derive the boundary integral equations, it is necessary to make use of the Greens functions \citep{Riley06} for Stokes flow, $\hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'})$ and $\hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'})$, defined such that
 
 \begin{equation}
 \label{equ:vel_green_def}
-\partial' \hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'}) = 0 
+\partial'_{i} \hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'}) = 0 
 \end{equation}
 
 and
 
 \begin{equation}
 \label{equ:stress_green_def}
-\partial' \hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'}) + \mathcal{F}_{j} \delta(\boldsymbol{x'} - \boldsymbol{y'}) = 0 .
+\partial'_{i} \hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'}) + \mathcal{F}_{j} \delta(\boldsymbol{x'} - \boldsymbol{y'}) = 0 , 
 \end{equation}
 
-Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved using Fourier transforms (appendix INSERT REF HERE) to show that
+where $\boldsymbol{\mathcal{F}}$ is a arbitrary constant vector. Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved following \citet{Ladyzhenskaya63} using Fourier transforms (appendix~\ref{app:Greens}) to show that
+
+\begin{equation}
+\label{equ:vel_green}
+\hat{u}_{\alpha,j}(\boldsymbol{\xi}) = \frac{\mathcal{F}_{i} J_{ij}(\boldsymbol{\xi})}{\Lambda_{\alpha}} ,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:stress_green}
+\hat{T}_{\alpha, ij}(\boldsymbol{\xi}) = K_{ijk}(\boldsymbol{\xi}) \mathcal{F}_{k} ,
+\end{equation}
+
+where $\boldsymbol{\xi} = \boldsymbol{x'} - \boldsymbol{y'}$ and 
+
+\begin{equation}
+\label{equ:J_kernal}
+J_{ij}(\boldsymbol{\xi}) = \frac{1}{8 \pi |\boldsymbol{\xi}|} \left( \delta_{ij} + \frac{\xi_{i} \xi_{j}}{|\boldsymbol{\xi}|^{2}} \right) ,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:K_kernal}
+K_{ijk}(\boldsymbol{\xi}) = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi |\boldsymbol{\xi}|^{5}}
+\end{equation}
+
+\appendix
+
+\section{Greens Functions for Stokes Flow}
+\label{app:Greens}
+
+We present here a derivation of equations~\ref{equ:vel_green} and~\ref{equ:stress_green} following \citet{Ladyzhenskaya63}. First, the Greens function for dynamic pressure $\hat{P}_{\alpha}(\boldsymbol{\xi})$ is defined such that
+
+\begin{equation}
+\label{equ:press_green_def}
+\hat{T}_{\alpha, ij}(\boldsymbol{\xi}) = - \hat{P}_{\alpha}(\boldsymbol{\xi}) + \Lambda_{\alpha}[\partial'_{i} \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} \hat{u}_{\alpha,i}(\boldsymbol{\xi})] .
+\end{equation}
+
+
+Substituting this into equation~\ref{equ:stress_green_def} and using equation~\ref{equ:vel_green_def} yields 
+
+\begin{equation}
+\label{equ:stokes_green}
+-\partial_{j}' \hat{P}_{\alpha}(\boldsymbol{\xi}) + \Lambda_{\alpha} \partial_{i}' \partial_{i}' \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \mathcal{F}_{j} \delta(\boldsymbol{\xi}) = 0 .
+\end{equation}
+
+
+We also define two further quantities $\bar{P}_{\alpha, i}$ and $\bar{u}_{\alpha,ij}$ such that
+
+\begin{equation}
+\label{equ:pres_bar}
+\hat{P}_{\alpha} (\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{P}_{\alpha, i} (\boldsymbol{\xi}) ,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:vel_bar}
+\hat{u}_{\alpha,j}(\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{u}_{\alpha,ij} (\boldsymbol{\xi}) .
+\end{equation}
+
+Substitution of these expressions into equations~\ref{equ:stokes_green} and~\ref{equ:vel_green_def} and rearranging results in
+
+\begin{equation}
+\label{equ:stokes_bar}
+-\partial_{j}' \bar{P}_{\alpha, i} (\boldsymbol\xi) + \Lambda_{\alpha} \partial_{k}' \partial_{k}' \bar{u}_{\alpha,ij} (\boldsymbol\xi) + \delta_{ij} \delta(\boldsymbol\xi) = 0 ,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:cont_bar}
+\partial_{i}' \bar{u}_{\alpha,ij} (\boldsymbol\xi)  = 0 .
+\end{equation}
+
+
+To derive functional forms for the Greens functions it is necessary to express equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} in Fourier representation. To do this we need to define the Fourier transformed variables $\tilde{P}_{\alpha, i}$ and $\tilde{u}_{\alpha,ij}$ \cite{Riley06}:
+
+\begin{equation}
+\label{equ:fourier_p}
+\bar{P}_{\alpha, i} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{P}_{\alpha, i} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} ,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:fourier_vel}
+\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{u}_{\alpha,ij} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} .
+\end{equation}
+
+
+Using these definitions, and equation~\ref{equ:delta_int_def} in appendix~\ref{app:delta}, in equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} gives the Fourier representations of the Stokes equations and the continuity equation. Following some manipulation these can be written as
+
+\begin{equation}
+\label{equ:fourier_stokes}
+-i k_{j} \tilde{P}_{\alpha, i} (\boldsymbol{k}) - \Lambda_{\alpha} k^{2} \tilde{u}_{\alpha,ij} (\boldsymbol{k}) + \frac{\delta_{ij}}{(2 \pi)^{3/2}} = 0 ,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:fourier_cont}
+k_{i} \tilde{u}_{\alpha,ij} (\boldsymbol{k}) = 0 ,
+\end{equation}
+
+where $k = |\boldsymbol{k}|$. By multiplying equation~\ref{equ:fourier_stokes} by $k_{j}$, substituting in equation~\ref{equ:fourier_cont} and rearranging, it is then possible to obtain the Fourier representation of the Greens function for pressure;
+
+\begin{equation}
+\label{equ:fourier_green_p}
+\tilde{P}_{\alpha, i} (\boldsymbol{k}) = \frac{-i k_{i}}{(2 \pi)^{3/2} k^{2}}.
+\end{equation}
+
+A final substitution of this into equation~\ref{equ:fourier_p} gives the Greens function for pressure;
+
+\begin{equation}
+\label{equ:green_p_int}
+\bar{P}_{\alpha, i} (\boldsymbol\xi) = \frac{-i}{(2 \pi)^{3}} \int \frac{k_{i} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
+\end{equation}
+
+This integral is evaluated in appendix~\ref{sub_app:green_p} and it is shown that
+
+\begin{equation}
+\label{equ:green_p}
+\bar{P}_{\alpha, i} (\boldsymbol\xi) = -\frac{1}{4 \pi} \partial_{i}' \left(\frac{1}{\xi}\right) = \frac{\xi_{i}}{4 \pi \xi^{3}} \quad , \quad \xi = \xi_{i} \xi_{i} .
+\end{equation}
+
+We also need to find an equivalent expression for $\bar{u}_{\alpha,ij}$. To do so, substitute equation~\ref{equ:fourier_green_p} into equation~\ref{equ:fourier_stokes} and rearrange;
+
+\begin{equation}
+\label{equ:fourier_green_u}
+\tilde{u}_{\alpha,ij} (\boldsymbol{k}) = \frac{k^{2} \delta_{ij} - k_{i} k_{j}}{(2 \pi)^{3/2} k^{4} \Lambda_{\alpha}} .
+\end{equation}
+
+Combining this with equation~\ref{equ:fourier_vel} results in an expression for the Greens function for velocity;
+
+\begin{equation}
+\label{equ:green_u_int}
+\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3} \Lambda_{\alpha}} \left(\delta_{ij} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} - \int \frac{k_{i} k_{j} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} \right).
+\end{equation}
+
+These integrals are evaluated in appendix~\ref{sub_app:green_vel} (equations~\ref{equ:green_u_int1} and~\ref{equ:green_u_int2}) and following some manipulation we find
+
+\begin{equation}
+\label{equ:green_u}
+\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{8 \pi \Lambda_{\alpha} \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
+\end{equation}
+
+We can now substitute equations~\ref{equ:green_p} and~\ref{equ:green_u} into~\ref{equ:pres_bar} and~\ref{equ:vel_bar} to obtain
+
+\begin{equation}
+\label{equ:p_hat_eval}
+\hat{P}_{\alpha} (\boldsymbol\xi) = \frac{\mathcal{F}_{i} \xi_{i}}{4 \pi \xi^{3}},
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:u_hat_eval}
+\hat{u}_{\alpha,j}(\boldsymbol\xi) = \frac{\mathcal{F}_{i}}{8 \pi \Lambda_{\alpha} \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
+\end{equation}
+
+
+Substitution of equations~\ref{equ:p_hat_eval} and~\ref{equ:u_hat_eval} into equation~\ref{equ:press_green_def} results in
+
+\begin{equation}
+\label{equ:green_stress}
+\hat{T}_{\alpha, ij} (\boldsymbol\xi) = \frac{-3 \mathcal{F}_{k} \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}
+\end{equation}
+
+
+The kernels $\boldsymbol{J}$ and $\boldsymbol{K}$ are defined as
+
+\begin{equation}
+\label{equ:j_kernel}
+J_{ij} = \frac{1}{8 \pi \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right)
+\end{equation}
+
+\begin{equation}
+\label{equ:k_kernel}
+K_{ijk} = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}
+\end{equation}
+
+Note that under the interchange $\boldsymbol\xi \to -\boldsymbol\xi$ the kernels are symmetric and antisymmetric respectively
+
+\begin{equation}
+\label{equ:j_sym}
+J_{ki}(-\boldsymbol\xi) = J_{ki}(\boldsymbol\xi)
+\end{equation}
+
+\begin{equation}
+\label{equ:k_sym}
+K_{jik}(-\boldsymbol\xi) = -K_{jik}(\boldsymbol\xi)
+\end{equation}
+
+This means we can express the velocity and stress Greens functions as
+
+\begin{equation}
+\label{equ:u_green}
+\hat{u}_{\alpha,j}(\boldsymbol\xi) = \frac{\mathcal{F}_{i} J_{ij} (\boldsymbol\xi)}{\Lambda_{\alpha}}
+\end{equation}
+
+\begin{equation}
+\label{equ:stress_green}
+\hat{T}_{\alpha, ij}(\boldsymbol\xi) = K_{ijk} (\boldsymbol\xi) \mathcal{F}_{k}
+\end{equation}
+
+\subsection{Integral for Greens Function for Pressure}
+\label{sub_app:green_p}
+
+To evaluate the integral in equation~\ref{equ:green_p_int} first define a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$. The consider
+
+\begin{equation}
+\label{equ:int_del_recip}
+\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} = \int_{\mathcal{V}} \boldsymbol{\nabla} \cdot \boldsymbol{\nabla} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} .
+\end{equation}
+
+Using the divergence theorem (appendix~\ref{app:div_theory}) this can be written as
+
+\begin{equation}
+\label{equ:sint_del_recip}
+\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{r} = \int_{\mathcal{S}} \boldsymbol{\nabla} \left(\frac{1}{\xi}\right) \cdot \mathrm{d} \mathcal{S} .
+\end{equation}
+
+This can be evaluated for the case that $\mathcal{V}$ is a sphere of radius $R$;
+
+\begin{equation}
+\label{equ:int_del_recip_eval}
+\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} = - 4 \pi = -4 \pi \int_{\mathcal{V}} \delta(\boldsymbol{\xi}) \mathrm{d}^{3} \boldsymbol{\xi} ,
+\end{equation}
+
+where the final step follows from comparison with equation~\ref{equ:delta_int}. Using equation~\ref{equ:delta_int_def} leads to
+
+\begin{equation}
+\label{equ:del_square_recip}
+\nabla^{2} \left(\frac{1}{\xi}\right) = \frac{-4 \pi}{(2 \pi)^{3}} \int \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k} .
+\end{equation}
+
+Inspection of this then suggests
+
+\begin{equation}
+\label{equ:grad_recip}
+\partial_{i} \left(\frac{1}{\xi}\right) = \frac{4 i \pi}{(2 \pi)^{3}} \int \frac{ k_{i} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
+\end{equation}
+
+Hence
+
+\begin{equation}
+\label{equ:green_p_ident}
+\frac{-i}{(2 \pi)^{3}} \int \frac{ k_{i} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} = -\frac{1}{4 \pi} \partial_{i} \left(\frac{1}{\xi}\right) .
+\end{equation}
+
+\subsection{Integrals for the Greens Function for Velocity}
+\label{sub_app:green_vel}
+
+Equation~\ref{equ:green_u_int} contains two integrals that need to be evaluated. By inspecting equation~\ref{equ:del_square_recip} it can be seen
+
+\begin{equation}
+\label{equ:recip_int}
+\frac{1}{\xi} = \frac{4 \pi}{(2 \pi)^{3}} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
+\end{equation}
+
+Hence
+
+\begin{equation}
+\label{equ:green_u_int1}
+\int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} = \frac{(2 \pi)^{3}}{4 \pi \xi} .
+\end{equation}
+
+The second integral requires a bit more work. Firstly, express it in a different form;
+
+\begin{equation}
+\label{equ:green_u_int2_new}
+\int \frac{k_{i} k_{j} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} = \partial_{i} \partial_{j} \left(\int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} \right) .
+\end{equation}
+
+To evalaute this, first consider $\nabla^{4} \xi = \nabla^{2}(\nabla^{2} \xi)$. Expanding $\nabla^{2}$ in spherical polar coordinates centred on $\xi = 0$ shows
+
+\begin{equation}
+\label{equ:del4}
+\nabla^{4} \xi = 2 \nabla^{2} \left(\frac{1}{\xi}\right) .
+\end{equation}
+
+Combining this with equation~\ref{equ:del_square_recip} we obtain
+
+\begin{equation}
+\label{equ:del4_int}
+\nabla^{4} \xi = \frac{-8 \pi}{(2 \pi)^{3}} \int \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k} .
+\end{equation}
+
+Insepection of this yields
+
+\begin{equation}
+\label{equ:del4_int_int}
+\xi = \frac{-8 \pi}{(2 \pi)^{3}} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} .
+\end{equation}
+
+Rearrangement of this produces an expression for the integral on the right hand side of equation~\ref{equ:green_u_int2_new};
+
+\begin{equation}
+\label{equ:green_u_int2_new_express}
+\int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} = -\frac{(2 \pi)^{3} \xi}{8 \pi} .
+\end{equation}
+
+Hence
+
+\begin{equation}
+\label{equ:green_u_int2}
+\int \frac{k_{i} k_{j} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} = \frac{(2 \pi)^{3} \partial_{i}' \partial_{j}' \xi}{8 \pi} .
+\end{equation}
+
+\section{Dirac Delta Function}
+\label{app:delta}
+
+The Dirac delta function $\delta(\boldsymbol{x} - \boldsymbol{y})$ is defined as \citep{Riley06}
+
+\begin{equation}
+\label{equ:dirac}
+\int_{\mathcal{V}} f(\boldsymbol{y}) \delta(\boldsymbol{x} - \boldsymbol{y}) \mathrm{d}^{3} \boldsymbol{y} = \left\{
+    \begin{array}{l l}
+      f(\boldsymbol{x}) &\quad \boldsymbol{x} \in \mathcal{V} \\
+      0 & \quad \text{otherwise}
+\end{array}
+\right.\ .
+\end{equation}
+
+This means that
+
+\begin{equation}
+\label{equ:delta_int}
+\int_{\mathcal{V}} \delta(\boldsymbol{x} - \boldsymbol{y}) \mathrm{d}^{3} \boldsymbol{y} = 1 .
+\end{equation}
+
+A key property of the delta function is that it is symmetric under a change of sign of the argument
+
+\begin{equation}
+\label{equ:delta_sym}
+\delta(-\boldsymbol{x}) = \delta(\boldsymbol{x})
+\end{equation}
+
+It also needs to be noted that the Dirac delta function can be expressed as \citep{Riley06}
+
+\begin{equation}
+\label{equ:delta_int_def}
+\delta (\boldsymbol{\xi}) = \frac{1}{(2 \pi)^{3}} \int \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}
+\end{equation}
+
+
+\section{Divergence Theorem}
+\label{app:div_theory}
+
+The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$, then for a continuous and differentiable vector field $\boldsymbol{a}$ \cite{Riley06}
+
+\begin{equation}
+\label{equ:div_theory}
+\int_{\mathcal{V}} \boldsymbol{\nabla} \cdot \boldsymbol{a} \mathrm{d} \mathcal{V} = \oint_{\mathcal{S}} \boldsymbol{a} \cdot \mathrm{d} \boldsymbol{S}
+\end{equation}
+
+\section{Lorentz Reciprocal Theorem}
+\label{app:Lorentz}
+
+Here we present a proof of the Lorentz reciprocal theorem. The dimensionless strain field in fluid alpha is defined as
+
+\begin{equation}
+\label{equ:dimles_strain}
+e'_{\alpha,ij}(\boldsymbol{\xi}) = \frac{\partial'_{i} u'_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} u'_{\alpha,i}(\boldsymbol{\xi})}{2} ,
+\end{equation}
+
+
+and the corresponding Greens function as
+
+\begin{equation}
+\label{equ:strain_green}
+\hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = \frac{\partial'_{i} \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} \hat{u}_{\alpha,i}(\boldsymbol{\xi})}{2} .
+\end{equation}
+
+This allows the Greens function for the stress tensor to be expressed as
+
+\begin{equation}
+\label{equ:stress_with_strain}
+\hat{T}_{\alpha,ij}(\boldsymbol{\xi}) = \hat{P}_{\alpha}(\boldsymbol{\xi}) + 2 \hat{e}_{\alpha.ij}(\boldsymbol{\xi}).
+\end{equation}
+
+Now consider the double contraction of the dimensionless stress tensor and strain Green function tensor;
+
+\begin{equation}
+\label{equ:stress_strain_contract}
+T'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = -P'_{\text{d},\alpha}(\boldsymbol{x}) \hat{e}_{\alpha,ii}(\boldsymbol{\xi}) + 2 e'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}).
+\end{equation}
 
 
 \bibliographystyle{plainnat}

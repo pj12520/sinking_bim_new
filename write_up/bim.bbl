@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -26,6 +26,12 @@ Sangtae Kim and Seppo~J. Karrila.
 \newblock \emph{Microhydrodynamics: {P}rinciples and {S}elected
   {A}pplications}.
 \newblock Dover {P}ublications, second edition, 2005.
+
+\bibitem[Ladyzhenskaya(1963)]{Ladyzhenskaya63}
+O.~A. Ladyzhenskaya.
+\newblock \emph{The {M}athematical {T}heory of {V}iscous {I}ncompressible
+  {F}low}.
+\newblock Gordon and {B}reach, first edition, 1963.
 
 \bibitem[Lee and Leal(1982)]{Lee82}
 S.~H. Lee and L.~G. Leal.
