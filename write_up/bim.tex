@@ -616,7 +616,12 @@ Equations~\ref{equ:bie_fluid1} and~\ref{equ:bie_fluid2} can be added together an
 \right.\ .
 \end{align}
 
-This together with equation~\ref{equ:BC_dyn_sphere} completely describes the system in an integral representation. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals. Following some manipulation (DETAILED IN APPENDIX ??) the intgeral equations can be expressed as
+This together with equation~\ref{equ:BC_dyn_sphere} completely describes the system in an integral representation. 
+
+\subsection{Axisymmetric Simplification}
+\label{subsec:axi_sym}
+
+We can exploit the axial symmetry of the system to chose the point $\boldsymbol{x'}$ such that it lies in the plane defined by $\phi = 0$. Hence in Cartesian coordinates $\boldsymbol{x'} = (x_{r}, 0, x_{z})$. This also means we can write $\boldsymbol{y'} = (y_{r} \cos \phi, y_{r} \sin \phi, y_{z})$. On the surface of the sphere $y_{r(z)} = y_{r(z)}(\theta)$ and on the interface $y_{r(z)} = y_{r(z)}(s)$. Additionally $\boldsymbol{f}_{\text{s}} = [f_{\text{s},r}(\theta) \cos \phi, f_{\text{s},r}(\theta) \sin \phi, f_{\text{s},z}(\theta)]$ and $\boldsymbol{n} = [n_{r}(s) \cos\phi, n_{r}(s) \sin\phi, n_{z}(s)]$. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals in equations~\ref{equ:I1} and~\ref{equ:BC_dyn_sphere}. To achieve this, the Cartesian components of each equation is considered separately. For equation~\ref{equ:I1}, it can be shown that both the left and right hand sides of the 2-component are identically zero. For equation~\ref{equ:BC_dyn_sphere} this is true for the 1- and 2-components. To show this, expand $J_{ij}$ and $K_{ijk}$ in terms of the components of $\boldsymbol{x'}$ and $\boldsymbol{y'}$. This leaves three integral equations which can be expressed as
 
 \begin{align}
 \label{equ:cont_ie_1}
@@ -706,7 +711,20 @@ u'_{\text{s}} \\
 \label{equ:vec_d}
 \end{equation}
 
-For brevity the function arguments have been dropped from the kernels and the normal vectors but $n_{i} = n_{i}(s)$ and in equation~\ref{equ:mat_A}, $K_{ijk} = K_{ijk}(\boldsymbol{x'},s)$, in equation~\ref{equ:mat_B}, $J_{ij} = J_{ij}(\boldsymbol{x'},\theta)$ and in equation~\ref{equ:mat_C}, $J_{ij} = J_{ij}(\boldsymbol{x'},s)$.
+For brevity the function arguments have been dropped from the kernels and the normal vectors but $n_{i} = n_{i}[\boldsymbol{y'}(s, \phi)]$ and in equation~\ref{equ:mat_A}, $K_{ijk} = K_{ijk}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$, in equation~\ref{equ:mat_B}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(\theta, \phi)]$ and in equation~\ref{equ:mat_C}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$.
+
+The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00}. Previous authors have used different notations and formulations to present these expressions and we will use a formulation similar to \citet{Graziani89}. First, we define the quantities $\alpha$ and $\beta$:
+
+\begin{equation}
+\label{equ:alpha_def}
+\alpha^{2} = x_{r}^{2} + y_{r}^{2} + (x_{z} - y_{z})^{2}
+\end{equation}
+
+\begin{equation}
+\label{equ:beta_def}
+\beta^{2} = 2 x_{r} y_{r}
+\end{equation}
+
 \appendix
 
 \section{Greens Functions for Stokes Flow}
@@ -1100,6 +1118,147 @@ Here the integration has been defined in the sense of the Cauchy Principle Value
 \end{equation}
 
 This is the Lorentz reciprocal theorem with the additional caveat that the integrals have been defined as CPV integrals so that the singular nature of the Greens functions can be dealt with. 
+
+\section{Elliptic Integrals}
+\label{app:ellip}
+
+The complete elliptic integrals of the first and second kind are defined as \citep{Abramowitz72}
+
+\begin{equation}
+\label{equ:ellip1}
+K(k^{2}) = \int_{0}^{\pi/2} \frac{\mathrm{d}\theta}{(1 - k^{2} \sin^{2}\theta)^{1/2}}, \quad 0 \leq k^{2} < 1,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:ellip2}
+E(k^{2}) = \int_{0}^{\pi/2} (1 - k^{2} \sin^{2}\theta)^{1/2} \mathrm{d}\theta, \quad 0 \leq k^{2} < 1.
+\end{equation}
+
+
+$k^{2}$ is defined as the modulus of the integral. Polynomial approximations can be found to evaluate the integrals \citep{Roumeliotis00} and we use the following expressions from \citet{Abramowitz72}:
+
+\begin{equation}
+\label{equ:ellip1_app}
+K(k^{2}) = \sum_{i = 0}^{4} a_{i} (1 - k^{2})^{i} + \\\ln\left(\frac{1}{1 - k^{2}} \right) \sum_{i = 0}^{4} b_{i} (1 - k^{2})^{i},
+\end{equation}
+
+\begin{equation}
+\label{equ:ellip2_app}
+E(k^{2}) = 1 + \sum_{i = 1}^{4} a'_{i} (1 - k^{2})^{i} + \\\ln\left(\frac{1}{1 - k^{2}} \right) \sum_{i = 1}^{4} b'_{i} (1 - k^{2})^{i}
+\end{equation}
+
+The values of the coefficients in the expansion are in table~\ref{tab:ellip_poly_coeff}.
+
+\begin{table}
+\caption{\label{tab:ellip_poly_coeff} The coefficients for equations~\ref{equ:ellip1_app} and~\ref{equ:ellip2_app}.}
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+$a_{0}$ & 1.38629436112 & $b_{0}$ & 0.5 \\
+$a_{1}$ & 0.09666344259 & $b_{1}$ & 0.12498593597 \\
+$a_{2}$ & 0.03590092383 & $b_{2}$ & 0.06880248576 \\
+$a_{3}$ & 0.03742563713 & $b_{3}$ & 0.03328355346 \\
+$a_{4}$ & 0.01451196212 & $b_{4}$ & 0.00441787012 \\
+\hline
+$a'_{1}$ & 0.44325141463 & $b'_{1}$ & 0.24998368310 \\
+$a'_{2}$ & 0.06260601220 & $b'_{2}$ & 0.09200180037 \\
+$a'_{3}$ & 0.04757383546 & $b'_{3}$ & 0.04069697526 \\
+$a'_{4}$ & 0.01736506451 & $b'_{4}$ & 0.00526449639 \\
+\hline
+\end{tabular}
+\end{center} 
+\end{table}
+
+\section{Components of $\boldsymbol{A}$}
+\label{app:mat_A}
+
+Here we expressions for the components of $\boldsymbol{A}$ in terms of complete elliptic integrals of the first and second kind (appendix~\ref{app:ellip}). The expressions are from \citet{Graziani89} but we use a different notation; the quantities $\alpha$ and $\beta$ are defined from \citet{Manga94}. $K$ and $E$ are complete elliptic integrals of the first and second kind respectively and they all take $k^{2} = 2 \beta^{2} / (\alpha^{2} + \beta^{2})$ as their modulus. The expressions are:
+
+\begin{equation}
+\label{equ:A11_comp}
+A_{11} = (a_{1} n_{r} + a_{2} n_{z})K + (a_{3} n_{r} + a_{4} n_{z})E,
+\end{equation}
+
+\begin{equation}
+\label{equ:A12_comp}
+A_{12} = (a_{2} n_{r} + a_{6} n_{z})K + (a_{4} n_{r} + a_{8} n_{z})E,
+\end{equation}
+
+\begin{equation}
+\label{equ:A21_comp}
+A_{21} = (a_{9} n_{r} + a_{10} n_{z})K + (a_{11} n_{r} + a_{12} n_{z})E,
+\end{equation}
+
+\begin{equation}
+\label{equ:A22_comp}
+A_{22} = (a_{10} n_{r} + a_{14} n_{z})K + (a_{12} n_{r} + a_{16} n_{z})E.
+\end{equation}
+
+The coefficients $a_{i}$ are given as
+
+\begin{equation}
+\label{equ:coeff_a1}
+a_{1} = \frac{(1 - \lambda) [x_{r} \alpha_{2} (4 \alpha^{4} - 18 x_{r}^{2} y_{r}^{2}) - x_{r} (2 y_{r}^{2} + x_{r}^{2}) (2 \alpha^{4} - 3 \beta^{4}) - y_{r} \alpha^{2} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) + x_{r} y_{r}^{2} \beta^{4}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{4}} 
+\end{equation}
+
+\begin{equation}
+\label{equ:equ:coeff_a2}
+a_{2} = \frac{(1 - \lambda) (x_{z} - y_{z}) [2 \alpha^{4} - 2 \beta^{4} - \alpha^{2} (x_{z} - y_{z})^{2}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{2}}
+\end{equation}
+
+\begin{align}
+\label{equ:coeff_a3}
+a_{3} = \frac{1 - \lambda}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{4}} \bigg( \frac{x_{r} (-8 \alpha^{8} + 15 \alpha^{4} \beta^{4} - 3 \beta^{8})}{2} \nonumber \\
+- 2 x_{r} \alpha^{2} (2 y_{r}^{2} + x_{r}^{2}) (-\alpha^{4} + 3 \beta^{4}) + y_{r} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) (\alpha^{4} + 3 \beta^{4}) - 4 x_{r} y_{r}^{2} \alpha^{2} \beta^{4} \bigg)
+\end{align}
+
+\begin{equation}
+\label{equ:coeff_a4}
+a_{4} = \frac{-(1 - \lambda) (x_{z} - y_{z})}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{2}} \left(\alpha^{4} (\alpha^{4} - 5 \beta^{4}) + [\alpha^{2}- (x_{z} - y_{z})^{2}] (\alpha^{4} + 3 \beta^{4}) \right)
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a6}
+a_{6} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (2 x_{r}^{2} - \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) x_{r}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a8}
+a_{8} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{4} + 3 \beta^{4} - 8 x_{r}^{2} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} x_{r}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a9}
+a_{9} = \frac{(1 - \lambda) (x_{z} - y_{z}) (-2 \alpha^{4} + 3 \beta^{4} - 4 y_{r}^{2} \alpha^{2} + 4 y_{r}^{4})}{4 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a10}
+a_{10} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{2} - 2 y_{r}^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a11}
+a_{11} = \frac{(1 - \lambda) (x_{z} - y_{z}) (\alpha^{6} - 3 \alpha^{2} \beta^{4} + 2 y_{r}^{2} \alpha^{4} + 6 y_{r}^{2} \beta^{4} - 8 y_{r}^{4} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} y_{r}^{2}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a12}
+a_{12} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (8 y_{r}^{2} \alpha^{2} - \alpha^{4} - 3 \beta^{4})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a14}
+a_{14} = \frac{(1 - \lambda) (x_{z} - y_{z})^{3}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})}
+\end{equation}
+
+\begin{equation}
+\label{equ:coeff_a16}
+a_{16} = \frac{-4 (1 - \lambda) (x_{z} - y_{z})^{3} \alpha^{2}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} + \beta^{2})^{2}}
+\end{equation}
+
 \bibliographystyle{plainnat}
 
 \bibliography{bim_bib}
