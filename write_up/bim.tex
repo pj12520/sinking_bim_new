@@ -25,6 +25,7 @@
 \usepackage{multirow}
 \usepackage{amsfonts}
 \usepackage{bigints}
+\usepackage{verbatim}
 
 \textwidth 160mm
 \textheight 235mm
@@ -103,11 +104,12 @@
 \label{sec:intro}
 
 
-\section{Theoretical Background}
-\label{sec:theory}
+\section{Fundamentals of Stokes Flow}
+\label{sec:Stokes}
 
-We present a theoretical construction of the boundary integral equations. Symbols used are defined in table~\ref{tab:symbols}.
+We present here a background to the fundamentals of Stokes flow, covering the equations of motion and non-dimensionalisation, different types of boundary condition, Greens functions and the integral representation of Stokes flow. Throughout this document we will be making use of the Einstein summation convention and tensor notation \citep{Riley06}.
 
+\begin{comment}
     \begin{longtable}{|c|c|}
     \caption{Definition of symbols. \label{tab:symbols}} \\ % title name of the table
     \hline
@@ -167,68 +169,68 @@ We present a theoretical construction of the boundary integral equations. Symbol
     $\xi = |\boldsymbol{\xi}|$                                                    & Magnitude of $\boldsymbol{\xi}$ \\
     \hline % inserts single-line
   \end{longtable}
+\end{comment}
 
 \subsection{Equations of Motion}
 \label{subsec:EoM}
 
-The starting point for all fluid dynamical problems are the continuity (equation~\ref{equ:full_cont}) and Navier Stokes (equation~\ref{equ:NS_comp}) equations \citep{Batchelor67}:
+The starting point for all fluid dynamical problems are the continuity (equation~\ref{equ:full_cont}) and Navier Stokes (equation~\ref{equ:NS_comp}) equations \citep{Batchelor67}. Defining the fluid density $\rho$, the dynamic viscosity $\eta$, the fluid velocity field $u_{i}$ and the pressure field $P$ these are expressed as
 
 \begin{equation}
 \label{equ:full_cont}
-\frac{\partial \rho_{\alpha}(\boldsymbol x,t)}{\partial t} + \boldsymbol\nabla \cdot [\rho_{\alpha}(\boldsymbol{x},t) \boldsymbol{u}_{\alpha} (\boldsymbol{x},t)] = 0 ,
+\frac{\partial \rho(\boldsymbol x,t)}{\partial t} + \partial_{i} [\rho(\boldsymbol{x},t) u_{i} (\boldsymbol{x},t)] = 0 ,
 \end{equation}  
 
-\begin{equation}
-\label{equ:NS_comp}
-\begin{array}{l}
-\rho_{\alpha}(\boldsymbol{x},t) \left( \frac{\partial \boldsymbol{u}_{\alpha}(\boldsymbol{x},t)}{\partial t} + (\boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \cdot \boldsymbol\nabla) \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \right) = \\[5pt]
-- \boldsymbol\nabla P_{\alpha}(\boldsymbol{x},t) - \rho_{\alpha}(\boldsymbol{x},t) g + \eta_{\alpha} \left[\nabla^{2} \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) + \frac{\boldsymbol\nabla(\boldsymbol\nabla \cdot \boldsymbol{u}_{\alpha}(\boldsymbol{x},t))}{3} \right] .
-\end{array}
-\end{equation} 
+and 
 
-Forming a coupled set of non-linear, partial differential equations for the velocity and pressure fields, these represent mass and momentum conservation respectively and must be satisfied by all fluid phases within the system. For most practical applications, the fluids are assumed to be incompressible (have constant density) and so the continuity equation reduces to the incompressibility relation
+\begin{align}
+\label{equ:NS_comp}
+\rho(\boldsymbol{x},t) \left( \frac{\partial u_{i}(\boldsymbol{x},t)}{\partial t} + [u_{j}(\boldsymbol{x},t) \partial_{j}] u_{i}(\boldsymbol{x},t) \right) = - \partial_{i} P(\boldsymbol{x},t) - \rho(\boldsymbol{x},t) g + \eta \left(\partial_{j} \partial_{j} u_{i}(\boldsymbol{x},t) + \frac{\partial_{i} (\partial_{j} u_{j}(\boldsymbol{x},t))}{3} \right) ,
+\end{align} 
+
+Forming a coupled set of non-linear, partial differential equations for the velocity and pressure fields as functions of space $\boldsymbol{x}$ and time $t$, these represent mass and momentum conservation respectively and must be satisfied by all fluid phases within the system. For most practical applications, the fluids are assumed to be incompressible (have constant density) and so the continuity equation reduces to the incompressibility relation;
 
 \begin{equation}
 \label{equ:incom}
-\boldsymbol\nabla \cdot \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) = 0 .
+\partial_{i} u_{i}(\boldsymbol{x},t) = 0 .
 \end{equation}
 
-This can be combined with equation~\ref{equ:NS_comp} to form the incompressible Navier Stokes equation
+This can be combined with equation~\ref{equ:NS_comp} to form the incompressible Navier Stokes equation;
 
 \begin{equation}
 \label{equ:NS_incom}
-\rho_{\alpha} \left( \frac{\partial \boldsymbol{u}_{\alpha}(\boldsymbol{x},t)}{\partial t} + (\boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \cdot \boldsymbol\nabla) \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \right) = - \boldsymbol\nabla P_{\alpha}(\boldsymbol{x},t) - \rho_{\alpha} g + \eta_{\alpha} \nabla^{2} \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) .
+\rho \left( \frac{\partial u_{i}(\boldsymbol{x},t)}{\partial t} + [u_{j}(\boldsymbol{x},t) \partial_{j}] u_{i}(\boldsymbol{x},t) \right) = - \partial_{i} P(\boldsymbol{x},t) - \rho g + \eta \partial_{j} \partial_{j} u_{i}(\boldsymbol{x},t) .
 \end{equation} 
 
-The equations of motion can be expressed in an alternative form by defining the stress tensor $\boldsymbol{T}_{\alpha}(\boldsymbol{x},t)$ \citep{Manga94} and dynamic pressure $P_{\text{d},\alpha}(\boldsymbol{x},t)$:
+The equations of motion can be expressed in an alternative form by defining the stress tensor $T_{ij}(\boldsymbol{x},t)$ \citep{Batchelor67, Manga94} and dynamic pressure $P_{\text{d}}(\boldsymbol{x},t)$:
 
 \begin{equation}
 \label{equ:stress}
-\boldsymbol{T}_{\alpha}(\boldsymbol{x},t) = -P_{\text{d},\alpha}(\boldsymbol{x},t)  \boldsymbol{I} + \eta_{\alpha}[\boldsymbol\nabla \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) + (\boldsymbol\nabla \boldsymbol{u}_{\alpha}(\boldsymbol{x},t))^{T}], 
+T_{ij}(\boldsymbol{x},t) = -P_{\text{d}}(\boldsymbol{x},t)  \delta_{ij} + \eta(\partial_{i} u_{j}(\boldsymbol{x},t) + \partial_{j} u_{i}(\boldsymbol{x},t)), 
 \end{equation}
 
 \begin{equation}
 \label{equ:dyn_P}
-P_{\text{d},\alpha}(\boldsymbol{x},t) = P_{\alpha}(\boldsymbol{x},t) - \rho_{\alpha} \boldsymbol{g} \cdot \boldsymbol{x} .
+P_{\text{d}}(\boldsymbol{x},t) = P(\boldsymbol{x},t) - \rho g_{i} x_{i} .
 \end{equation}
 
 This definition of the stress tensor removes the gravitational body force from the equations of motion, meaning that it only appears in the boundary conditions. The Navier Stokes equation then becomes
 
 \begin{equation}
 \label{equ:NS_stress}
-\rho_{\alpha} \left( \frac{\partial \boldsymbol{u}_{\alpha}(\boldsymbol{x},t)}{\partial t} + (\boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \cdot \boldsymbol\nabla) \boldsymbol{u}_{\alpha}(\boldsymbol{x},t) \right) = \boldsymbol\nabla \cdot \boldsymbol{T}_{\alpha}(\boldsymbol{x},t) .
+\rho \left( \frac{\partial u_{i}(\boldsymbol{x},t)}{\partial t} + [u_{j}(\boldsymbol{x},t) \partial_{j}] u_{i}(\boldsymbol{x},t) \right) = \partial_{j} T_{ij}(\boldsymbol{x},t) .
 \end{equation}
 
 When working in fluid dynamics, it is usual to non-dimensionalise the equations of motion and boundary conditions \citep{White99}. This can be achieved by scaling the quantities involved by parameters specific to the problem. For example, consider a problem with typical scales of length $L_{\text{c}}$ and velocity $U_{\text{c}}$. This allows us to define dimensionless variables (denoted by a $'$)
 
 \begin{equation} 
 \label{equ:nodim_l}
-\boldsymbol{x} = L_{\text{c}} \boldsymbol{x'} ,
+x_{i} = L_{\text{c}} x'_{i} ,
 \end{equation}
 
 \begin{equation}
 \label{equ:nodim_u}
-\boldsymbol{u}_{\alpha}(\boldsymbol{x},t) = U_{\text{c}} \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t') ,
+u_{i}(\boldsymbol{x},t) = U_{\text{c}} u'_{i}(\boldsymbol{x'},t') ,
 \end{equation}
 
 and 
@@ -238,131 +240,133 @@ and
 t = \frac{L_{\text{c}} t'}{U_{\text{c}}}
 \end{equation}
 
-In the case of highly viscous flows, the pressure is dominated by viscosity and so the relevant scaling for the dynamic pressure uses a characteristic viscosity $\eta_{\text{c}}$ and is given by\citet{Lee82}
+In the case of highly viscous flows the relevant scaling for the dynamic pressure uses a characteristic viscosity $\eta_{\text{c}}$ and is given by\citet{Lee82}
 
 \begin{equation}
 \label{equ:nodim_p_highRE}
-P_{\text{d},\alpha}(\boldsymbol{x},t) = \frac{\eta_{\text{c}} U_{\text{c}} P_{\text{d},\alpha}'(\boldsymbol{x'},t')}{L_{\text{c}}} .
+P_{\text{d}}(\boldsymbol{x},t) = \frac{\eta_{\text{c}} U_{\text{c}} P_{\text{d}}'(\boldsymbol{x'},t')}{L_{\text{c}}} .
 \end{equation}
 
 This choice of pressure scaling means that upon substitution of equations~\ref{equ:nodim_l} to~\ref{equ:nodim_p_highRE} into equation~\ref{equ:stress} the stress tensor can also be non-dimensionalised,
 
 \begin{equation}
 \label{equ:nodim_T}
-\boldsymbol{T}_{\alpha}(\boldsymbol{x},t) = \frac{\eta_{\text{c}} U_{\text{c}} \boldsymbol{T'}_{\alpha}(\boldsymbol{x'},t')}{L_{\text{c}}} \quad \text{where} \quad \boldsymbol{T'}_{\alpha}(\boldsymbol{x'},t') = p_{\text{d},\alpha}'(\boldsymbol{x'},t') \boldsymbol{I} + \frac{\eta_{\alpha} [\boldsymbol\nabla' \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t') + (\boldsymbol\nabla' \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t'))^{T}]}{\eta_{c}} .
+T_{ij}(\boldsymbol{x},t) = \frac{\eta_{\text{c}} U_{\text{c}} T'_{ij}(\boldsymbol{x'},t')}{L_{\text{c}}} \quad \text{where} \quad T'_{ij}(\boldsymbol{x'},t') = p_{\text{d}}'(\boldsymbol{x'},t') \delta_{ij} + \Lambda (\partial'_{i} u'_{j}(\boldsymbol{x'},t') + \partial'_{j} u'_{i}(\boldsymbol{x'},t')) ,
 \end{equation}
 
-In this case, the continuity and Navier Stokes equations become
+where $\Lambda = \eta / \eta_{\text{c}}$. Hence, the dimensionless continuity and Navier Stokes equations are
 
 \begin{equation}
 \label{equ:nodim_cont}
-\boldsymbol\nabla' \cdot \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t') = 0
+\partial'_{i} u'_{i}(\boldsymbol{x'},t') = 0,
 \end{equation}
 
 and
 
 \begin{equation}
 \label{equ:NS_low_Reynolds}
-\text{Re} \left(\frac{\partial \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t')}{\partial t'} + (\boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t') \cdot \boldsymbol\nabla') \boldsymbol{u'}_{\alpha}(\boldsymbol{x'},t') \right) = \boldsymbol\nabla' \cdot \boldsymbol{T'}_{\alpha}(\boldsymbol{x'},t') ,
+\text{Re} \left(\frac{\partial u'_{i}(\boldsymbol{x'},t')}{\partial t'} + (u'_{j}(\boldsymbol{x'},t') \partial'_{j}) u'_{i}(\boldsymbol{x'},t') \right) = \partial'_{j} T'_{ij}(\boldsymbol{x'},t') ,
 \end{equation}
 
 where the Reynolds number is defined as
 
 \begin{equation}
 \label{equ:Reynolds}
-\text{Re}_{\alpha} = \frac{\rho_{\alpha} L_{\text{c}} U_{\text{c}}}{\eta_{\text{c}}}
+\text{Re} = \frac{\rho L_{\text{c}} U_{\text{c}}}{\eta_{\text{c}}}
 \end{equation}
 
-As we are considering the case of low Reynolds number ($\text{Re}_{\alpha} \ll 1$), we can neglect the inertial terms on the right hand side and the equation reduces to the Stokes equation \cite{Kim05}
+As we are considering the case of low Reynolds number ($\text{Re} \ll 1$), we can neglect the inertial terms on the right hand side and the equation reduces to the Stokes equation \citep{Batchelor67, Kim05}
 
 \begin{equation}
 \label{equ:Stokes}
-\boldsymbol{\nabla'} \cdot \boldsymbol{T'}_{\alpha}(\boldsymbol{x'},t') = \boldsymbol{0} .
+\partial'_{i} T'_{ij}(\boldsymbol{x'},t') = 0 .
 \end{equation}
 
 
 \subsection{Boundary Conditions}
 \label{subsec:BC}
 
-In order to complete the formulation of any fluid dynamics problem, it is necessary to state the boundary conditions alongside the equations of motion \citep{Riley06}. For fluids of infinite (or semi-infinite) extent in some dimension, these include the value of the flow velocity at infinity. For bounded flows, the conditions are imposed at the boundaries of the fluid domain, and their exact nature depends on the phase of the material bounding it.
+In order to complete the formulation of any fluid dynamics problem, it is necessary to state the boundary conditions alongside the equations of motion \citep{Riley06}. For fluids of infinite (or semi-infinite) extent in some dimension, these include the value of the flow velocity at infinity. For bounded flows, the conditions are imposed at the boundaries of the fluid domain, and their exact nature depends on the phase of the material bounding it. At a boundary, two types of boundary condition can exist: a kinematic boundary condition of the velocity field and a dynamic boundary condition on the stress field. Kinematic boundary conditions are an expression of mass conservation and dynamic boundary conditions are a balance of forces, an expression of Newton's third law.
 
 \subsubsection{Fluid-Solid Boundary}
 \label{subsubsec:BC_fluid-solid}
 
-At low Reynolds number for a fluid-solid boundary given by the surface $\mathcal{S}$ (see figure~\ref{fig:fluid-solid_boundary}), the kinematic boundary condition (that on the velocity) states that both the normal and tangential components (with respect to the boundary) of velocity are the same as that of the solid at the boundary. This is easily expressed in dimensionless form as
+At low Reynolds number for a fluid-solid boundary defined the surface $\mathcal{S}$ (see figure~\ref{fig:fluid-solid_boundary}), the kinematic boundary condition is one of no-slip; the fluid velocity at the boundary is the same as that of the solid $U'_{\text{s},i}$. This is easily expressed in dimensionless form as
 
 \begin{equation}
 \label{equ:lowRE_fluid-solid}
-\boldsymbol{u'}_{\alpha}(\boldsymbol{x'}) = \boldsymbol{U}_{\text{s}}' \quad \boldsymbol{x} \in \mathcal{S} .
+u'_{i}(\boldsymbol{x'}) = U_{\text{s}, i}', \quad \text{when }\boldsymbol{x} \in \mathcal{S} .
 \end{equation}
 
 \begin{figure}
 $$\includegraphics[width=80mm]{fluid_solid.eps}$$
-\caption{Definition of $\boldsymbol{m}$ and $\mathcal{S}$ for a fluid-solid boundary. \label{fig:fluid-solid_boundary}}
+\caption{Fluid-solid boundary $\mathcal{S}$ with normal vector $\boldsymbol{m}$ directed into the fluid phase. \label{fig:fluid-solid_boundary}}
 \end{figure}
 
-There also needs to be a dynamic boundary condition applied at the interface. If the solid exerts a force $\boldsymbol{F}$ onto the fluid then the condition states
+There also needs to be a dynamic boundary condition applied at the interface. If the solid exerts a force $F_{i}$ onto the fluid then the condition states
 
 \begin{equation}
 \label{equ:dyn_fluid_solid}
-\int \boldsymbol{m} \cdot \boldsymbol{T}_{\alpha} \mathrm{d} \mathcal{S} = \boldsymbol{F} .
+\int_{\mathcal{S}} m_{i}(\boldsymbol{x}) T_{ij}(\boldsymbol{x}) \mathrm{d} \mathcal{S} = F_{j} ,
 \end{equation}
 
-Using the non-dimensionalisation scheme presented above this becomes
+where $m_{i}(\boldsymbol{x'})$ is the normal vector to $\mathcal{S}$ directed into the fluid. Using the non-dimensionalisation scheme presented above this becomes
 
 \begin{equation}
 \label{equ:nodim_fluid_solid}
-\eta_{\text{c}} U_{\text{c}} L_{\text{c}} \int \boldsymbol{m} \cdot \boldsymbol{T'}_{\alpha} \mathrm{d} \mathcal{S'} = \boldsymbol{F} .
+\eta_{\text{c}} U_{\text{c}} L_{\text{c}} \int_{\mathcal{S}} f_{i}(\boldsymbol{x'}) \mathrm{d} \mathcal{S'} = F_{i} ,
 \end{equation}
+
+where we have defined $f_{i}(\boldsymbol{x'})$ as the dimensionless traction vector defined on the surface $\mathcal{S}$, $m_{i}(\boldsymbol{x'}) T'_{ij}(\boldsymbol{x'})$.
 
 \subsubsection{Fluid-Fluid Boundary}
 \label{subsubsec:BC_fluid-fluid}
 
-In the case of a fluid-fluid boundary (see figure~\ref{fig:fluid-fluid_boundary}), both a kinematic and dynamic boundary condition need to be satisfied. The kinematic boundary condition states that the velocity of the two fluids must be continuous across the interface \citep{Manga94}. Expressed in dimensionless form this looks like
+For a boundary $\mathcal{I}$ between two fluids labelled 1 and 2 (figure~\ref{fig:fluid-fluid_boundary}), the kinematic boundary condition states that the velocity of the two fluids must be continuous across the interface \citep{Kim05}. Defining the velocity is fluid $l$ as $u_{l}$ this can be expressed in dimensionless form as
 
 \begin{equation}
 \label{equ:fluid_fluid_kin}
-\boldsymbol{u'}_{1}(\boldsymbol{x'}) = \boldsymbol{u'}_{2}(\boldsymbol{x'}), \quad \boldsymbol{x'} \in \mathcal{I} .
+u'_{1,i}(\boldsymbol{x'}) = u'_{2,i}(\boldsymbol{x'}), \quad \text{when } \boldsymbol{x'} \in \mathcal{I} .
 \end{equation}
 
 \begin{figure}
 $$\includegraphics[width=80mm]{fluid_fluid.eps}$$
-\caption{Definition of $\boldsymbol{n}$ and $\mathcal{I}$ for a fluid-fluid boundary. \label{fig:fluid-fluid_boundary}}
+\caption{Fluid-fluid boundary $\mathcal{I}$ with normal vector $\boldsymbol{n}$. \label{fig:fluid-fluid_boundary}}
 \end{figure}
 
-The dynamic boundary condition is an expression of the balance between the stress discontinuity across the interface and the interfacial tension (IFT)\citep{Manga94}:
+The dynamic boundary condition is an expression of the balance between the stress discontinuity across the interface and the interfacial tension (IFT) $\sigma$ \citep{Batchelor67}. With out definition of the stress tensor this is given as \citep{Manga94}:
 
 \begin{equation}
 \label{equ:fluid_fluid_dyn}
-\boldsymbol{n} \cdot [\boldsymbol{T}_{1} (\boldsymbol{x}) - \rho_{1}(\boldsymbol{g} \cdot \boldsymbol{x}) \boldsymbol{I}] - \boldsymbol{n} \cdot [\boldsymbol{T}_{2} (\boldsymbol{x}) - \rho_{2} (\boldsymbol{g} \cdot \boldsymbol{x}) \boldsymbol{I}] = \sigma(\boldsymbol{x}) \boldsymbol{n} (\boldsymbol{\nabla}_{\text{s}} \cdot \boldsymbol{n}) - \boldsymbol{\nabla}_{\text{s}} \sigma (\boldsymbol{x}) , \quad \boldsymbol{x} \in \mathcal{I} .
+n_{i}(\boldsymbol{x}) [T_{1,ij}(\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i}(\boldsymbol{x}) [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \sigma(\boldsymbol{x}) n_{j}(\boldsymbol{x}) [\partial_{\text{s},i} n_{i}(\boldsymbol{x})] - \partial_{\text{s},j} \sigma (\boldsymbol{x}) , \quad \text{when } \boldsymbol{x} \in \mathcal{I} .
 \end{equation}
 
-The operator $\boldsymbol{\nabla}_{\text{s}}$ is defined as the tangential gradient operator within the surface $\mathcal{I}$:
+The operator $\partial_{\text{s},i}$ is defined as the tangential gradient operator within the surface $\mathcal{I}$:
 
 \begin{equation}
 \label{equ:surf_grad}
-\boldsymbol{\nabla}_{\text{s}} = (\boldsymbol{I} - \boldsymbol{n} \boldsymbol{n}) \cdot \boldsymbol{\nabla} .
+\partial_{\text{s},i} = (\delta_{ij} - \partial_{i} \partial_{j}) \partial_{j} .
 \end{equation}
 
 When this takes the normal vector as its argument it can be shown that \citep{Brackbill92}
 
 \begin{equation}
 \label{equ:tang_diff_norm}
-\boldsymbol{\nabla}_{\text{s}} \cdot \boldsymbol{n} = \boldsymbol{\nabla} \cdot \boldsymbol{n}.
+\partial_{\text{s},i} n_{i} = \partial_{i} n_{i}.
 \end{equation}
 
-The presence of gradients in the interfacial tension can lead to so-called Marangoni effects \citep{Kim05}. However, for present purposes we will assume that the interfacial tension is uniform across the interface S and so the last term on the right hand side equals zero;
+The presence of spatial gradients in the interfacial tension can lead to so-called Marangoni effects \citep{Thomson1855, Gibbs1878}. However, for our purposes we will assume that the interfacial tension is uniform across the interface $\mathcal{I}$ and so the last term on the right hand side vanishes;
 
 \begin{equation}
 \label{equ:fluid_fluid_dyn_nograd}
-\boldsymbol{n} \cdot [\boldsymbol{T}_{1} (\boldsymbol{x}) - \rho_{1} (\boldsymbol{g} \cdot \boldsymbol{x}) \boldsymbol{I}] - \boldsymbol{n} \cdot [\boldsymbol{T}_{2} (\boldsymbol{x}) - \rho_{2} (\boldsymbol{g} \cdot \boldsymbol{x}) \boldsymbol{I}] = \sigma(\boldsymbol{x}) \boldsymbol{n} (\boldsymbol{\nabla} \cdot \boldsymbol{n}),  \quad \boldsymbol{x} \in \mathcal{S}.
+n_{i}(\boldsymbol{x}) [{T}_{1,ij} (\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i} [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \sigma(\boldsymbol{x}) n_{i}(\boldsymbol{x}) \partial_{i} n_{j}(\boldsymbol{x}),  \quad \text{when }\boldsymbol{x} \in \mathcal{I}.
 \end{equation}
 
 Like the equations of motion, this can be non-dimensionalised using equations~\ref{equ:nodim_l} to~\ref{equ:nodim_T}:
 
 \begin{equation}
 \label{equ:nodim_fluid_fluid_dyn}
-\text{Ca } \boldsymbol{n} \cdot (\boldsymbol{T'}_{1} - \boldsymbol{T'}_{2}) + \text{Bo}(\boldsymbol{\hat{z}} \cdot \boldsymbol{x'}) \boldsymbol{n} = (\boldsymbol{\nabla'} \cdot \boldsymbol{n}) \boldsymbol{n}.
+\text{Ca } n_{i}(\boldsymbol{x'}) [T'_{1,ij}(\boldsymbol{x'}) - T'_{2,ij}(\boldsymbol{x'})] + \text{Bo}(\hat{z}_{i} x'_{i}) n_{j}(\boldsymbol{x'}) = n_{j}(\boldsymbol{x'}) \partial'_{i} n_{i}(\boldsymbol{x'}) .
 \end{equation}
 
 The capillary number $\text{Ca}$ and  Bond number $\text{Bo}$ are dimensionless numbers defined as:
@@ -377,13 +381,86 @@ The capillary number $\text{Ca}$ and  Bond number $\text{Bo}$ are dimensionless 
 \text{Bo} = \frac{(\rho_{2} - \rho_{1}) g L_{\text{c}}^{2}}{\sigma}
 \end{equation}
 
-The $\mathbf{\nabla} \cdot \mathbf{n}$ factor in equation~\ref{equ:fluid_fluid_dyn} can be expressed in a more physically meaningful manner by noting that it is related to the mean curvature, $K$, of the interface \citep{Hobson11}.
+\subsection{Greens functions}
+\label{subsec:BIE_deriv}
+
+In order to derive the integral representation of the Stokes equations, it is necessary to make use of the Greens functions \citep{Riley06} for Stokes flow, $\hat{u}_{i}(\boldsymbol{x'} - \boldsymbol{y'})$ and $\hat{T}_{ij}(\boldsymbol{x'} - \boldsymbol{y'})$, defined such that \citep{Kim05}
 
 \begin{equation}
-\label{equ:surf_curv}
-2 K = -\mathbf{\nabla} \cdot \mathbf{n}
+\label{equ:vel_green_def}
+\partial'_{i} \hat{u}_{i}(\boldsymbol{x'} - \boldsymbol{y'}) = 0,
 \end{equation}
 
+and
+
+\begin{equation}
+\label{equ:stress_green_def}
+\partial'_{i} \hat{T}_{ij}(\boldsymbol{x'} - \boldsymbol{y'}) + \mathcal{F}_{j} \delta(\boldsymbol{x'} - \boldsymbol{y'}) = 0 , 
+\end{equation}
+
+where $\mathcal{F}_{i}$ is a arbitrary constant vector. Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved following \citet{Ladyzhenskaya63}, using Fourier transforms (appendix~\ref{app:Greens}) to show that
+
+\begin{equation}
+\label{equ:vel_green}
+\hat{u}_{j}(\boldsymbol{\xi}) = \frac{ \mathcal{F}_{i} J_{ij}(\boldsymbol{\xi})}{\Lambda} ,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:stress_green}
+\hat{T}_{ij}(\boldsymbol{\xi}) = K_{ijk}(\boldsymbol{\xi}) \mathcal{F}_{k} ,
+\end{equation}
+
+where $\boldsymbol{\xi} = \boldsymbol{x'} - \boldsymbol{y'}$ and 
+
+\begin{equation}
+\label{equ:J_kernal}
+J_{ij}(\boldsymbol{\xi}) = \frac{1}{8 \pi \xi} \left( \delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right) ,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:K_kernal}
+K_{ijk}(\boldsymbol{\xi}) = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}.
+\end{equation}
+
+We have defined $\xi = \xi_{i} \xi_{i}$.
+
+\subsection{Integral Representation of Stokes Equations}
+\label{subsec:int_rep}
+
+We now substitute the Greens functions and unknown velocity and stress field solutions into the Lorentz Reciprocal Theorem (equation~\ref{equ:LRT} in appendix~\ref{app:Lorentz}) and simplfify using equations~\ref{equ:stokes} and~\ref{equ:stress_green_def} to find
+
+\begin{equation}
+\label{equ:gen_int_rep}
+\dashint_{\mathcal{V}} u'_{k}(\boldsymbol{x'}) \delta(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \frac{1}{\Lambda} \dashint_{\mathcal{S}} J_{ik}(\boldsymbol{\xi}) T'_{ij}(\boldsymbol{x'}) n_{j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{S}} u'_{i}(\boldsymbol{x'}) K_{ijk}(\boldsymbol{\xi}) n_{j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} .
+\end{equation}
+
+Finally make the transformation $\boldsymbol{x'} \leftrightarrow \boldsymbol{y'}$ and use the symmetry properties of the kernels (equations~\ref{equ:j_sym} and~\ref{equ:k_sym} in appendix~\ref{app:Greens}) and the delta function (equation~\ref{equ:delta_sym} in appendix~\ref{app:delta}) to obtain the general form of the integral representation of the Stokes equations;
+
+\begin{equation}
+\label{equ:Stokes_int}
+\dashint_{\mathcal{V}} u'_{k}(\boldsymbol{y'}) \delta(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{y'}^{3} = \frac{1}{\Lambda} \dashint_{\mathcal{S}} J_{ik}(\boldsymbol{\xi}) T'_{ij}(\boldsymbol{y'}) n_{j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} + \dashint_{\mathcal{S}} u'_{i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi}) n_{j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} .
+\end{equation}
+
+Using the definition of the delta function (equation~\ref{equ:dirac} in appendix~\ref{app:delta}) this means
+
+\begin{equation}
+\label{equ:Stokes_int_domain}
+\frac{1}{\Lambda} \dashint_{\mathcal{S}} J_{ik}(\boldsymbol{\xi}) T'_{ij}(\boldsymbol{y'}) n_{j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} + \dashint_{\mathcal{S}} u'_{i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi}) n_{j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} = 
+\left\{
+    \begin{array}{l l}
+      u'_{k}(\boldsymbol{x'}) &\quad \boldsymbol{x'} \in \mathcal{V} \\
+      \frac{u'_{k}(\boldsymbol{x'})}{2} &\quad \boldsymbol{x'} \in \mathcal{S} \\
+      0 & \quad \text{otherwise}
+\end{array}
+\right.\ .
+\end{equation}
+
+\section{Theoretical Development}
+\label{sec:theory}
 
 \subsection{Problem Statement}
 \label{subsec:theory}
@@ -505,81 +582,8 @@ D \text{Bo } n_{i} [T_{1, ij}'(\boldsymbol{x'}) - T_{2, ij}'(\boldsymbol{x'})] =
 To summarise, the problem is completely described by equations~\ref{equ:cont} to~\ref{equ:BC_kin_int_nodim}, and equations~\ref{equ:BC_kin_spere},~\ref{equ:BC_dyn_sphere} and~\ref{equ:d_int}.
 
 
-\subsection{Greens functions}
-\label{subsec:BIE_deriv}
-
-In order to derive the boundary integral equations, it is necessary to make use of the Greens functions \citep{Riley06} for Stokes flow, $\hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'})$ and $\hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'})$, defined such that
-
-\begin{equation}
-\label{equ:vel_green_def}
-\partial'_{i} \hat{u}_{\alpha,i}(\boldsymbol{x'} - \boldsymbol{y'}) = 0 
-\end{equation}
-
-and
-
-\begin{equation}
-\label{equ:stress_green_def}
-\partial'_{i} \hat{T}_{\alpha,ij}(\boldsymbol{x'} - \boldsymbol{y'}) + \mathcal{F}_{j} \delta(\boldsymbol{x'} - \boldsymbol{y'}) = 0 , 
-\end{equation}
-
-where $\boldsymbol{\mathcal{F}}$ is a arbitrary constant vector. Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved following \citet{Ladyzhenskaya63} using Fourier transforms (appendix~\ref{app:Greens}) to show that
-
-\begin{equation}
-\label{equ:vel_green}
-\hat{u}_{\alpha,j}(\boldsymbol{\xi}) = \frac{\mathcal{F}_{i} J_{ij}(\boldsymbol{\xi})}{\Lambda_{\alpha}} ,
-\end{equation}
-
-and 
-
-\begin{equation}
-\label{equ:stress_green}
-\hat{T}_{\alpha, ij}(\boldsymbol{\xi}) = K_{ijk}(\boldsymbol{\xi}) \mathcal{F}_{k} ,
-\end{equation}
-
-where $\boldsymbol{\xi} = \boldsymbol{x'} - \boldsymbol{y'}$ and 
-
-\begin{equation}
-\label{equ:J_kernal}
-J_{ij}(\boldsymbol{\xi}) = \frac{1}{8 \pi |\boldsymbol{\xi}|} \left( \delta_{ij} + \frac{\xi_{i} \xi_{j}}{|\boldsymbol{\xi}|^{2}} \right) ,
-\end{equation}
-
-and
-
-\begin{equation}
-\label{equ:K_kernal}
-K_{ijk}(\boldsymbol{\xi}) = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi |\boldsymbol{\xi}|^{5}}
-\end{equation}
-
-\subsection{Integral Representation of Stokes Equations}
-\label{subsec:int_rep}
-
-We now substitute these expressions for the Greens functions into the Lorentz Reciprocal Theorem (equation~\ref{equ:LRT} in appendix~\ref{app:Lorentz}) and simplfify using equations~\ref{equ:stokes} and~\ref{equ:stress_green_def} to find
-
-\begin{equation}
-\label{equ:gen_int_rep}
-\dashint_{\mathcal{V}_{\alpha}} u'_{\alpha, k}(\boldsymbol{x'}) \delta(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \frac{1}{\Lambda_{\alpha}} \dashint_{\mathcal{S}_{\alpha}} J_{ik}(\boldsymbol{\xi}) T'_{\alpha,ij}(\boldsymbol{x'}) n_{\alpha,j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{S}_{\alpha}} u'_{\alpha,i}(\boldsymbol{x'}) K_{ijk}(\boldsymbol{\xi}) n_{\alpha,j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} .
-\end{equation}
-
-Finally make the transformation $\boldsymbol{x'} \leftrightarrow \boldsymbol{y'}$ and use the symmetry properties of the kernels (equations~\ref{equ:j_sym} and~\ref{equ:k_sym} in appendix~\ref{app:Greens}) and the delta function (equation~\ref{equ:delta_sym} in appendix~\ref{app:delta}) to obtain the general form of the integral representation of the Stokes equations;
-
-\begin{equation}
-\label{equ:Stokes_int}
-\dashint_{\mathcal{V}_{\alpha}} u'_{\alpha, k}(\boldsymbol{y'}) \delta(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{y'}^{3} = \frac{1}{\Lambda_{\alpha}} \dashint_{\mathcal{S}_{\alpha}} J_{ik}(\boldsymbol{\xi}) T'_{\alpha,ij}(\boldsymbol{y'}) n_{\alpha,j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} + \dashint_{\mathcal{S}_{\alpha}} u'_{\alpha,i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi}) n_{\alpha,j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} .
-\end{equation}
-
-Using the definition of the delta function (equation~\ref{equ:dirac} in appendix~\ref{app:delta}) this means
-
-\begin{equation}
-\label{equ:Stokes_int_domain}
-\frac{1}{\Lambda_{\alpha}} \dashint_{\mathcal{S}_{\alpha}} J_{ik}(\boldsymbol{\xi}) T'_{\alpha,ij}(\boldsymbol{y'}) n_{\alpha,j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} + \dashint_{\mathcal{S}_{\alpha}} u'_{\alpha,i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi}) n_{\alpha,j}(\boldsymbol{y'}) \mathrm{d} \boldsymbol{y'}^{2} = 
-\left\{
-    \begin{array}{l l}
-      u'_{\alpha,k}(\boldsymbol{x'}) &\quad \boldsymbol{x'} \in \mathcal{V}_{\alpha} \\
-      \frac{u'_{\alpha,k}(\boldsymbol{x'})}{2} &\quad \boldsymbol{x'} \in \mathcal{S}_{\alpha} \\
-      0 & \quad \text{otherwise}
-\end{array}
-\right.\ .
-\end{equation}
+\subsection{Integral Representation}
+\label{subsec:prob_int_rep}
 
 This equation needs to be considered for each fluid separately. For fluid 1 ($\alpha = 1$), $\mathcal{S}_{1} = \mathcal{S} + \mathcal{I}$, $\boldsymbol{n}_{1}(\boldsymbol{y'}) = \boldsymbol{m}(\boldsymbol{y'})$ for $\boldsymbol{y'} \in \mathcal{S}$ and $\boldsymbol{n}_{1}(\boldsymbol{y'}) = \boldsymbol{n}(\boldsymbol{y'})$ for $\boldsymbol{y'} \in \mathcal{I}$. Noting that for $\boldsymbol{y'} \in \mathcal{S}$, $u'_{1,i}(\boldsymbol{y'}) = u_{\text{s},i}$ and that $\partial'_{j} K_{ijk}(\boldsymbol{\xi}) = -\delta_{ik} \delta(\boldsymbol{\xi})$ (as must follow from equations~\ref{equ:stress_green_def} and~\ref{equ:stress_green}) the boundary integral equation for fluid 1 can be written as
 

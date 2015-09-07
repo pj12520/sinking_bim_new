@@ -1,7 +1,8 @@
 PROJECT=bim
 TEX=pdflatex
+OPT=-shell-escape
 BIBTEX=bibtex
-BUILDTEX=$(TEX) $(PROJECT).tex
+BUILDTEX=$(TEX) $(OPT) $(PROJECT).tex
 
 all:
 	$(BUILDTEX)

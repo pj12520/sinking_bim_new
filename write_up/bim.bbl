@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -27,16 +27,17 @@ A.~S. Geller, S.~H. Lee, and L.~G. Leal.
   interface.
 \newblock \emph{Journal of {F}luid {M}echanics}, 169:\penalty0 27--69, 1985.
 
+\bibitem[Gibbs(1878)]{Gibbs1878}
+J.~Willard Gibbs.
+\newblock On the {E}quilibrium of {H}eterogeneous {S}ubstances. {P}art {II}.
+\newblock \emph{Transactions of the {C}onnecticut {A}cademy of {A}rts and
+  {S}ciences}, 3:\penalty0 343--524, 1878.
+
 \bibitem[Graziani(1989)]{Graziani89}
 G.~Graziani.
 \newblock A boundary integral equation method for axisymmetric viscous flows.
 \newblock \emph{International {J}ournal of {E}ngineering {S}cience},
   27:\penalty0 855--864, 1989.
-
-\bibitem[Hobson et~al.(2011)Hobson, Efstathiou, and Lasenby]{Hobson11}
-Mike Hobson, George Efstathiou, and Anthony Lasenby.
-\newblock \emph{General Relativity: An introduction for physicists}.
-\newblock Cambridge {U}niversity {P}ress, 4th edition, 2011.
 
 \bibitem[Kim and Karrila(2005)]{Kim05}
 Sangtae Kim and Seppo~J. Karrila.
@@ -93,6 +94,13 @@ K.~F. Riley, M.~P. Hobson, and S.~J. Bence.
 John Roumeliotis.
 \newblock \emph{A {B}oundary {I}ntegral {M}ethod {A}pplied to {S}okes {F}low}.
 \newblock PhD thesis, University of {N}ew {S}outh {W}ales, 2000.
+
+\bibitem[Thomson(1855)]{Thomson1855}
+James Thomson.
+\newblock On certain curious {M}otions observable at the {S}urfaces of {W}ine
+  and other{A}lcoholic {L}iquors.
+\newblock \emph{Philosophical {M}agazine {S}eries 4}, 10:\penalty0 330--333,
+  1855.
 
 \bibitem[White(1999)]{White99}
 Frank~M. White.

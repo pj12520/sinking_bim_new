@@ -1,14 +1,16 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}
-\BOOKMARK [1][-]{section.2}{Theoretical Background}{}
+\BOOKMARK [1][-]{section.2}{Fundamentals of Stokes Flow}{}
 \BOOKMARK [2][-]{subsection.2.1}{Equations of Motion}{section.2}
 \BOOKMARK [2][-]{subsection.2.2}{Boundary Conditions}{section.2}
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Fluid-Solid Boundary}{subsection.2.2}
 \BOOKMARK [3][-]{subsubsection.2.2.2}{Fluid-Fluid Boundary}{subsection.2.2}
-\BOOKMARK [2][-]{subsection.2.3}{Problem Statement}{section.2}
-\BOOKMARK [2][-]{subsection.2.4}{Greens functions}{section.2}
-\BOOKMARK [2][-]{subsection.2.5}{Integral Representation of Stokes Equations}{section.2}
-\BOOKMARK [2][-]{subsection.2.6}{Axisymmetric Simplification}{section.2}
-\BOOKMARK [1][-]{section.3}{Numerical Method}{}
+\BOOKMARK [2][-]{subsection.2.3}{Greens functions}{section.2}
+\BOOKMARK [2][-]{subsection.2.4}{Integral Representation of Stokes Equations}{section.2}
+\BOOKMARK [1][-]{section.3}{Theoretical Development}{}
+\BOOKMARK [2][-]{subsection.3.1}{Problem Statement}{section.3}
+\BOOKMARK [2][-]{subsection.3.2}{Integral Representation}{section.3}
+\BOOKMARK [2][-]{subsection.3.3}{Axisymmetric Simplification}{section.3}
+\BOOKMARK [1][-]{section.4}{Numerical Method}{}
 \BOOKMARK [1][-]{appendix.A}{Greens Functions for Stokes Flow}{}
 \BOOKMARK [2][-]{subsection.A.1}{Integral for Greens Function for Pressure}{appendix.A}
 \BOOKMARK [2][-]{subsection.A.2}{Integrals for the Greens Function for Velocity}{appendix.A}
