@@ -1,4 +1,4 @@
-\begin{thebibliography}{15}
+\begin{thebibliography}{16}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -63,6 +63,12 @@ Michael Manga.
 \newblock \emph{The motion of deformable drops and bubbles at low {R}eynolds
   number: {A}pplications to selected problems in geology and geophysics}.
 \newblock PhD thesis, Harvard {U}niversity, 1994.
+
+\bibitem[Manga and Stone(1995)]{Manga95}
+Michael Manga and H.~A. Stone.
+\newblock Low {R}eynolds number motion of bubbles, drops and rigid spheres
+  through fluid-fluid interfaces.
+\newblock \emph{Journal of {F}luid {M}echanics}, 287:\penalty0 279--298, 1995.
 
 \bibitem[Pozrikids(1992)]{Pozrikidis92}
 C.~Pozrikids.

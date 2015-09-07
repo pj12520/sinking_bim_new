@@ -715,15 +715,9 @@ For brevity the function arguments have been dropped from the kernels and the no
 
 The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00}. Previous authors have used different notations and formulations to present these expressions and we will use a formulation similar to \citet{Graziani89}. First, we define the quantities $\alpha$ and $\beta$:
 
-\begin{equation}
-\label{equ:alpha_def}
-\alpha^{2} = x_{r}^{2} + y_{r}^{2} + (x_{z} - y_{z})^{2}
-\end{equation}
 
-\begin{equation}
-\label{equ:beta_def}
-\beta^{2} = 2 x_{r} y_{r}
-\end{equation}
+\section{Numerical Method}
+\label{sec:num_meth}
 
 \appendix
 
@@ -1171,10 +1165,27 @@ $a'_{4}$ & 0.01736506451 & $b'_{4}$ & 0.00526449639 \\
 \end{center} 
 \end{table}
 
-\section{Components of $\boldsymbol{A}$}
+\section{Components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$}
 \label{app:mat_A}
 
-Here we expressions for the components of $\boldsymbol{A}$ in terms of complete elliptic integrals of the first and second kind (appendix~\ref{app:ellip}). The expressions are from \citet{Graziani89} but we use a different notation; the quantities $\alpha$ and $\beta$ are defined from \citet{Manga94}. $K$ and $E$ are complete elliptic integrals of the first and second kind respectively and they all take $k^{2} = 2 \beta^{2} / (\alpha^{2} + \beta^{2})$ as their modulus. The expressions are:
+Here we present expressions for the components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ in terms of complete elliptic integrals of the first and second kind (appendix~\ref{app:ellip}). The expressions for $\boldsymbol{A}$ anf $\boldsymbol{B}$ are from \citet{Graziani89}. As far as the authors are aware equivalent expressions for $\boldsymbol{C}$ have never been published before although, they were undoubtedly used in the models of \citet{Lee82, Geller86} and \cite{Manga95}. The quantities $\alpha$ and $\beta$ are defined as \citep{Manga94}
+
+\begin{equation}
+\label{equ:alpha_def}
+\alpha^{2} = x_{r}^{2} + y_{r}^{2} + (x_{z} - y_{z})^{2},
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:beta_def}
+\beta^{2} = 2 x_{r} y_{r}.
+\end{equation}
+
+
+$K$ and $E$ are complete elliptic integrals of the first and second kind respectively and they all take $k^{2} = 2 \beta^{2} / (\alpha^{2} + \beta^{2})$ as their modulus. 
+
+The components of $\boldsymbol{A}$ are:
 
 \begin{equation}
 \label{equ:A11_comp}
@@ -1191,6 +1202,8 @@ A_{12} = (a_{2} n_{r} + a_{6} n_{z})K + (a_{4} n_{r} + a_{8} n_{z})E,
 A_{21} = (a_{9} n_{r} + a_{10} n_{z})K + (a_{11} n_{r} + a_{12} n_{z})E,
 \end{equation}
 
+and 
+
 \begin{equation}
 \label{equ:A22_comp}
 A_{22} = (a_{10} n_{r} + a_{14} n_{z})K + (a_{12} n_{r} + a_{16} n_{z})E.
@@ -1200,64 +1213,107 @@ The coefficients $a_{i}$ are given as
 
 \begin{equation}
 \label{equ:coeff_a1}
-a_{1} = \frac{(1 - \lambda) [x_{r} \alpha_{2} (4 \alpha^{4} - 18 x_{r}^{2} y_{r}^{2}) - x_{r} (2 y_{r}^{2} + x_{r}^{2}) (2 \alpha^{4} - 3 \beta^{4}) - y_{r} \alpha^{2} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) + x_{r} y_{r}^{2} \beta^{4}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{4}} 
+a_{1} = \frac{(1 - \lambda) [x_{r} \alpha_{2} (4 \alpha^{4} - 18 x_{r}^{2} y_{r}^{2}) - x_{r} (2 y_{r}^{2} + x_{r}^{2}) (2 \alpha^{4} - 3 \beta^{4}) - y_{r} \alpha^{2} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) + x_{r} y_{r}^{2} \beta^{4}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{4}},
 \end{equation}
 
 \begin{equation}
 \label{equ:equ:coeff_a2}
-a_{2} = \frac{(1 - \lambda) (x_{z} - y_{z}) [2 \alpha^{4} - 2 \beta^{4} - \alpha^{2} (x_{z} - y_{z})^{2}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{2}}
+a_{2} = \frac{(1 - \lambda) (x_{z} - y_{z}) [2 \alpha^{4} - 2 \beta^{4} - \alpha^{2} (x_{z} - y_{z})^{2}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{2}},
 \end{equation}
 
 \begin{align}
 \label{equ:coeff_a3}
 a_{3} = \frac{1 - \lambda}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{4}} \bigg( \frac{x_{r} (-8 \alpha^{8} + 15 \alpha^{4} \beta^{4} - 3 \beta^{8})}{2} \nonumber \\
-- 2 x_{r} \alpha^{2} (2 y_{r}^{2} + x_{r}^{2}) (-\alpha^{4} + 3 \beta^{4}) + y_{r} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) (\alpha^{4} + 3 \beta^{4}) - 4 x_{r} y_{r}^{2} \alpha^{2} \beta^{4} \bigg)
+- 2 x_{r} \alpha^{2} (2 y_{r}^{2} + x_{r}^{2}) (-\alpha^{4} + 3 \beta^{4}) + y_{r} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) (\alpha^{4} + 3 \beta^{4}) - 4 x_{r} y_{r}^{2} \alpha^{2} \beta^{4} \bigg),
 \end{align}
 
 \begin{equation}
 \label{equ:coeff_a4}
-a_{4} = \frac{-(1 - \lambda) (x_{z} - y_{z})}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{2}} \left(\alpha^{4} (\alpha^{4} - 5 \beta^{4}) + [\alpha^{2}- (x_{z} - y_{z})^{2}] (\alpha^{4} + 3 \beta^{4}) \right)
+a_{4} = \frac{-(1 - \lambda) (x_{z} - y_{z})}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{2}} \left(\alpha^{4} (\alpha^{4} - 5 \beta^{4}) + [\alpha^{2}- (x_{z} - y_{z})^{2}] (\alpha^{4} + 3 \beta^{4}) \right),
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a6}
-a_{6} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (2 x_{r}^{2} - \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) x_{r}}
+a_{6} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (2 x_{r}^{2} - \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) x_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a8}
-a_{8} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{4} + 3 \beta^{4} - 8 x_{r}^{2} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} x_{r}}
+a_{8} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{4} + 3 \beta^{4} - 8 x_{r}^{2} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} x_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a9}
-a_{9} = \frac{(1 - \lambda) (x_{z} - y_{z}) (-2 \alpha^{4} + 3 \beta^{4} - 4 y_{r}^{2} \alpha^{2} + 4 y_{r}^{4})}{4 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+a_{9} = \frac{(1 - \lambda) (x_{z} - y_{z}) (-2 \alpha^{4} + 3 \beta^{4} - 4 y_{r}^{2} \alpha^{2} + 4 y_{r}^{4})}{4 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a10}
-a_{10} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{2} - 2 y_{r}^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+a_{10} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{2} - 2 y_{r}^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a11}
-a_{11} = \frac{(1 - \lambda) (x_{z} - y_{z}) (\alpha^{6} - 3 \alpha^{2} \beta^{4} + 2 y_{r}^{2} \alpha^{4} + 6 y_{r}^{2} \beta^{4} - 8 y_{r}^{4} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} y_{r}^{2}}
+a_{11} = \frac{(1 - \lambda) (x_{z} - y_{z}) (\alpha^{6} - 3 \alpha^{2} \beta^{4} + 2 y_{r}^{2} \alpha^{4} + 6 y_{r}^{2} \beta^{4} - 8 y_{r}^{4} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} y_{r}^{2}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a12}
-a_{12} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (8 y_{r}^{2} \alpha^{2} - \alpha^{4} - 3 \beta^{4})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}}
+a_{12} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (8 y_{r}^{2} \alpha^{2} - \alpha^{4} - 3 \beta^{4})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a14}
-a_{14} = \frac{(1 - \lambda) (x_{z} - y_{z})^{3}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})}
+a_{14} = \frac{(1 - \lambda) (x_{z} - y_{z})^{3}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})},
 \end{equation}
+
+and 
 
 \begin{equation}
 \label{equ:coeff_a16}
-a_{16} = \frac{-4 (1 - \lambda) (x_{z} - y_{z})^{3} \alpha^{2}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} + \beta^{2})^{2}}
+a_{16} = \frac{-4 (1 - \lambda) (x_{z} - y_{z})^{3} \alpha^{2}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} + \beta^{2})^{2}}.
 \end{equation}
+
+The components of $\boldsymbol{B}$ are:
+
+\begin{equation}
+\label{equ:B11_comp}
+B_{11} = \frac{1}{2 \pi \beta^{2} (\alpha^{2} + \beta^{2})^{1/2}} \left[ [\alpha^{2} + (x_{z} - y_{z})^{2}] K - \left( \alpha^{2} + \beta^{2} + \frac{\alpha^{2} (x_{z} - y_{z})^{2}}{\alpha^{2} - \beta^{2}}\right) E\right],
+\end{equation}
+
+
+\begin{equation}
+\label{equ:B12_comp}
+B_{12} = \frac{x_{z} - y_{z}}{4 \pi x_{r} (\alpha^{2} + \beta^{2})^{1/2}} \left( \frac{(2 x_{r}^{2} - \alpha^{2}) E}{\alpha^{2} - \beta^{2}} + K \right),
+\end{equation}
+
+\begin{equation}
+\label{equ:B21_comp}
+B_{21} = \frac{x_{z} - y_{z}}{4 \pi y_{r} (\alpha^{2} + \beta^{2})^{1/2}} \left( \frac{(\alpha^{2} - 2 y_{r}^{2}) E}{\alpha^{2} - \beta^{2}} - K\right),
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:B22_comp}
+B_{22} = \frac{1}{2 \pi (\alpha^{2} + \beta^{2})^{1/2}} \left(K + \frac{(x_{z} - y_{z})^{2} E}{\alpha^{2} - \beta^{2}}\right).
+\end{equation}
+
+The components of $\boldsymbol{C}$ are:
+
+\begin{align}
+\label{equ:C1_comp}
+C_{1} = \frac{9 (\partial'_{j} n_{j} - y_{z} \text{Bo})}{4 \pi D \text{Bo} (\alpha^{2} + \beta^{2})^{1/2}} \bigg[ \bigg( [\alpha^{2} + (x_{z} - y_{z})^{2}] n_{r} + y_{r} (x_{z} - y_{z}) \bigg) K \nonumber \\
++ \frac{E}{\alpha^{2} - \beta^{2}} \bigg( n_{r} [\beta^{4} - \alpha^{2} (\alpha^{2} + (x_{z} - y_{z})^{2})] + n_{z} (x_{z} - y_{z}) (x_{r} \beta^{2} - y_{r} \alpha^{2}) \bigg) \bigg],
+\end{align}
+
+and 
+
+\begin{align}
+\label{equ:C2_comp}
+C_{2} = \frac{9 (\partial'_{j} n_{j} - y_{z} \text{Bo})}{4 \pi D \text{Bo} (\alpha^{2} + \beta^{2})^{1/2}}  \bigg( [\beta^{2} n_{z} - x_{r} (x_{z} - y_{z}) n_{r}] K \nonumber \\
++ \frac{[n_{r} (x_{r} \alpha^{2} - y_{r} \beta^{2}) + (x_{z} - y_{z}) \beta^{2} n_{z}] (x_{z} - y_{z}) E}{\alpha^{2} - \beta^{2}}\bigg).
+\end{align}
 
 \bibliographystyle{plainnat}
 
