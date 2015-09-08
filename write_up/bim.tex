@@ -465,19 +465,14 @@ Using the definition of the delta function (equation~\ref{equ:dirac} in appendix
 \subsection{Problem Statement}
 \label{subsec:theory}
 
-The system is formulated as in figure~\ref{fig:params}. The physical parameters motivate the choice of scaling variables. The characteristic lengthscale is chosen to be the sphere radius $a$, characteristic viscosity that of the upper fluid $\eta_{1}$ and characteristic velocity to be the Stokes velocity \citep{Reynolds1886},
+We are interested in the low Reynolds number gravitational settling of a sphere towards a fluid-fluid interface (figure~\ref{fig:params}). We denote the upper(lower) phase as fluid 1(2). The physical parameters motivate the choice of scaling variables. The characteristic lengthscale is chosen to be the sphere radius $a$, characteristic viscosity that of the upper fluid $\eta_{1}$, and characteristic velocity to be the terminal velocity of the sphere in the upper fluid\citep{Reynolds1886};
 
 \begin{equation}
 \label{equ:char_vel}
-U_{\text{c}} = \frac{2 (\rho_{\text{s}} - \rho_{1}) g a^{2}}{9 \eta_{1}} .
+U_{\text{c}} = \frac{2 (\rho_{\text{s}} - \rho_{1}) g a^{2}}{9 \eta_{1}} ,
 \end{equation}
 
-  \begin{figure}
-    $$\includegraphics[width=0.8\textwidth]{formulation.eps}$$
-    \caption{Diagrammatic representation of the system. A sphere falls under gravity, at low Reynolds number, towards an initially horizontal interface between two density stratified, immiscible semi-infinite fluids. See table~\ref{tab:symbols} for definition of symbols. \label{fig:params}}
-  \end{figure}
-
-This means the capillary and Bond numbers can be expressed as:
+where $\rho_{1}$ is the density of fluid 1, $\rho_{\text{s}}$ the sphere density, and $g = 9.81$ m s$^{-1}$ the acceleration due to gravity. Defining $\rho_{2}$ as the density of fluid 2 and $\sigma$ as the IFT, this means the capillary and Bond numbers can be expressed as:
 
 \begin{equation}
 \label{equ:cap_spec}
@@ -489,69 +484,90 @@ This means the capillary and Bond numbers can be expressed as:
 \text{Bo} = \frac{(\rho_{2} - \rho_{1}) g a^{2}}{\sigma}.
 \end{equation}
 
+
+  \begin{figure}
+    $$\includegraphics[width=0.8\textwidth]{formulation.eps}$$
+    \caption{Diagrammatic representation of the system. A sphere falls under gravity, at low Reynolds number, towards an initially horizontal interface between two density stratified, immiscible semi-infinite fluids. See table~\ref{tab:symbols} for definition of symbols. \label{fig:params}}
+  \end{figure}
+
+
 The dimensionless stress tensor for each fluid can be written as
 
 \begin{equation}
 \label{equ:nd_stress_def}
-T_{\alpha, ij}'(\boldsymbol{x'}) = -P_{\text{d,} \alpha}'(\boldsymbol{x'}) \delta_{ij} + \Lambda_{\alpha}[\partial_{i}' u_{\alpha, j}'(\boldsymbol{x'}) - \partial_{j}' u_{\alpha, i}'(\boldsymbol{x'})].
+T_{\alpha, ij}'(\boldsymbol{x'}) = -P_{\text{d},l}'(\boldsymbol{x'}) \delta_{ij} + \Lambda_{l}[\partial_{i}' u_{l, j}'(\boldsymbol{x'}) - \partial_{j}' u_{l, i}'(\boldsymbol{x'})],
 \end{equation}
 
-The parameter $\Lambda_{\alpha}$ is defined as
+where $P'_{\text{d},l}$ and $u'_{l,i}$ are the dimensionless dynamic pressure and velcoity fields in fluid $l$ respectively. We use $l$ to denote the fluid and $i,j$ to denote tensoral components. The parameter $\Lambda_{l}$ is defined as
 
 \begin{equation}
 \label{equ:Llambda}
-\Lambda_{\alpha} = \frac{\eta_{\alpha}}{\eta_{1}} = \left\{
+\Lambda_{l} = \frac{\eta_{l}}{\eta_{1}} = \left\{
     \begin{array}{l l}
-      1, & \quad \alpha = 1 \\
-      \frac{\eta_{2}}{\eta_{1}} = \lambda, & \quad \alpha = 2
+      1, & \quad l = 1 \\
+      \frac{\eta_{2}}{\eta_{1}} = \lambda, & \quad l = 2
     \end{array} \right.\ .
 \end{equation}
 
-Note $\lambda$ is the viscosity ratio of the two fluids. It is straightforward to apply the general equations of motion and boundary conditions to the problem. The equations of motion, expressed in the Einstein summation convention \citep{Riley06} which will be used from now on, appear as 
+where $\eta_{2}$ is the dynamic viscosity of the lower phase. Note $\lambda$ is the viscosity ratio of the two fluids. Additionally $\mathcal{V}_{1(2)}$ dentotes the volume of fluid 1(2), $\mathcal{I}$ the interface and $\mathcal{S}$ the sphere surface. $\boldsymbol{m}$ and $\boldsymbol{n}$ are the normal vectors to the sphere surface and interface respectively and both are directed into fluid 1. We use cylindrical polar coordinates to describe the system with $r$ the radial coordinate with respect to the symmetry axis, $\phi$ the azimuthal coordinate, and $z$ the vertical coordinate with respect to the plane of the initial, undeformed interface. Additionally we make use of the polar angle $\theta$ defined with respect to the centre of the sphere and the arc-length $s$ defined as the distance along the interface from the symmetry axis in any azimuthal plane.
+
+It is straightforward to apply the general equations of motion and boundary conditions to the problem. The equations of motion, which must be satsified in both fluid domains, appear as 
 
 \begin{equation}
 \label{equ:cont}
-\partial_{\text{i}}' u_{\alpha,i}'(\boldsymbol{x'}) = 0,
+\partial_{\text{i}}' u_{l,i}'(\boldsymbol{x'}) = 0,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:stokes}
-\partial_{\text{i}}' T_{\alpha,ij}'(\boldsymbol{x'}) = 0.
+\partial_{\text{i}}' T_{l,ij}'(\boldsymbol{x'}) = 0.
 \end{equation}
-
-Here, $\alpha = 1,2$ and denotes the fluid, $i, j$ denote components of tensoral quantities. 
 
 The first boundary condition that we impose is that the undisturbed fluid is quiescent;
 
 \begin{equation}
 \label{equ:BC_inf}
-u_{\alpha, i}'(\boldsymbol{x'}) \to 0 \text{ as } |\boldsymbol{x'}| \to \infty.
+u_{l, i}'(\boldsymbol{x'}) \to 0 \text{ as } |\boldsymbol{x'}| \to \infty.
 \end{equation}
 
 The kinematic boundary condition on the fluid interface (equation~\ref{equ:fluid_fluid_kin}) can be expressed as  
 
 \begin{equation}
 \label{equ:BC_kin_int_nodim}
-u_{1,i}'(\boldsymbol{x'}) = u_{2,i}'(\boldsymbol{x'}), \quad \boldsymbol{x'} \in S_{\text{int}}.
+u_{1,i}'(\boldsymbol{x'}) = u_{2,i}'(\boldsymbol{x'}), \quad \boldsymbol{x'} \in \mathcal{I}.
 \end{equation}
 
 The dynamic boundary condition is also imposed at the interface;
 
 \begin{equation}
 \label{equ:BC_dyn_int}
-\text{Ca } n_{i} [T_{1, ij}'(\boldsymbol{x'}) - T_{2,ij}'(\boldsymbol{x'})] + \text{Bo} \hat{z}_{i} x_{i}' n_{j} = n_{j} \partial_{i}' n_{i}.
+\text{Ca } n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2,ij}'(\boldsymbol{x'})] + \text{Bo} \hat{z}_{i} x_{i}' n_{j}(\boldsymbol{x'}) = n_{j}(\boldsymbol{x'}) \partial_{i}' n_{i}(\boldsymbol{x'}), \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
 \end{equation}
 
-The kinematic boundary condition on the sphere surface is one of no-slip meaning the fluid velocity at the surface has to equal the sphere velocity ;
+However we can define the modified density ratio (MDR) D as
+
+\begin{equation}
+\label{equ:dim_dens_rat}
+D = \frac{\text{Ca}}{\text{Bo}} = \frac{\rho_{\text{s}} - \rho_{1}}{\rho_{2} - \rho_{1}}.
+\end{equation}
+
+This means equation~\ref{equ:BC_dyn_int} can be re-expressed as
+
+\begin{equation}
+\label{equ:d_int}
+D \text{Bo } n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2, ij}'(\boldsymbol{x'})] = n_{j}(\boldsymbol{x'})(\partial_{i}' n_{i}(\boldsymbol{x'}) - \text{Bo} \hat{z}_{i} x_{i}'), \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
+\end{equation}
+
+The kinematic boundary condition on the sphere surface is 
 
 \begin{equation}
 \label{equ:BC_kin_spere}
-u_{1,i}'(\boldsymbol{x'}) = u_{\text{s},i}', \quad \boldsymbol{x'} \in \mathcal{S}.
+u_{1,i}'(\boldsymbol{x'}) = U_{\text{s},i}', \quad \boldsymbol{x'} \in \mathcal{S}.
 \end{equation}
 
-The final boundary condition is the dynamic boundary condition on the sphere. The force on the fluid due to the sphere originates from the balance between gravity and buoyancy;
+where $U_{\text{s},i}$ is the velocity of the sphere. The final boundary condition is the dynamic boundary condition on the sphere. The force on the fluid due to the sphere originates from the balance between gravity and buoyancy;
 
 \begin{equation}
 \label{equ:sphere_force}
@@ -562,30 +578,16 @@ Substituting this into equation~\ref{equ:nodim_fluid_solid} and using equation~\
 
 \begin{equation}
 \label{equ:BC_dyn_sphere}
-\int_{\mathcal{S}} n_{i} T_{1, ij}'(\boldsymbol{x'}) \mathrm{d} \mathcal{S}' = 6 \pi \hat{z}_{j}
+\int_{\mathcal{S}} f_{i}(\boldsymbol{x'}) \mathrm{d} \mathcal{S}' = 6 \pi \hat{z}_{i} \quad \text{when } \boldsymbol{x'} \in \mathcal{S}.
 \end{equation}
 
-The dimensionless numbers that describe the system are the set $\{\lambda, \text{Ca}, \text{Bo}\}$. However, an equivalent set can be generated by defining the dimensionless density ratio $D$;
-
-\begin{equation}
-\label{equ:dim_dens_rat}
-D = \frac{\text{Ca}}{\text{Bo}} = \frac{\rho_{\text{s}} - \rho_{1}}{\rho_{2} - \rho_{1}}.
-\end{equation}
-
-Therefore, we can also describe the system with the set $\{\lambda, D, \text{Bo}\}$. This allows us to re-express equation~\ref{equ:BC_dyn_int} as
-
-\begin{equation}
-\label{equ:d_int}
-D \text{Bo } n_{i} [T_{1, ij}'(\boldsymbol{x'}) - T_{2, ij}'(\boldsymbol{x'})] = n_{j}(\partial_{i}' n_{i} - \text{Bo} \hat{z}_{i} x_{i}')
-\end{equation}
-
-To summarise, the problem is completely described by equations~\ref{equ:cont} to~\ref{equ:BC_kin_int_nodim}, and equations~\ref{equ:BC_kin_spere},~\ref{equ:BC_dyn_sphere} and~\ref{equ:d_int}.
-
+The dimensionless numbers that describe the system are the set $\{\lambda, D, \text{Bo}\}$.
 
 \subsection{Integral Representation}
 \label{subsec:prob_int_rep}
 
-This equation needs to be considered for each fluid separately. For fluid 1 ($\alpha = 1$), $\mathcal{S}_{1} = \mathcal{S} + \mathcal{I}$, $\boldsymbol{n}_{1}(\boldsymbol{y'}) = \boldsymbol{m}(\boldsymbol{y'})$ for $\boldsymbol{y'} \in \mathcal{S}$ and $\boldsymbol{n}_{1}(\boldsymbol{y'}) = \boldsymbol{n}(\boldsymbol{y'})$ for $\boldsymbol{y'} \in \mathcal{I}$. Noting that for $\boldsymbol{y'} \in \mathcal{S}$, $u'_{1,i}(\boldsymbol{y'}) = u_{\text{s},i}$ and that $\partial'_{j} K_{ijk}(\boldsymbol{\xi}) = -\delta_{ik} \delta(\boldsymbol{\xi})$ (as must follow from equations~\ref{equ:stress_green_def} and~\ref{equ:stress_green}) the boundary integral equation for fluid 1 can be written as
+To recast the problem in an integral representation, we need to apply equation~\ref{equ:Stokes_int_domain} to each fluid separately. The domain of fluid 1 is bound by the sphere surface and interface, and extends to infinity as $r, z \to \infty$. The boundary condition at infinity (equation~\ref{equ:BC_inf}) ensures that the contribution to the surface integrals in equation~\ref{equ:Stokes_int_domain} vanishes meaning that just the sphere surface and interface contribute. Additionally the no-slip boundary condition on the sphere surface (equation~\ref{equ:BC_kin_spere}), the divergence theorem (appendix~\ref{app:div_theory}) and the definition of the Greens function for pressure (equation~\ref{equ:stress_green_def}) can be used to show that the integral of $u'_{1,i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi} m_{j}(\boldsymbol{y'})$ over the sphere surface vanishes. Hence the boundary integral equation for fluid 1 can be written as 
+
 
 \begin{align}
 \label{equ:bie_fluid1}
@@ -599,7 +601,7 @@ This equation needs to be considered for each fluid separately. For fluid 1 ($\a
 \right.\ .
 \end{align}
 
-For fluid 2, $\mathcal{S}_{2} = \mathcal{I}$ and $\boldsymbol{n}_{2}(\boldsymbol{y'}) = - \boldsymbol{n}(\boldsymbol{x'})$ for $\boldsymbol{x'} \in \mathcal{I}$. Using equation~\ref{equ:BC_kin_int_nodim} the boundary integral equation for fluid 2 can be written as
+For fluid 2, the contribution to the surface integrals at infinity again vanishes leaving just a contribution from the interface. Using the kinemtic boundary condition at the interface (equation~\ref{equ:BC_kin_int_nodim}) the boundary integrap equation for fluid 2 can be written as (the minus sign occurs since the normal vector is directed out of fluid 2);
 
 \begin{equation}
 \label{equ:bie_fluid2}
@@ -625,27 +627,27 @@ This together with equation~\ref{equ:BC_dyn_sphere} completely describes the sys
 \subsection{Axisymmetric Simplification}
 \label{subsec:axi_sym}
 
-We can exploit the axial symmetry of the system to chose the point $\boldsymbol{x'}$ such that it lies in the plane defined by $\phi = 0$. Hence in Cartesian coordinates $\boldsymbol{x'} = (x_{r}, 0, x_{z})$. This also means we can write $\boldsymbol{y'} = (y_{r} \cos \phi, y_{r} \sin \phi, y_{z})$. On the surface of the sphere $y_{r(z)} = y_{r(z)}(\theta)$ and on the interface $y_{r(z)} = y_{r(z)}(s)$. Additionally $\boldsymbol{f}_{\text{s}} = [f_{\text{s},r}(\theta) \cos \phi, f_{\text{s},r}(\theta) \sin \phi, f_{\text{s},z}(\theta)]$ and $\boldsymbol{n} = [n_{r}(s) \cos\phi, n_{r}(s) \sin\phi, n_{z}(s)]$. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals in equations~\ref{equ:I1} and~\ref{equ:BC_dyn_sphere}. To achieve this, the Cartesian components of each equation is considered separately. For equation~\ref{equ:I1}, it can be shown that both the left and right hand sides of the 2-component are identically zero. For equation~\ref{equ:BC_dyn_sphere} this is true for the 1- and 2-components. To show this, expand $J_{ij}$ and $K_{ijk}$ in terms of the components of $\boldsymbol{x'}$ and $\boldsymbol{y'}$. This leaves three integral equations which can be expressed as
+We can exploit the axial symmetry of the system to chose the point $\boldsymbol{x'}$ such that it lies in the plane defined by $\phi = 0$. Hence in Cartesian coordinates $\boldsymbol{x'} = (x_{r}, 0, x_{z})$. This also means we can write $\boldsymbol{y'} = (y_{r} \cos \phi, y_{r} \sin \phi, y_{z})$. On the surface of the sphere $y_{r} = y_{r}(\theta)$ and $y_{z} = y_{z}(\theta)$, and on the interface $y_{r(z)} = y_{r(z)}(s)$. Additionally $\boldsymbol{f}_{} = [f_{r}(\theta) \cos \phi, f_{r}(\theta) \sin \phi, f_{z}(\theta)]$ and $\boldsymbol{n} = [n_{r}(s) \cos\phi, n_{r}(s) \sin\phi, n_{z}(s)]$. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals in equations~\ref{equ:I1} and~\ref{equ:BC_dyn_sphere}. To achieve this, the Cartesian components of each equation are considered separately. For equation~\ref{equ:I1}, it can be shown that both the left and right hand sides of the 2-component equation are identically zero. For equation~\ref{equ:BC_dyn_sphere} this is true for the 1- and 2-components. To show this, $J_{ij}$ and $K_{ijk}$ are first expanded in terms of in terms of the components of $\boldsymbol{x'}$ and $\boldsymbol{y'}$ before the integration over $phi$ is carried out. This leaves three integral equations which can be expressed as
 
 \begin{align}
 \label{equ:cont_ie_1}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) b_{\beta}(\theta) \sin\theta \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) a_{\beta}(s) \mathrm{d}s \nonumber \\
+\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \sin\theta \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) \Psi_{\beta}(s) \mathrm{d}s \nonumber \\
 = - \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{I},
 \end{align}
 
 \begin{equation}
 \label{equ:cont_ie_2}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) b_{\beta}(\theta) \sin \theta \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) a_{\beta}(s) y_{r}(s) \mathrm{d}s - d_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
+\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \sin \theta \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) \Psi_{\beta}(s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:cont_ie_3}
-\int_{\theta = 0}^{\pi} b_{2}(\theta) \sin\theta \mathrm{d}\theta = 3, 
+\int_{\theta = 0}^{\pi} \Phi_{2}(\theta) \sin\theta \mathrm{d}\theta = 3, 
 \end{equation}
 
-where the quantities $\boldsymbol{A}$, $\boldsymbol{B}$, $\boldsymbol{C}$, $\boldsymbol{a}$, $\boldsymbol{b}$ and $\boldsymbol{d}$ are defined as:
+where the quantities $\boldsymbol{A}$, $\boldsymbol{B}$, $\boldsymbol{C}$, $\boldsymbol{\Psi}$, $\boldsymbol{\Phi}$ and $\boldsymbol{\Theta}$ are defined as:
 
 \begin{equation}
 \setlength{\arraycolsep}{5pt}
@@ -685,7 +687,7 @@ n_{r} (J_{13} \cos\phi + J_{23} \sin\phi) + n_{z} J_{23} \\
 \begin{equation}
 \setlength{\arraycolsep}{5pt}
 \renewcommand{\arraystretch}{1.3}
-\boldsymbol{a} = \left( \begin{matrix}
+\boldsymbol{\Psi} = \left( \begin{matrix}
 u'_{1,r}(s) \\[-5pt]
 u'_{1,z}(s) \\
 \end{matrix} \right),
@@ -696,7 +698,7 @@ u'_{1,z}(s) \\
 \begin{equation}
 \setlength{\arraycolsep}{5pt}
 \renewcommand{\arraystretch}{1.3}
-\boldsymbol{b} = \left( \begin{matrix}
+\boldsymbol{\Phi} = \left( \begin{matrix}
 f_{\text{s},r}(s) \\[-5pt]
 f_{\text{s},z}(s) \\
 \end{matrix} \right)  ,
@@ -708,7 +710,7 @@ and
 \begin{equation}
 \setlength{\arraycolsep}{5pt}
 \renewcommand{\arraystretch}{1.3}
-\boldsymbol{d} = \left( \begin{matrix}
+\boldsymbol{\Theta} = \left( \begin{matrix}
 0 \\[-5pt]
 u'_{\text{s}} \\
 \end{matrix} \right) 
@@ -717,8 +719,7 @@ u'_{\text{s}} \\
 
 For brevity the function arguments have been dropped from the kernels and the normal vectors but $n_{i} = n_{i}[\boldsymbol{y'}(s, \phi)]$ and in equation~\ref{equ:mat_A}, $K_{ijk} = K_{ijk}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$, in equation~\ref{equ:mat_B}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(\theta, \phi)]$ and in equation~\ref{equ:mat_C}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$.
 
-The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00}. Previous authors have used different notations and formulations to present these expressions and we will use a formulation similar to \citet{Graziani89}. First, we define the quantities $\alpha$ and $\beta$:
-
+The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00}. These expressions are listed in appendix~\ref{app:mat_A}.
 
 \section{Numerical Method}
 \label{sec:num_meth}
@@ -728,11 +729,11 @@ The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol
 \section{Greens Functions for Stokes Flow}
 \label{app:Greens}
 
-We present here a derivation of equations~\ref{equ:vel_green} and~\ref{equ:stress_green} following \citet{Ladyzhenskaya63}. First, the Greens function for dynamic pressure $\hat{P}_{\alpha}(\boldsymbol{\xi})$ is defined such that
+We present here a derivation of equations~\ref{equ:vel_green} and~\ref{equ:stress_green} following \citet{Ladyzhenskaya63}. First, the Greens function for dynamic pressure $\hat{P}(\boldsymbol{\xi})$ is defined such that
 
 \begin{equation}
 \label{equ:press_green_def}
-\hat{T}_{\alpha, ij}(\boldsymbol{\xi}) = - \hat{P}_{\alpha}(\boldsymbol{\xi}) + \Lambda_{\alpha}[\partial'_{i} \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} \hat{u}_{\alpha,i}(\boldsymbol{\xi})] .
+\hat{T}_{ij}(\boldsymbol{\xi}) = - \hat{P}(\boldsymbol{\xi}) + \Lambda[\partial'_{i} \hat{u}_{j}(\boldsymbol{\xi}) + \partial'_{j} \hat{u}_{i}(\boldsymbol{\xi})] .
 \end{equation}
 
 
@@ -740,122 +741,121 @@ Substituting this into equation~\ref{equ:stress_green_def} and using equation~\r
 
 \begin{equation}
 \label{equ:stokes_green}
--\partial_{j}' \hat{P}_{\alpha}(\boldsymbol{\xi}) + \Lambda_{\alpha} \partial_{i}' \partial_{i}' \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \mathcal{F}_{j} \delta(\boldsymbol{\xi}) = 0 .
+-\partial_{j}' \hat{P}(\boldsymbol{\xi}) + \Lambda \partial_{i}' \partial_{i}' \hat{u}_{j}(\boldsymbol{\xi}) + \mathcal{F}_{j} \delta(\boldsymbol{\xi}) = 0 .
 \end{equation}
 
 
-We also define two further quantities $\bar{P}_{\alpha, i}$ and $\bar{u}_{\alpha,ij}$ such that
+We also define two further quantities $\bar{P}_{i}$ and $\bar{u}_{ij}$ such that
 
 \begin{equation}
 \label{equ:pres_bar}
-\hat{P}_{\alpha} (\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{P}_{\alpha, i} (\boldsymbol{\xi}) ,
+\hat{P} (\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{P}_{i} (\boldsymbol{\xi}) ,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:vel_bar}
-\hat{u}_{\alpha,j}(\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{u}_{\alpha,ij} (\boldsymbol{\xi}) .
+\hat{u}_{j}(\boldsymbol{\xi}) = \mathcal{F}_{i} \bar{u}_{ij} (\boldsymbol{\xi}) .
 \end{equation}
 
-Substitution of these expressions into equations~\ref{equ:stokes_green} and~\ref{equ:vel_green_def} and rearranging results in
+Substitution of these expressions into equations~\ref{equ:vel_green_def} and~\ref{equ:stokes_green} and rearranging results in
 
 \begin{equation}
-\label{equ:stokes_bar}
--\partial_{j}' \bar{P}_{\alpha, i} (\boldsymbol\xi) + \Lambda_{\alpha} \partial_{k}' \partial_{k}' \bar{u}_{\alpha,ij} (\boldsymbol\xi) + \delta_{ij} \delta(\boldsymbol\xi) = 0 ,
+\label{equ:cont_bar}
+\partial_{i}' \bar{u}_{ij} (\boldsymbol\xi)  = 0 ,
 \end{equation}
 
 and
 
 \begin{equation}
-\label{equ:cont_bar}
-\partial_{i}' \bar{u}_{\alpha,ij} (\boldsymbol\xi)  = 0 .
+\label{equ:stokes_bar}
+-\partial_{j}' \bar{P}_{i} (\boldsymbol\xi) + \Lambda \partial_{k}' \partial_{k}' \bar{u}_{ij} (\boldsymbol\xi) + \delta_{ij} \delta(\boldsymbol\xi) = 0 .
 \end{equation}
 
-
-To derive functional forms for the Greens functions it is necessary to express equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} in Fourier representation. To do this we need to define the Fourier transformed variables $\tilde{P}_{\alpha, i}$ and $\tilde{u}_{\alpha,ij}$ \cite{Riley06}:
+To derive functional forms for the Greens functions it is necessary to express equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} in Fourier representation. To do this we need to define the Fourier transformed variables $\tilde{P}_{\alpha, i}$ and $\tilde{u}_{\alpha,ij}$ \citep{Riley06}:
 
 \begin{equation}
 \label{equ:fourier_p}
-\bar{P}_{\alpha, i} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{P}_{\alpha, i} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} ,
+\bar{P}_{i} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{P}_{i} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} ,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:fourier_vel}
-\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{u}_{\alpha,ij} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} .
+\bar{u}_{ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3/2}} \int \tilde{u}_{ij} (\boldsymbol{k}) \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k} .
 \end{equation}
 
 
-Using these definitions, and equation~\ref{equ:delta_int_def} in appendix~\ref{app:delta}, in equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} gives the Fourier representations of the Stokes equations and the continuity equation. Following some manipulation these can be written as
+where $\boldsymbol{k}$ is the transform variable and $i$ is the unit imaginary number. Substitution of these and the Fourier definition of the Dirac delta function (equation~\ref{equ:delta_int_def} in appendix~\ref{app:delta}) into equations~\ref{equ:stokes_bar} and~\ref{equ:cont_bar} gives the Fourier representations of the Stokes equations and the continuity equation. Following some manipulation these can be written as
 
 \begin{equation}
 \label{equ:fourier_stokes}
--i k_{j} \tilde{P}_{\alpha, i} (\boldsymbol{k}) - \Lambda_{\alpha} k^{2} \tilde{u}_{\alpha,ij} (\boldsymbol{k}) + \frac{\delta_{ij}}{(2 \pi)^{3/2}} = 0 ,
+-i k_{j} \tilde{P}_{i} (\boldsymbol{k}) - \Lambda k^{2} \tilde{u}_{ij} (\boldsymbol{k}) + \frac{\delta_{ij}}{(2 \pi)^{3/2}} = 0 ,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:fourier_cont}
-k_{i} \tilde{u}_{\alpha,ij} (\boldsymbol{k}) = 0 ,
+k_{i} \tilde{u}_{ij} (\boldsymbol{k}) = 0 ,
 \end{equation}
 
-where $k = |\boldsymbol{k}|$. By multiplying equation~\ref{equ:fourier_stokes} by $k_{j}$, substituting in equation~\ref{equ:fourier_cont} and rearranging, it is then possible to obtain the Fourier representation of the Greens function for pressure;
+where $k = k_{i} k_{i}$. By contracting equation~\ref{equ:fourier_stokes} with $k_{j}$, substituting in equation~\ref{equ:fourier_cont} and rearranging, it is then possible to obtain the Fourier representation of the Greens function for pressure;
 
 \begin{equation}
 \label{equ:fourier_green_p}
-\tilde{P}_{\alpha, i} (\boldsymbol{k}) = \frac{-i k_{i}}{(2 \pi)^{3/2} k^{2}}.
+\tilde{P}_{i} (\boldsymbol{k}) = \frac{-i k_{i}}{(2 \pi)^{3/2} k^{2}}.
 \end{equation}
 
 A final substitution of this into equation~\ref{equ:fourier_p} gives the Greens function for pressure;
 
 \begin{equation}
 \label{equ:green_p_int}
-\bar{P}_{\alpha, i} (\boldsymbol\xi) = \frac{-i}{(2 \pi)^{3}} \int \frac{k_{i} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
+\bar{P}_{i} (\boldsymbol\xi) = \frac{-i}{(2 \pi)^{3}} \int \frac{k_{i} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
 \end{equation}
 
 This integral is evaluated in appendix~\ref{sub_app:green_p} and it is shown that
 
 \begin{equation}
 \label{equ:green_p}
-\bar{P}_{\alpha, i} (\boldsymbol\xi) = -\frac{1}{4 \pi} \partial_{i}' \left(\frac{1}{\xi}\right) = \frac{\xi_{i}}{4 \pi \xi^{3}} \quad , \quad \xi = \xi_{i} \xi_{i} .
+\bar{P}_{i} (\boldsymbol\xi) = -\frac{1}{4 \pi} \partial_{i}' \left(\frac{1}{\xi}\right) = \frac{\xi_{i}}{4 \pi \xi^{3}} \quad , \quad \xi = \xi_{i} \xi_{i} .
 \end{equation}
 
-We also need to find an equivalent expression for $\bar{u}_{\alpha,ij}$. To do so, substitute equation~\ref{equ:fourier_green_p} into equation~\ref{equ:fourier_stokes} and rearrange;
+We also need to find an equivalent expression for $\bar{u}_{ij}$. To do so, substitute equation~\ref{equ:fourier_green_p} into equation~\ref{equ:fourier_stokes} and rearrange;
 
 \begin{equation}
 \label{equ:fourier_green_u}
-\tilde{u}_{\alpha,ij} (\boldsymbol{k}) = \frac{k^{2} \delta_{ij} - k_{i} k_{j}}{(2 \pi)^{3/2} k^{4} \Lambda_{\alpha}} .
+\tilde{u}_{ij} (\boldsymbol{k}) = \frac{k^{2} \delta_{ij} - k_{i} k_{j}}{(2 \pi)^{3/2} k^{4} \Lambda} .
 \end{equation}
 
 Combining this with equation~\ref{equ:fourier_vel} results in an expression for the Greens function for velocity;
 
 \begin{equation}
 \label{equ:green_u_int}
-\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3} \Lambda_{\alpha}} \left(\delta_{ij} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} - \int \frac{k_{i} k_{j} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} \right).
+\bar{u}_{ij} (\boldsymbol\xi) = \frac{1}{(2 \pi)^{3} \Lambda} \left(\delta_{ij} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} - \int \frac{k_{i} k_{j} \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol\xi} \mathrm{d}^{3} \boldsymbol{k}}{k^{4}} \right).
 \end{equation}
 
 These integrals are evaluated in appendix~\ref{sub_app:green_vel} (equations~\ref{equ:green_u_int1} and~\ref{equ:green_u_int2}) and following some manipulation we find
 
 \begin{equation}
 \label{equ:green_u}
-\bar{u}_{\alpha,ij} (\boldsymbol\xi) = \frac{1}{8 \pi \Lambda_{\alpha} \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
+\bar{u}_{ij} (\boldsymbol\xi) = \frac{1}{8 \pi \Lambda \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
 \end{equation}
 
 We can now substitute equations~\ref{equ:green_p} and~\ref{equ:green_u} into~\ref{equ:pres_bar} and~\ref{equ:vel_bar} to obtain
 
 \begin{equation}
 \label{equ:p_hat_eval}
-\hat{P}_{\alpha} (\boldsymbol\xi) = \frac{\mathcal{F}_{i} \xi_{i}}{4 \pi \xi^{3}},
+\hat{P} (\boldsymbol\xi) = \frac{\mathcal{F}_{i} \xi_{i}}{4 \pi \xi^{3}},
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:u_hat_eval}
-\hat{u}_{\alpha,j}(\boldsymbol\xi) = \frac{\mathcal{F}_{i}}{8 \pi \Lambda_{\alpha} \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
+\hat{u}_{j}(\boldsymbol\xi) = \frac{\mathcal{F}_{i}}{8 \pi \Lambda_{\alpha} \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right).
 \end{equation}
 
 
@@ -863,75 +863,53 @@ Substitution of equations~\ref{equ:p_hat_eval} and~\ref{equ:u_hat_eval} into equ
 
 \begin{equation}
 \label{equ:green_stress}
-\hat{T}_{\alpha, ij} (\boldsymbol\xi) = \frac{-3 \mathcal{F}_{k} \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}
+\hat{T}_{ij} (\boldsymbol\xi) = \frac{-3 \mathcal{F}_{k} \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}.
 \end{equation}
 
 
-The kernels $\boldsymbol{J}$ and $\boldsymbol{K}$ are defined as
+The kernels $J_{ij}$ and $K_{ijk}$ are defined as
 
 \begin{equation}
 \label{equ:j_kernel}
-J_{ij} = \frac{1}{8 \pi \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right)
+J_{ij} = \frac{1}{8 \pi \xi} \left(\delta_{ij} + \frac{\xi_{i} \xi_{j}}{\xi^{2}} \right),
 \end{equation}
+
+and 
 
 \begin{equation}
 \label{equ:k_kernel}
-K_{ijk} = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}
+K_{ijk} = \frac{-3 \xi_{i} \xi_{j} \xi_{k}}{4 \pi \xi^{5}}.
 \end{equation}
 
-Note that under the interchange $\boldsymbol\xi \to -\boldsymbol\xi$ the kernels are symmetric and antisymmetric respectively
+Hence we obtain the Greens functions for the velocity and stress fields (equations~\ref{equ:vel_green} and~\ref{equ:stress_green}). Note that under the interchange $\boldsymbol\xi \to -\boldsymbol\xi$ the kernels are symmetric and antisymmetric respectively;
 
 \begin{equation}
 \label{equ:j_sym}
-J_{ki}(-\boldsymbol\xi) = J_{ki}(\boldsymbol\xi)
+J_{ki}(-\boldsymbol\xi) = J_{ki}(\boldsymbol\xi),
 \end{equation}
 
 \begin{equation}
 \label{equ:k_sym}
-K_{jik}(-\boldsymbol\xi) = -K_{jik}(\boldsymbol\xi)
+K_{jik}(-\boldsymbol\xi) = -K_{jik}(\boldsymbol\xi).
 \end{equation}
 
-This means we can express the velocity and stress Greens functions as
-
-\begin{equation}
-\label{equ:u_green}
-\hat{u}_{\alpha,j}(\boldsymbol\xi) = \frac{\mathcal{F}_{i} J_{ij} (\boldsymbol\xi)}{\Lambda_{\alpha}}
-\end{equation}
-
-\begin{equation}
-\label{equ:stress_green}
-\hat{T}_{\alpha, ij}(\boldsymbol\xi) = K_{ijk} (\boldsymbol\xi) \mathcal{F}_{k}
-\end{equation}
 
 \subsection{Integral for Greens Function for Pressure}
 \label{sub_app:green_p}
 
-To evaluate the integral in equation~\ref{equ:green_p_int} first define a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$. The consider
+Here we present a proof of the evaluation of the integral in equation~\ref{equ:green_p_int}. First recall the identity \citep{Jackson99, Frahm82}
 
 \begin{equation}
-\label{equ:int_del_recip}
-\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} = \int_{\mathcal{V}} \boldsymbol{\nabla} \cdot \boldsymbol{\nabla} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} .
+\label{equ:laplace_recip_squared}
+\partial_{i} \partial_{i}\left(\frac{1}{\xi}\right) = -4 \pi \delta(\boldsymbol{\xi}).
 \end{equation}
 
-Using the divergence theorem (appendix~\ref{app:div_theory}) this can be written as
 
-\begin{equation}
-\label{equ:sint_del_recip}
-\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{r} = \int_{\mathcal{S}} \boldsymbol{\nabla} \left(\frac{1}{\xi}\right) \cdot \mathrm{d} \mathcal{S} .
-\end{equation}
-
-This can be evaluated for the case that $\mathcal{V}$ is a sphere of radius $R$;
-
-\begin{equation}
-\label{equ:int_del_recip_eval}
-\int_{\mathcal{V}} \nabla^{2} \left(\frac{1}{\xi}\right) \mathrm{d} ^{3} \boldsymbol{\xi} = - 4 \pi = -4 \pi \int_{\mathcal{V}} \delta(\boldsymbol{\xi}) \mathrm{d}^{3} \boldsymbol{\xi} ,
-\end{equation}
-
-where the final step follows from comparison with equation~\ref{equ:delta_int}. Using equation~\ref{equ:delta_int_def} leads to
+Substituting in the Fourier definition of the delta function (equation~\ref{equ:delta_int_def}) leads to
 
 \begin{equation}
 \label{equ:del_square_recip}
-\nabla^{2} \left(\frac{1}{\xi}\right) = \frac{-4 \pi}{(2 \pi)^{3}} \int \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k} .
+\partial_{i} \partial_{i} \left(\frac{1}{\xi}\right) = \frac{-4 \pi}{(2 \pi)^{3}} \int \mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k} .
 \end{equation}
 
 Inspection of this then suggests
@@ -951,14 +929,14 @@ Hence
 \subsection{Integrals for the Greens Function for Velocity}
 \label{sub_app:green_vel}
 
-Equation~\ref{equ:green_u_int} contains two integrals that need to be evaluated. By inspecting equation~\ref{equ:del_square_recip} it can be seen
+Here we present proofs of the evaluation of the two integrals in equation~\ref{equ:green_u_int}. For the first integral, inspection of equation~\ref{equ:grad_recip} in appendix~\ref{sub_app:green_p} shows
 
 \begin{equation}
 \label{equ:recip_int}
 \frac{1}{\xi} = \frac{4 \pi}{(2 \pi)^{3}} \int \frac{\mathrm{e}^{i \boldsymbol{k} \cdot \boldsymbol{\xi}} \mathrm{d}^{3} \boldsymbol{k}}{k^{2}} .
 \end{equation}
 
-Hence
+Hence the fist integral in equation~\ref{equ:green_u_int} is
 
 \begin{equation}
 \label{equ:green_u_int1}

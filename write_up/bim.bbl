@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,6 +21,11 @@ J.U. Brackbill, D.B. Kothe, and C.~Zemach.
 \newblock \emph{Journal of {C}omputational {P}hysics}, 100:\penalty0 334 --
   354, 1992.
 
+\bibitem[Frahm(1982)]{Frahm82}
+Charles~P. Frahm.
+\newblock Some novel delta-function identities.
+\newblock \emph{Americal {J}ournal of {P}hysics}, 51:\penalty0 826--829, 1982.
+
 \bibitem[Geller et~al.(1985)Geller, Lee, and Leal]{Geller86}
 A.~S. Geller, S.~H. Lee, and L.~G. Leal.
 \newblock The creeping motion of a spherical particle normal to a deformable
@@ -38,6 +43,11 @@ G.~Graziani.
 \newblock A boundary integral equation method for axisymmetric viscous flows.
 \newblock \emph{International {J}ournal of {E}ngineering {S}cience},
   27:\penalty0 855--864, 1989.
+
+\bibitem[Jackson(1999)]{Jackson99}
+John~David Jackson.
+\newblock \emph{Classical electrodynamics}.
+\newblock Wiley, 3rd edition, 1999.
 
 \bibitem[Kim and Karrila(2005)]{Kim05}
 Sangtae Kim and Seppo~J. Karrila.
