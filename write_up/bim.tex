@@ -631,20 +631,20 @@ We can exploit the axial symmetry of the system to chose the point $\boldsymbol{
 
 \begin{align}
 \label{equ:cont_ie_1}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \sin\theta \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) \Psi_{\beta}(s) \mathrm{d}s \nonumber \\
+\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) \Psi_{\beta}(s) \mathrm{d}s \nonumber \\
 = - \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{I},
 \end{align}
 
 \begin{equation}
 \label{equ:cont_ie_2}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \sin \theta \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) \Psi_{\beta}(s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
+\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) \Psi_{\beta}(s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:cont_ie_3}
-\int_{\theta = 0}^{\pi} \Phi_{2}(\theta) \sin\theta \mathrm{d}\theta = 3, 
+\int_{\theta = 0}^{\pi} \Phi_{2}(\theta) \mathrm{d}\theta = 3, 
 \end{equation}
 
 where the quantities $\boldsymbol{A}$, $\boldsymbol{B}$, $\boldsymbol{C}$, $\boldsymbol{\Psi}$, $\boldsymbol{\Phi}$ and $\boldsymbol{\Theta}$ are defined as:
@@ -699,8 +699,8 @@ u'_{1,z}(s) \\
 \setlength{\arraycolsep}{5pt}
 \renewcommand{\arraystretch}{1.3}
 \boldsymbol{\Phi} = \left( \begin{matrix}
-f_{\text{s},r}(s) \\[-5pt]
-f_{\text{s},z}(s) \\
+f_{\text{s},r}(\theta) \sin\theta \\[-5pt]
+f_{\text{s},z}(\theta) \sin\theta \\
 \end{matrix} \right)  ,
 \label{equ:vec_b}
 \end{equation}
@@ -719,10 +719,93 @@ u'_{\text{s}} \\
 
 For brevity the function arguments have been dropped from the kernels and the normal vectors but $n_{i} = n_{i}[\boldsymbol{y'}(s, \phi)]$ and in equation~\ref{equ:mat_A}, $K_{ijk} = K_{ijk}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$, in equation~\ref{equ:mat_B}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(\theta, \phi)]$ and in equation~\ref{equ:mat_C}, $J_{ij} = J_{ij}[\boldsymbol{x'} - \boldsymbol{y'}(s, \phi)]$.
 
-The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00}. These expressions are listed in appendix~\ref{app:mat_A}.
+The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ can be expressed as sums of complete elliptic integrals of the first and second kind \citep{Lee82, Geller86, Graziani89, Pozrikidis92, Manga94, Roumeliotis00} which can then be evaluated using polynomial expansions \citep{Abramowitz72}. Details of this are given in appendix~\ref{app:mat_A}. Polynomial expansions
 
 \section{Numerical Method}
 \label{sec:num_meth}
+
+Equations~\ref{equ:cont_ie_1} to~\ref{equ:cont_ie_3} are a coupled set of integral equations for the unknowns $\boldsymbol{\Psi(s)}$, $\boldsymbol{\Phi(\theta)}$ and $\boldsymbol{\Theta}$. These solutions can be found numerically by discretising the system which allows the integral equations to be expressed as a linear system of algerbraic equations which are then solved using LU decomposition and Gaussian elimination \citep{Riley06, Press07}. Once the interfacial and sphere velocities are solved for, the system is iterated forward in time and the process is repeated. 
+
+\subsection{Discretisation and Linear System}
+\label{subsec:discrete}
+
+To discretise the set of equations, the interface and sphere surface are divided into intervals. The interface is divided into $N$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at a arc-length $s_{i}$ and is of thinkness $\Delta_{s,i}$.  The interface is truncated at the arc-length $s_{N}$. The sphere surface is discretised in $M$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at polar coordinate $\theta_{i}$ and has a thickness $\Delta_{\theta,i}$. A schematic of the discretisation scheme is depicted in figure~\ref{fig:discrete}. 
+
+  \begin{figure}
+    $$\includegraphics[width=0.8\textwidth]{discrete.eps}$$
+    \caption{Diagrammatic representation of the discretisation of the system. Both interface and sphere surface are divided into axisymmetric rings centred on the symmetry axis. \label{fig:discrete}}
+  \end{figure}
+
+We now choose $\boldsymbol{x'} = \boldsymbol{x}_{i}$ where $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(\theta_{i})$ on $\mathcal{S}$ and $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(s_{i})$ on $\mathcal{I}$. That is, the point $\boldsymbol{x'}$ is chosen to be the midpoint of one of the intervals. Then, we can express the integrals as discrete sums over each element. We then make the approximation that the unknowns $\boldsymbol{\Psi(s)}$ and $\boldsymbol{\Phi(\theta)}$ are constant over the width of an interval and for interval $i$, $\boldsymbol{\Psi(s)} = \Psi(s_{i})$ and $\boldsymbol{\Phi(\theta)} = \Phi(\theta_{i})$. This allows us to obtain the discrete form of the integral equations:
+
+\begin{align}
+\label{equ:dis_ie_1}
+\sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(s_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} \left(A_{\alpha\beta}(s_{j},s) y_{r}(s) - \frac{(1 + \lambda) \delta_{\alpha\beta} \delta(s - s_{j})}{2}\right) \mathrm{d}s \nonumber \\
+= - \sum_{i = 1}^{N} \int_{\Delta_{s,i}} C_{\alpha}(s_{j},s) y_{r}(s) \mathrm{d}s,
+\end{align}
+
+\begin{equation}
+\label{equ:dis_ie_2}
+\sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(\theta_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} A_{\alpha\beta}(\theta_{j},s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = - \sum_{i = 1}^{N} \int_{\Delta_{s,i}} C_{\alpha}(\theta_{j},s) y_{r}(s) \mathrm{d}s,
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:dis_ie_3}
+\sum_{i = 1}^{M} \Phi_{2}(\theta_{i}) \int_{\Delta_{\theta,i}} \mathrm{d}\theta = 3.
+\end{equation}
+
+This is seemingly a set of $2(N + M) + 1$ linear equations for $2(N + M) + 1$ unknowns; $\Phi_{\alpha}(\theta_{i})$, $\Psi_{\alpha}(s_{j})$ and $\Theta_{1}$ (recall that $\Theta_{2} = 0$) where $\alpha = 1,2$, $i = 1,2,...,M$ and $j = 1,2,...,N$. However we can use physical arguments to simplify the system further. First by symmetry, the radial interfacial velocity must vanish on the symmetry axis i.e. $\Psi_{1}(s_{1}) = 0$. Additionally, the radial tractions on the sphere on the axis must also vanish meaning $\Phi_{1}(\theta_{1}) = \Phi_{1}(\theta_{M}) = 0$. Indeed, it can be shown that the coefficients of these terms vanish by using the expressions for $A_{\alpha\beta}$, $B_{\alpha\beta}$ and $C_{\alpha}$, given in appendix~\ref{subapp:spec_case},for the case that the collocation point is on the symmetry axis. Hence the equations where these terms appear are redundant and can be removed from the linear system. This leaves us with a system of $2(N + M - 1)$ linear equations for $2(N + M - 1)$ unknowns.
+
+These equations can be recast as a matrix equation $L_{\mu\nu} X_{\mu} = Y_{\nu}$ where the unknown quantities are the elements $X_{\mu}$. The elements $L_{\mu\nu}$ and $Y_{\nu}$ contain integrals that are evaluated numerically using 4-point Gaussian-Legendre quadrature \citep{Riley06}. To calculate integrals over the interface, it is necessary to evaluate the components of normal vector and its divergence at discrete points along the interface. To do this, a cubic splines are fitted to the collocation points describing the interface (WAITING FOR DE BOER BOOK TO REF THIS) using routines given in \citet{Press07} so that the interface is described parametrically with $r = r(s)$ and $z = z(s)$. Remembering that for a surface $H(r,z) = z - f(r)$, the components of the normal vector are given by $n_{i} = \partial_{i} H / \partial_{j}H \partial_{j}H$ \citep{Riley06}, the following expressions can be obtained
+
+\begin{equation}
+\label{equ:norm_rad}
+n_{r}(s) = \frac{-\dot{z}}{(\dot{r} + \dot{z})^{1/2}},
+\end{equation}
+
+\begin{equation}
+\label{equ:norm_vert}
+n_{z}(s) = \frac{\dot{r}}{(\dot{r} + \dot{z})^{1/2}},
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:div_norm}
+\partial'_{i} n_{i} = \frac{\dot{z}}{r (\dot{r} + \dot{z})^{1/2}} + \frac{\dot{r} \ddot{z} - \ddot{r} \dot{z}}{(\dot{r} + \dot{z})^{3/2}}.
+\end{equation}
+
+These expressions are given in given in \citep{Manga94} except for a minus sign error in the components of the normal. The derivatives of the splines are calculated numerically using routines modified from \citet{Press07}. Once all of the elements $L_{\mu\nu}$ and $Y_{\nu}$ have been calculated the system of equations is solved by Lower-Upper (LU) decomposition and Gaussian elimination \citep{Riley06, Press07} using routines from the GNU Scientific Library (GSL) \citep{Galassi09}.
+
+\subsection{Temporal Iteration}
+\label{subsec:time}
+
+The system is iterated forward in time using an explicit first order Euler method \citep{Manga94} with timestep $\Delta t$. This means the position of the sphere $z_{s}$ at time $t + \Delta t$ is found using 
+
+\begin{equation}
+\label{equ:sphere_it}
+z_{s}(t + \Delta t) = U'_{s}(t) \Delta t,
+\end{equation}
+
+and the position of the collocation points on the interface moves according to
+
+\begin{equation}
+\label{equ:int_it}
+x_{r}(s_{i})(t + \Delta t) = u_{r}(s_{i},t) \Delta t,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:int_it}
+x_{z}(s_{i})(t + \Delta t) = u_{z}(s_{i},t) \Delta t.
+\end{equation}
+
+The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) criterion \citep{Courant28}.
+
+Due to gradients in the velocity tangential to the fluid interface the distribution of collocation points is altered during this time stepping process so the collocation points are redistributed between each time step. Following the redistribution the linear system is reconstructed for the new geometry and solved using the same procedure. The process continues in this fashion until the separtation between the sphere and the interface, or two different parts of the interface equals the local separation between collocation points as the discretisation no longer provides an accurate approximation to the continuous system
 
 \appendix
 
@@ -1001,7 +1084,7 @@ In a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$, the Dirac delta fu
 \right.\ .
 \end{equation}
 
-The result for $\boldsymbol{x} \in \mathcal{S}$ is only valied for the case that the surface is Lyapunov smooth (a local tangent plane exists everywhere) (REFERENCE FOR LYAPUNOV SMOOTH SURFACE). Equation~\ref{equ:dirac} means that
+The result for $\boldsymbol{x} \in \mathcal{S}$ is only valied for the case that the surface is Lyapunov smooth (a local tangent plane exists everywhere) (REFERENCE FOR LYAPUNOV SMOOTH SURFACE - WAITING FOR GUNTER BOOK). Equation~\ref{equ:dirac} means that
 
 \begin{equation}
 \label{equ:delta_int}
@@ -1026,74 +1109,24 @@ It also needs to be noted that the Dirac delta function can be expressed as \cit
 \section{Divergence Theorem}
 \label{app:div_theory}
 
-The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$, then for a continuous and differentiable vector field $\boldsymbol{a}$ \cite{Riley06}
+The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with outward normal $n_{i}$, then for a continuous and differentiable vector field $a_{i}$ \cite{Riley06}
 
 \begin{equation}
 \label{equ:div_theory}
-\int_{\mathcal{V}} \boldsymbol{\nabla} \cdot \boldsymbol{a} \mathrm{d} \mathcal{V} = \oint_{\mathcal{S}} \boldsymbol{a} \cdot \mathrm{d} \boldsymbol{S}
+\int_{\mathcal{V}} \partial_{i} \cdot a_{i} \mathrm{d} \mathcal{V} = \oint_{\mathcal{S}} a_{i} n_{i} \mathrm{d} \mathcal{S}
 \end{equation}
 
 \section{Lorentz Reciprocal Theorem}
 \label{app:Lorentz}
 
-Here we present a proof of the Lorentz reciprocal theorem following \citet{Kim05}. The dimensionless strain field in fluid alpha is defined as
-
-\begin{equation}
-\label{equ:dimles_strain}
-e'_{\alpha,ij}(\boldsymbol{\xi}) = \frac{\partial'_{i} u'_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} u'_{\alpha,i}(\boldsymbol{\xi})}{2} ,
-\end{equation}
-
-
-and the corresponding Greens function as
-
-\begin{equation}
-\label{equ:strain_green}
-\hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = \frac{\partial'_{i} \hat{u}_{\alpha,j}(\boldsymbol{\xi}) + \partial'_{j} \hat{u}_{\alpha,i}(\boldsymbol{\xi})}{2} .
-\end{equation}
-
-This allows the Greens function for the stress tensor to be expressed as
-
-\begin{equation}
-\label{equ:stress_with_strain}
-\hat{T}_{\alpha,ij}(\boldsymbol{\xi}) = \hat{P}_{\alpha}(\boldsymbol{\xi}) + 2 \hat{e}_{\alpha.ij}(\boldsymbol{\xi}).
-\end{equation}
-
-Now consider the double contraction of the dimensionless stress tensor and strain Green function tensor;
-
-\begin{equation}
-\label{equ:stress_strain_contract}
-T'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = -P'_{\text{d},\alpha}(\boldsymbol{x}) \hat{e}_{\alpha,ii}(\boldsymbol{\xi}) + 2 e'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = 2 e'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}).
-\end{equation}
-
-The last step here follows by using equations~\ref{equ:strain_green} and~\ref{equ:vel_green_def} to show that the first term on the right hand side is equal to zero. In an analagous fashion it can be shown that
-
-\begin{equation}
-\label{equ:stress_strain_contract_2}
-\hat{T}_{\alpha,ij}(\boldsymbol{\xi}) e'_{\alpha,ij}(\boldsymbol{x}) = 2 \hat{e}_{\alpha,ij}(\boldsymbol{\xi}) e'_{\alpha,ij}(\boldsymbol{x}).
-\end{equation}
-
-Since the right hand sides of equations~\ref{equ:stress_strain_contract} and~\ref{equ:stress_strain_contract_2} are identical this means
-
-\begin{equation}
-\label{equ:stress_strain_recip}
-T'_{\alpha,ij}(\boldsymbol{x}) \hat{e}_{\alpha,ij}(\boldsymbol{\xi}) = \hat{T}_{\alpha,ij}(\boldsymbol{\xi}) e'_{\alpha,ij}(\boldsymbol{x}).
-\end{equation}
-
-Expanding the strain tensors in terms of the velocity gradients and integrating over a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with respect to $\boldsymbol{x}$ leads to
-
-\begin{equation}
-\label{equ:vol_int_recip_theorem}
-\dashint_{\mathcal{V}} \partial'_{j}[T'_{ij}(\boldsymbol{x'}) \hat{u}_{i}(\boldsymbol{\xi})] \mathrm{d} \boldsymbol{x'}^{3} - \dashint_{\mathcal{V}} [\partial'_{j} T'_{ij}(\boldsymbol{x'})] \hat{u}_{i}(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \dashint_{\mathcal{V}} \partial'_{j}[\hat{T}_{ij}(\boldsymbol{\xi}) u'_{i}(\boldsymbol{x'})] \mathrm{d} \boldsymbol{x'}^{3} - \dashint_{\mathcal{V}} [\partial'_{j}\hat{T}_{ij}(\boldsymbol{\xi})] u'_{i}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{3} .
-\end{equation}
-
-Here the integration has been defined in the sense of the Cauchy Principle Value (CPV) \citep{Riley06} to allow for the singular point in the Greens functions at $\boldsymbol{\xi} = \boldsymbol{0}$. Defining $\boldsymbol{n}$ as the normal to the surface $\mathcal{S}$, the divergence theorem (appendix~\ref{app:div_theory}) can then to applied to the first term on both sides;
+Consider a pair of velocity fields $u_{i}$ and $u'_{i}$, and a pair of stress fields $T_{ij}$ and $T'_{ij}$ defined over a domain $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with normal $n_{i}$. Now suppose that that both $u_{i}$ and $T_{ij}$, and $u'_{i}$ and $T'_{ij}$ are both solutions to the coupled equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def}. The Lorentz reciprocal theorem then states that \citep{Kim05}
 
 \begin{equation}
 \label{equ:LRT}
 \dashint_{\mathcal{S}} n_{j}(\boldsymbol{x'}) T'_{ij}(\boldsymbol{x'}) \hat{u}_{i}(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{V}} [\partial'_{j} T'_{ij}(\boldsymbol{x'})] \hat{u}_{i}(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \dashint_{\mathcal{S}} n_{j}(\boldsymbol{x'}) \hat{T}_{ij}(\boldsymbol{\xi}) u'_{i}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{V}} [\partial'_{j}\hat{T}_{ij}(\boldsymbol{\xi})] u'_{i}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{3} .
 \end{equation}
 
-This is the Lorentz reciprocal theorem with the additional caveat that the integrals have been defined as CPV integrals so that the singular nature of the Greens functions can be dealt with. 
+Our definition of the theorem has defined the integrals in the sense of the Cauchy Principle Value (CPV) \citep{Riley06} to allow for the case that one or more of the fields may be singular at some point in the domain (as in the case of Greens functions). For the case that all of the fields are regular, then the CPV integral just evaluates to the regular interval. In the proof of equation~\ref{equ:LRT} given by \citet{Kim05} it is straightforward to extend their result to ours just by taking care when defining the integrals. 
 
 \section{Elliptic Integrals}
 \label{app:ellip}
@@ -1109,11 +1142,11 @@ and
 
 \begin{equation}
 \label{equ:ellip2}
-E(k^{2}) = \int_{0}^{\pi/2} (1 - k^{2} \sin^{2}\theta)^{1/2} \mathrm{d}\theta, \quad 0 \leq k^{2} < 1.
+E(k^{2}) = \int_{0}^{\pi/2} (1 - k^{2} \sin^{2}\theta)^{1/2} \mathrm{d}\theta, \quad 0 \leq k^{2} < 1,
 \end{equation}
 
 
-$k^{2}$ is defined as the modulus of the integral. Polynomial approximations can be found to evaluate the integrals \citep{Roumeliotis00} and we use the following expressions from \citet{Abramowitz72}:
+where $k^{2}$ is defined as the modulus of the integral. Polynomial approximations can be found to evaluate the integrals \citep{Roumeliotis00} and we use the following expressions from \citet{Abramowitz72}:
 
 \begin{equation}
 \label{equ:ellip1_app}
@@ -1150,7 +1183,7 @@ $a'_{4}$ & 0.01736506451 & $b'_{4}$ & 0.00526449639 \\
 \section{Components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$}
 \label{app:mat_A}
 
-Here we present expressions for the components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ in terms of complete elliptic integrals of the first and second kind (appendix~\ref{app:ellip}). The expressions for $\boldsymbol{A}$ anf $\boldsymbol{B}$ are from \citet{Graziani89}. As far as the authors are aware equivalent expressions for $\boldsymbol{C}$ have never been published before although, they were undoubtedly used in the models of \citet{Lee82, Geller86} and \cite{Manga95}. The quantities $\alpha$ and $\beta$ are defined as \citep{Manga94}
+Here we present expressions for the components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ in terms of complete elliptic integrals of the first and second kind (appendix~\ref{app:ellip}). The expressions for $\boldsymbol{A}$ anf $\boldsymbol{B}$ are from \citet{Graziani89} although our notation is more similar to that of \citet{Manga94}. As far as the authors are aware equivalent expressions for $\boldsymbol{C}$ have never been published before although, they were undoubtedly used in the models of \citet{Lee82, Geller86,Manga95} and \citet{Roumeliotis00}. The quantities $\alpha$ and $\beta$ are defined as \citep{Manga94}
 
 \begin{equation}
 \label{equ:alpha_def}
@@ -1171,89 +1204,89 @@ The components of $\boldsymbol{A}$ are:
 
 \begin{equation}
 \label{equ:A11_comp}
-A_{11} = (a_{1} n_{r} + a_{2} n_{z})K + (a_{3} n_{r} + a_{4} n_{z})E,
+A_{11} = (c_{1} n_{r} + c_{2} n_{z})K + (c_{3} n_{r} + c_{4} n_{z})E,
 \end{equation}
 
 \begin{equation}
 \label{equ:A12_comp}
-A_{12} = (a_{2} n_{r} + a_{6} n_{z})K + (a_{4} n_{r} + a_{8} n_{z})E,
+A_{12} = (c_{2} n_{r} + c_{6} n_{z})K + (c_{4} n_{r} + c_{8} n_{z})E,
 \end{equation}
 
 \begin{equation}
 \label{equ:A21_comp}
-A_{21} = (a_{9} n_{r} + a_{10} n_{z})K + (a_{11} n_{r} + a_{12} n_{z})E,
+A_{21} = (c_{9} n_{r} + c_{10} n_{z})K + (c_{11} n_{r} + c_{12} n_{z})E,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:A22_comp}
-A_{22} = (a_{10} n_{r} + a_{14} n_{z})K + (a_{12} n_{r} + a_{16} n_{z})E.
+A_{22} = (c_{10} n_{r} + c_{14} n_{z})K + (c_{12} n_{r} + c_{16} n_{z})E.
 \end{equation}
 
 The coefficients $a_{i}$ are given as
 
 \begin{equation}
 \label{equ:coeff_a1}
-a_{1} = \frac{(1 - \lambda) [x_{r} \alpha_{2} (4 \alpha^{4} - 18 x_{r}^{2} y_{r}^{2}) - x_{r} (2 y_{r}^{2} + x_{r}^{2}) (2 \alpha^{4} - 3 \beta^{4}) - y_{r} \alpha^{2} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) + x_{r} y_{r}^{2} \beta^{4}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{4}},
+c_{1} = \frac{(1 - \lambda) [x_{r} \alpha_{2} (4 \alpha^{4} - 18 x_{r}^{2} y_{r}^{2}) - x_{r} (2 y_{r}^{2} + x_{r}^{2}) (2 \alpha^{4} - 3 \beta^{4}) - y_{r} \alpha^{2} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) + x_{r} y_{r}^{2} \beta^{4}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{4}},
 \end{equation}
 
 \begin{equation}
 \label{equ:equ:coeff_a2}
-a_{2} = \frac{(1 - \lambda) (x_{z} - y_{z}) [2 \alpha^{4} - 2 \beta^{4} - \alpha^{2} (x_{z} - y_{z})^{2}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{2}},
+c_{2} = \frac{(1 - \lambda) (x_{z} - y_{z}) [2 \alpha^{4} - 2 \beta^{4} - \alpha^{2} (x_{z} - y_{z})^{2}]}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) \beta^{2}},
 \end{equation}
 
 \begin{align}
 \label{equ:coeff_a3}
-a_{3} = \frac{1 - \lambda}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{4}} \bigg( \frac{x_{r} (-8 \alpha^{8} + 15 \alpha^{4} \beta^{4} - 3 \beta^{8})}{2} \nonumber \\
+c_{3} = \frac{1 - \lambda}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{4}} \bigg( \frac{x_{r} (-8 \alpha^{8} + 15 \alpha^{4} \beta^{4} - 3 \beta^{8})}{2} \nonumber \\
 - 2 x_{r} \alpha^{2} (2 y_{r}^{2} + x_{r}^{2}) (-\alpha^{4} + 3 \beta^{4}) + y_{r} \beta^{2} (y_{r}^{2} + 2 x_{r}^{2}) (\alpha^{4} + 3 \beta^{4}) - 4 x_{r} y_{r}^{2} \alpha^{2} \beta^{4} \bigg),
 \end{align}
 
 \begin{equation}
 \label{equ:coeff_a4}
-a_{4} = \frac{-(1 - \lambda) (x_{z} - y_{z})}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{2}} \left(\alpha^{4} (\alpha^{4} - 5 \beta^{4}) + [\alpha^{2}- (x_{z} - y_{z})^{2}] (\alpha^{4} + 3 \beta^{4}) \right),
+c_{4} = \frac{-(1 - \lambda) (x_{z} - y_{z})}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} \beta^{2}} \left(\alpha^{4} (\alpha^{4} - 5 \beta^{4}) + [\alpha^{2}- (x_{z} - y_{z})^{2}] (\alpha^{4} + 3 \beta^{4}) \right),
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a6}
-a_{6} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (2 x_{r}^{2} - \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) x_{r}},
+c_{6} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (2 x_{r}^{2} - \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) x_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a8}
-a_{8} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{4} + 3 \beta^{4} - 8 x_{r}^{2} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} x_{r}},
+c_{8} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{4} + 3 \beta^{4} - 8 x_{r}^{2} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} x_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a9}
-a_{9} = \frac{(1 - \lambda) (x_{z} - y_{z}) (-2 \alpha^{4} + 3 \beta^{4} - 4 y_{r}^{2} \alpha^{2} + 4 y_{r}^{4})}{4 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
+c_{9} = \frac{(1 - \lambda) (x_{z} - y_{z}) (-2 \alpha^{4} + 3 \beta^{4} - 4 y_{r}^{2} \alpha^{2} + 4 y_{r}^{4})}{4 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a10}
-a_{10} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{2} - 2 y_{r}^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
+c_{10} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (\alpha^{2} - 2 y_{r}^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a11}
-a_{11} = \frac{(1 - \lambda) (x_{z} - y_{z}) (\alpha^{6} - 3 \alpha^{2} \beta^{4} + 2 y_{r}^{2} \alpha^{4} + 6 y_{r}^{2} \beta^{4} - 8 y_{r}^{4} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} y_{r}^{2}},
+c_{11} = \frac{(1 - \lambda) (x_{z} - y_{z}) (\alpha^{6} - 3 \alpha^{2} \beta^{4} + 2 y_{r}^{2} \alpha^{4} + 6 y_{r}^{2} \beta^{4} - 8 y_{r}^{4} \alpha^{2})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})^{2} y_{r}^{2}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a12}
-a_{12} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (8 y_{r}^{2} \alpha^{2} - \alpha^{4} - 3 \beta^{4})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
+c_{12} = \frac{(1 - \lambda) (x_{z} - y_{z})^{2} (8 y_{r}^{2} \alpha^{2} - \alpha^{4} - 3 \beta^{4})}{2 \pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2}) y_{r}},
 \end{equation}
 
 \begin{equation}
 \label{equ:coeff_a14}
-a_{14} = \frac{(1 - \lambda) (x_{z} - y_{z})^{3}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})},
+c_{14} = \frac{(1 - \lambda) (x_{z} - y_{z})^{3}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} - \beta^{2})},
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:coeff_a16}
-a_{16} = \frac{-4 (1 - \lambda) (x_{z} - y_{z})^{3} \alpha^{2}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} + \beta^{2})^{2}}.
+c_{16} = \frac{-4 (1 - \lambda) (x_{z} - y_{z})^{3} \alpha^{2}}{\pi (\alpha^{2} + \beta^{2})^{3/2} (\alpha^{2} + \beta^{2})^{2}}.
 \end{equation}
 
 The components of $\boldsymbol{B}$ are:
@@ -1296,6 +1329,61 @@ and
 C_{2} = \frac{9 (\partial'_{j} n_{j} - y_{z} \text{Bo})}{4 \pi D \text{Bo} (\alpha^{2} + \beta^{2})^{1/2}}  \bigg( [\beta^{2} n_{z} - x_{r} (x_{z} - y_{z}) n_{r}] K \nonumber \\
 + \frac{[n_{r} (x_{r} \alpha^{2} - y_{r} \beta^{2}) + (x_{z} - y_{z}) \beta^{2} n_{z}] (x_{z} - y_{z}) E}{\alpha^{2} - \beta^{2}}\bigg).
 \end{align}
+
+\subsection{Special case: $x_{r} = 0$}
+\label{subapp:spec_case}
+
+For the case that the point $\boldsymbol{x'}$ is on the axis of symmetry ($x_{r} = 0$) then expressions can be found for the components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$ that don't depend on elliptic integrals. Hence in this scenario the components can be evaluated exactly and don't need to be approximated by polynomials. In this case the components of $\boldsymbol{A}$ are
+
+\begin{equation}
+\label{equ:A11_spec}
+A_{11} = A_{12} = 0,
+\end{equation}
+
+\begin{equation}
+\label{equ:A21_spec}
+A_{21} = \frac{3 (1 - \lambda) (x_{z} - y_{z}) y_{r} [(x_{z} - y_{z}) n_{z} - y_{r} n_{r}]}{2 \alpha^{5}},
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:A22_spec}
+A_{22} = \frac{3 (1 - \lambda) (x_{z} - y_{z})^{2} [y_{r} n_{r} - (x_{z} - y_{z}) n_{z}]}{2 \alpha^{5}}.
+\end{equation}
+
+The components of $\boldsymbol{B}$ are
+
+\begin{equation}
+\label{equ:B11_spec}
+B_{11} = B_{12} = 0,
+\end{equation}
+
+\begin{equation}
+\label{equ:B21_spec}
+B_{21} = \frac{-(x_{z} - y_{z}) y_{r}}{4 \alpha^{3}},
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:B22_spec}
+B_{22} = \frac{1}{4 \alpha} \left(1 + \frac{(x_{z} - y_{z})^{2}}{\alpha^{2}} \right).
+\end{equation}
+
+Finally the components of $\boldsymbol{C}$ are
+
+\begin{equation}
+\label{equ:C1_spec}
+C_{1} = 0 ,
+\end{equation}
+
+and
+
+\begin{equation}
+\label{equ:C2_spec}
+C_{2} = \frac{9 (\partial'_{i} n_{i} - \text{Bo} y_{z})}{8 D \text{Bo} \alpha} \left(1 + \frac{(x_{z} - y_{z})^{2}}{\alpha^{2}} \right).
+\end{equation}
 
 \bibliographystyle{plainnat}
 

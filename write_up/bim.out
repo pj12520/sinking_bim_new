@@ -11,6 +11,8 @@
 \BOOKMARK [2][-]{subsection.3.2}{Integral Representation}{section.3}
 \BOOKMARK [2][-]{subsection.3.3}{Axisymmetric Simplification}{section.3}
 \BOOKMARK [1][-]{section.4}{Numerical Method}{}
+\BOOKMARK [2][-]{subsection.4.1}{Discretisation and Linear System}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{Temporal Iteration}{section.4}
 \BOOKMARK [1][-]{appendix.A}{Greens Functions for Stokes Flow}{}
 \BOOKMARK [2][-]{subsection.A.1}{Integral for Greens Function for Pressure}{appendix.A}
 \BOOKMARK [2][-]{subsection.A.2}{Integrals for the Greens Function for Velocity}{appendix.A}
@@ -19,3 +21,4 @@
 \BOOKMARK [1][-]{appendix.D}{Lorentz Reciprocal Theorem}{}
 \BOOKMARK [1][-]{appendix.E}{Elliptic Integrals}{}
 \BOOKMARK [1][-]{appendix.F}{Components of bold0mu mumu AAAAAA, bold0mu mumu BBBBBB and bold0mu mumu CCCCCC}{}
+\BOOKMARK [2][-]{subsection.F.1}{Special case: xr = 0}{appendix.F}

@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{22}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,10 +21,23 @@ J.U. Brackbill, D.B. Kothe, and C.~Zemach.
 \newblock \emph{Journal of {C}omputational {P}hysics}, 100:\penalty0 334 --
   354, 1992.
 
+\bibitem[Courant et~al.(1928)Courant, Friedrichs, and Lewy]{Courant28}
+R.~Courant, K.~Friedrichs, and H.~Lewy.
+\newblock {\"U}ber die partiellen {D}ifferenzengleichungen der mathematischen
+  {P}hysik.
+\newblock \emph{Mathematische {A}nnalen}, 100:\penalty0 32 -- 74, 1928.
+
 \bibitem[Frahm(1982)]{Frahm82}
 Charles~P. Frahm.
 \newblock Some novel delta-function identities.
 \newblock \emph{Americal {J}ournal of {P}hysics}, 51:\penalty0 826--829, 1982.
+
+\bibitem[Galassi et~al.(2009)Galassi, Davies, Theiler, Gough, Jungman, Alken,
+  Booth, and Rossi]{Galassi09}
+Mark Galassi, Jim Davies, James Theiler, Brian Gough, Gerard Jungman, Patrick
+  Alken, Michael Booth, and Fabrice Rossi.
+\newblock \emph{G{NU} {S}cientific {L}ibrary {R}eference {M}anual}.
+\newblock Network {T}heory {L}td., third edition, 2009.
 
 \bibitem[Geller et~al.(1985)Geller, Lee, and Leal]{Geller86}
 A.~S. Geller, S.~H. Lee, and L.~G. Leal.
@@ -86,6 +99,12 @@ C.~Pozrikids.
 \newblock \emph{Boundary integral and singularity methods for linearized
   viscous flows}.
 \newblock Cambridge {U}niversity {P}ress, first edition, 1992.
+
+\bibitem[Press et~al.(2007)Press, Teukolsky, Vetterling, and Flannery]{Press07}
+William~H. Press, Saul~A. Teukolsky, William~T. Vetterling, and Brian~P.
+  Flannery.
+\newblock \emph{Numerical {R}ecipes: {T}he {A}rt of {S}cientific {C}omputing}.
+\newblock Cambridge {U}niversity {P}ress, third edition, 2007.
 
 \bibitem[Reynolds(1886)]{Reynolds1886}
 Osborne Reynolds.
