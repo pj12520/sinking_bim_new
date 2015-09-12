@@ -68,6 +68,11 @@ int main(int argc, char *argv[])
 
   double t_step = min(0.01, 0.01 * input.mdr * input.bond);
 
+  //Testing - Variables used to check timestep
+  double max_vel;
+  double min_sep;
+  double crit;
+
   //Vectors to store the interfacial velocity
   vector<double> rad_vel(input.n_int);
   vector<double> vert_vel(input.n_int);
@@ -104,13 +109,33 @@ int main(int argc, char *argv[])
 	    {
 	      rad_vel[i] = 0.0;
 	      vert_vel[i] = unknown[i + input.n_int - 1];
+
+	      max_vel = max(fabs(vert_vel[i]), fabs(unknown[unknown.size()-1])); //Testing - used in time step test
 	    }
 	  else
 	    {
 	      rad_vel[i] = unknown[i - 1];
 	      vert_vel[i] = unknown[i + input.n_int - 1];
+
+	      //Testing///////////////////////////////////
+	      if (fabs(rad_vel[i]) > max_vel || fabs(vert_vel[i]) > max_vel)
+		{
+		  max_vel = max(fabs(rad_vel[i]), fabs(vert_vel[i]));
+		}
+	      ////////////////////////////////////////
 	    }
 	}
+
+      //Testing - check time step////////////////////////
+      min_sep = interf.intervals[0].width;
+      crit = min_sep / max_vel;
+      if(t_step > 0.1 * crit)
+	{
+	  cout << "CFL value = " << crit << " t_step = " << t_step << endl;
+	}
+
+      /////////////////////////////////////////////////
+
 
       //Output the configuration
       //      Out_sys(it, sphere, interf, input.mdr, input.bond, input.viscos_rat, &rad_vel, &vert_vel);
