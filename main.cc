@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
   particle sphere;
   sphere.intervals.resize(input.n_sphere);
   Create_sphere(&sphere, input.init_height, input.n_sphere);
-
+  
   //Create interface
   surf interf;
   interf.intervals.resize(input.n_int);
@@ -67,6 +67,7 @@ int main(int argc, char *argv[])
   double time = 0.0;
 
   double t_step = min(0.01, 0.01 * input.mdr * input.bond);
+  //  double t_step = 0.01;
 
   //Testing - Variables used to check timestep
   double max_vel;
