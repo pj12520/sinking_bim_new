@@ -294,9 +294,17 @@ void Up_interf(surf *interf)
       //Set radial and vertical components of the integration points in each interval and components and divergence of normal vectors
       for (int j = 0; j < 4; j++)
 	{
-	  (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
-	  (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
-	  
+	  if (i = (*interf).n_int - 1 && j > 1)
+	    {
+  //Extrapolate the splines by fitting to functions r = c_0 * s + c_1, z = c_2 / s*3 + c_3 / s*4
+	      (*interf).intervals[i].rad[j] = fit_const0 * (*interf).intervals[i].arc[j] + fit_const1;
+	      (*interf).intervals[i].vert[j] = fit_const2 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]) + fit_const3 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]);
+	    }
+	  else
+	    {
+	      (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
+	      (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
+	    }
 	  if ((*interf).intervals[i].arc[j] < 0.3)
 	    {
 	      init_step = (*interf).intervals[i].arc[j] / 2.0;

@@ -243,6 +243,7 @@ double G2(double sum_half)
 double C_prefac(double div_norm, double bond, double pos_vert, double mdr, double beta_2, double sum_half)
 {
   double prefac = 9.0 * (div_norm - bond * pos_vert) / (4.0 * PI * mdr * bond * beta_2 * sum_half);
+  //  double prefac = 9.0 * (div_norm - bond * pos_vert) / (4.0 * PI * mdr * bond * sum_half);
 
   return prefac;
 }
