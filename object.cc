@@ -294,26 +294,34 @@ void Up_interf(surf *interf)
       //Set radial and vertical components of the integration points in each interval and components and divergence of normal vectors
       for (int j = 0; j < 4; j++)
 	{
-	  if (i = (*interf).n_int - 1 && j > 1)
+	  if (i == (*interf).n_int - 1 && j > 1)
 	    {
   //Extrapolate the splines by fitting to functions r = c_0 * s + c_1, z = c_2 / s*3 + c_3 / s*4
 	      (*interf).intervals[i].rad[j] = fit_const0 * (*interf).intervals[i].arc[j] + fit_const1;
 	      (*interf).intervals[i].vert[j] = fit_const2 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]) + fit_const3 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]);
+
+	      Normal_fit(fit_const1, fit_const2, fit_const3, (*interf).intervals[i].arc[j], (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j], &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j]);
 	    }
 	  else
 	    {
 	      (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
 	      (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
+
+	      if ((*interf).intervals[i].arc[j] < 1.5)
+		{
+		  init_step = (*interf).intervals[i].arc[j] / 2.0;
+		}
+	      else if (max_arc - (*interf).intervals[i].arc[j] < 1.5)
+		{
+		  init_step = (max_arc - (*interf).intervals[i].arc[j]) / 2.0;
+		}
+	      else
+		{
+		  init_step = 1.5;
+		}
+	      Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], init_step, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
 	    }
-	  if ((*interf).intervals[i].arc[j] < 0.3)
-	    {
-	      init_step = (*interf).intervals[i].arc[j] / 2.0;
-	    }
-	  else
-	    {
-	      init_step = 0.3;
-	    }
-	  Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], 1.5, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
+
 	}
     }
 

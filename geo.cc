@@ -82,6 +82,8 @@ void Normal_fit(double fit_const1, double fit_const2, double fit_const3, double 
   *norm_vert =  rad_deriv / Pythag(rad_deriv, height_deriv);
 
   *div_norm =  -rad_deriv * height_deriv2 / pow(rad_deriv * rad_deriv + height_deriv * height_deriv, 1.5) - height_deriv / (rad_coord * pow(rad_deriv * rad_deriv + height_deriv * height_deriv, 0.5));
+
+  *div_norm = -*div_norm;
 }
 
 //Function to calculate divergence of the normal of the interface at each point along it

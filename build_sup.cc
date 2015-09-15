@@ -303,7 +303,7 @@ void C(double source_vert, double source_rad_2, double source_rad, vector<double
 
 	  *temp1 += (vector_C1[k] + j1[k] * log(arc_diff * arc_diff * sum / (4.0 * source_rad_2 * diff)) + 2.0 * (9.0 * (mid_div_norm - bond * mid_vert) * ellip1_b0 * mid_norm_rad / (8.0 * PI * mdr * bond * (*pos_rad)[k]) - j1[k]) * log(fabs(arc_diff) / (2.0 * source_rad))) * (*pos_rad)[k] * (*Gauss_int_wts)[k];
 
-	  *temp2 += (vector_C2[k] + j2[k] * log(arc_diff * arc_diff * sum / (4.0 * source_rad_2  * diff)) + 2.0 * (9.0 * (mid_div_norm - bond * mid_vert) * ellip1_b0 * mid_norm_vert / (8.0 * PI * mdr * bond * (*pos_rad)[k]) - j2[k]) * log(fabs(arc_diff) / (2.0 * source_rad))) * (*pos_rad)[k] * (*Gauss_int_wts)[k];
+	  *temp2 += (vector_C2[k] + j2[k] * log(arc_diff * arc_diff * sum / (4.0 * source_rad_2 * diff)) + 2.0 * (9.0 * (mid_div_norm - bond * mid_vert) * ellip1_b0 * mid_norm_vert / (8.0 * PI * mdr * bond * (*pos_rad)[k]) - j2[k]) * log(fabs(arc_diff) / (2.0 * source_rad))) * (*pos_rad)[k] * (*Gauss_int_wts)[k];
 	}
 
       else
