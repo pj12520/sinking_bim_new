@@ -310,6 +310,7 @@ void Up_interf(surf *interf)
 	      if ((*interf).intervals[i].arc[j] < 1.5)
 		{
 		  init_step = (*interf).intervals[i].arc[j] / 2.0;
+		  //init_step = 1.5;
 		}
 	      else if (max_arc - (*interf).intervals[i].arc[j] < 1.5)
 		{
