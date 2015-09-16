@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd height_sweep
+cd interv_sweep
 
 for i in $(ls -d */); do
 
@@ -14,16 +14,24 @@ for i in $(ls -d */); do
 
 	    cd ${k}
 
-	    export INPUT=${HOME}/sinking_bim/trunk/height_sweep/${i}/${j}/${k}/dimensionless_input.dat
+	    for l in $(ls -d */); do
 
-	    export RUNDIR=${HOME}/sinking_bim/trunk/height_sweep/${i}/${j}/${k}
+		cd ${l}
 
-	    qsub -V ../../../../param_sweep.sh
-# echo $INPUT
-# echo $RUNDIR
-	    sleep 10
+		export INPUT=${HOME}/sinking_bim/trunk/interv_sweep/${i}/${j}/${k}/${l}/dimensionless_input.dat
+
+		export RUNDIR=${HOME}/sinking_bim/trunk/interv_sweep/${i}/${j}/${k}/${l}
+
+		qsub -V ../../../../../param_sweep.sh
+
+		sleep 10
+
+		cd ..
+
+	    done
 
 	    cd ..
+
 	done
 
 	cd ..
