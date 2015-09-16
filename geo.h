@@ -12,6 +12,9 @@
 
 using std::ofstream; //Using for debugging purposes only
 
+struct rad_diff_params { Spline_interp rad_spline; double fit_const0; double fit_const1; double arc_max; };
+
+
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2);
 

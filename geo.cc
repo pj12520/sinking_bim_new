@@ -10,6 +10,7 @@
 #include "const.h"
 #include "interp_1d.h"
 #include "dfridr.h"
+#include "geo.h"
 
 using std::vector;
 using std::cout;
@@ -17,6 +18,19 @@ using std::endl;
 
 using std::setw; //Using for debugging purposes only. Remove when program is functional
 using std::ofstream; //Using for debugging purposes only
+
+
+double
+r_test (double x, void * p) {
+   struct rad_diff_params * params 
+     = (struct rad_diff_params *)p;
+   Spline_interp rad_spline = (params->rad_spline);
+   double fit_const0 = (params->fit_const0);
+   double fit_const1 = (params->fit_const1);
+   double arc_max = (params->arc_max);
+
+   return  rad_spline.interp(x);
+}
 
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2)
