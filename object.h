@@ -62,6 +62,8 @@ struct surf
   vector<double> mid_div_norm;
 
   vector<interf_int> intervals; //Array of interval structures
+
+  double ent_vol; //Volume of upper phase entrained below z=0 plane
 };
 
 
@@ -84,7 +86,7 @@ void Create_interf_int(vector<interf_int>* intervals, int n_int, double max_arc)
 void Abscissas(double* lower, double* upper, double max, int n_int, vector<double>* points, double* width, double half_width, int interval, int sphere_test); 
 
 //Function to update the properaties of the interface
-void Up_interf(surf *interf);
+void Up_interf(surf *interf, double sphere_pos);
 
 //Function to update the properties of the sphere
 void Up_sphere(particle *sphere);

@@ -12,6 +12,7 @@
 
 using std::ofstream; //Using for debugging purposes only
 
+
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2);
 
@@ -40,6 +41,8 @@ double Normal_height(Spline_interp rad, Spline_interp height, double arc, double
 void Rotate(vector<double>* init_vector, vector<double>* final_vector, double theta);
 */
 
+//Function to calculate the volume of upper phase fluid entrained below z=0
+double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos);
 
 
 #endif /* GEO_H */

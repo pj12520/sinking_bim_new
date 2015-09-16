@@ -79,13 +79,14 @@ int main(int argc, char *argv[])
   vector<double> vert_vel(input.n_int);
 
 
-  //Object to output the position and velocity of the sphere
+  //Object to output the position and velocity of the sphere and the entrained volume
   ofstream sphere_out;
   //  string out_file = "D=" + static_cast<ostringstream*>( &(ostringstream() << input.mdr) )->str() + "/Bo=" + static_cast<ostringstream*>( &(ostringstream() << input.bond) )->str() + "/viscos_rat=" + static_cast<ostringstream*>( &(ostringstream() << input.viscos_rat) )->str() + "/sphere.dat";
   string out_file = "sphere.dat";
   sphere_out.open(out_file.c_str());
-  sphere_out << setw(20) << "iteration" << setw(20) << "time" << setw(20) << "height" << setw(20) << "velocity" << endl;
+  sphere_out << setw(20) << "iteration" << setw(20) << "time" << setw(20) << "height" << setw(20) << "velocity" << setw(20) << "Entrained Volume" << endl;
 
+  
   //Vectors of output data structures
   vector<out_data> output;
 
@@ -163,7 +164,7 @@ int main(int argc, char *argv[])
       ////////////////////////////////////////////////////////////////////////////////
 
       //Outout the sphere position and velocity
-      sphere_out << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
+      sphere_out << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << interf.ent_vol << endl;
       //Perform the 1st time step
       Iterate(input.n_int, &unknown, &interf.midpoints, &interf.mid_rad, &interf.mid_vert, &sphere.height, t_step);
 
@@ -172,7 +173,7 @@ int main(int argc, char *argv[])
       time = time + t_step;
 
       //Update the properties of the interface and sphere
-      Up_interf(&interf);
+      Up_interf(&interf, sphere.height);
       Up_sphere(&sphere);
 
       //Testing - Check the new configuration of the system/////////////////////////////////////////////////

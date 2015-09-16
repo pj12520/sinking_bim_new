@@ -7,9 +7,12 @@
 #include <iomanip> //Inlcuded for debugging purposes only. Remove when program is functional
 #include <fstream> //Included for debugging purposes only
 
+#include <gsl/gsl_integration.h>
+
 #include "const.h"
 #include "interp_1d.h"
 #include "dfridr.h"
+#include "geo.h"
 
 using std::vector;
 using std::cout;
@@ -17,6 +20,8 @@ using std::endl;
 
 using std::setw; //Using for debugging purposes only. Remove when program is functional
 using std::ofstream; //Using for debugging purposes only
+
+using math_const::PI;
 
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2)
@@ -224,4 +229,80 @@ void Rotate(vector<double>* init_vector, vector<double>* final_vector, double th
 }
 
 */
+
+//Function to calculate the volume of upper phase fluid entrained below z=0
+double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos)
+{
+  vector<double> arc_points(n_int);
+  vector<double> rad_points(n_int);
+
+  vector<double> vert_deriv(n_int);
+
+  double height_deriv_error;
+
+  double init_step;
+
+  vector<double> integrand(n_int);
+
+  for (int i = 0; i < n_int; i++)
+    {
+      arc_points[i] = i * max_arc / (n_int - 1);
+      rad_points[i] = rad.interp(arc_points[i]);
+
+      if (i == 0)
+	{
+	  vert_deriv[i] = 0.0;
+	}
+      else if (i == n_int - 1)
+	{
+	  vert_deriv[i] = 0.0;
+	}
+      else
+	{
+	  if (arc_points[i] < 1.5)
+	    {
+	      init_step = arc_points[i] / 2.0;
+	    }
+	  else if (max_arc - arc_points[i] < 1.5)
+	    {
+	      init_step = (max_arc - arc_points[i]) / 2.0;
+	    }
+	  else
+	    {
+	      init_step = 1.5;
+	    }
+
+	  vert_deriv[i] = My_dfridr(&Vert, arc_points[i], init_step, height_deriv_error, vert, fit_const2, fit_const3, max_arc, 1);
+
+	}
+      integrand[i] = rad_points[i] * vert_deriv[i];
+    }
+
+  double temp_sum = 0.0;
+
+  for (int i = 1; i < n_int - 1; i++)
+    {
+      temp_sum = temp_sum + integrand[i];
+    }
+
+  double integral = max_arc * (integrand[0] + 2.0 * temp_sum + integrand[n_int - 1]) / (2.0 * n_int);
+
+  double volume = 2.0 * PI * integral / 3.0;
+
+  //Now need to subtract volume of sphere that is below the plane z=0
+  if (sphere_pos < -1)
+    {
+      volume = volume - 4.0 * PI / 3.0;
+    }
+  else if (sphere_pos == 0.0)
+    {
+      volume = volume - 2.0 * PI / 3.0;
+    }
+  else if (sphere_pos < 1 && sphere_pos > -1)
+    {
+      volume = volume - 2.0 * PI * (1.0 - sphere_pos) / 3.0;
+    }
+
+  return volume;
+}
 

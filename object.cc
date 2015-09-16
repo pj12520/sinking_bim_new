@@ -60,6 +60,8 @@ void Create_interf(surf *interf, int n_int, double max_arc)
       (*interf).mid_div_norm[i] = 0.0;
     }
   Create_interf_int(&(*interf).intervals, n_int, max_arc);
+
+  (*interf).ent_vol - 0.0;
 }
 
 //Function to find the midpoints in a set of n_int equally spaced intervals
@@ -173,7 +175,7 @@ void Abscissas(double* lower, double* upper, double max, int n_int, vector<doubl
 }
 
 //Function to update the properaties of the interface
-void Up_interf(surf *interf)
+void Up_interf(surf *interf, double sphere_pos)
 {
   //Describe the interface using a cubic spline
   Spline_interp rad_spline((*interf).midpoints, (*interf).mid_rad, 1.0, fprime(&(*interf).midpoints[(*interf).n_int - 1], &(*interf).mid_rad[(*interf).n_int - 1], -1)); //Structures that contain the interpolation routines
@@ -327,6 +329,10 @@ void Up_interf(surf *interf)
     }
 
   //  out.close();
+
+  //Calculate the entrained volume
+  (*interf).ent_vol = Ent_vol(rad_spline, vert_spline, max_arc, (*interf).n_int, fit_const2, fit_const3, sphere_pos);
+
   //Move the new points into the interf object
   for (int i = 0; i < (*interf).n_int; i++)
     {
