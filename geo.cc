@@ -59,7 +59,7 @@ double Pythag(double side1, double side2)
 
 
 //Function to calculate the components of the normal vector and it's divergence at a point along the interface
-void Normal(Spline_interp rad, Spline_interp height, double arc, double init_step, double *norm_rad, double *norm_vert, double *div_norm, double rad_coord, vector<double>* midpoints, vector<double>* pos_rad, vector<double>* pos_vert, double fit_const0, double fit_const1, double fit_const2, double fit_const3, double arc_max, ofstream& out)
+void Normal(Spline_interp rad, Spline_interp height, double arc, double init_step, double *norm_rad, double *norm_vert, double *div_norm, double rad_coord, vector<double>* midpoints, vector<double>* pos_rad, vector<double>* pos_vert, double fit_const0, double fit_const1, double fit_const2, double fit_const3, double arc_max, ofstream& out, double fit_const_a, double fit_const_b)
 {
   double rad_deriv_error;
   double height_deriv_error;
@@ -88,11 +88,12 @@ rad_func.params =
   gsl_deriv_central (&rad_eval, arc, 1e-8, &rad_deriv, &rad_deriv_error);
   */
 
-  double rad_deriv = My_dfridr(&Rad, arc, init_step, rad_deriv_error, rad, fit_const0, fit_const1, arc_max, 0);
-  double height_deriv = My_dfridr(&Vert, arc, init_step, height_deriv_error, height, fit_const2, fit_const3, arc_max, 1);
-  double rad_deriv2 = My_sec_dfridr(rad, arc, init_step, rad_deriv2_error, fit_const0, fit_const1, arc_max, &Rad, 0);
-  double height_deriv2 = My_sec_dfridr(height, arc, init_step, height_deriv2_error, fit_const2, fit_const3, arc_max, &Vert, 1);
 
+  double rad_deriv = My_dfridr(&Rad, arc, init_step, rad_deriv_error, rad, fit_const0, fit_const1, arc_max, 0, fit_const_a);
+  double height_deriv = My_dfridr(&Vert, arc, init_step, height_deriv_error, height, fit_const2, fit_const3, arc_max, 1, fit_const_b);
+  double rad_deriv2 = My_sec_dfridr(rad, arc, init_step, rad_deriv2_error, fit_const0, fit_const1, arc_max, &Rad, 0, fit_const_a);
+  double height_deriv2 = My_sec_dfridr(height, arc, init_step, height_deriv2_error, fit_const2, fit_const3, arc_max, &Vert, 1, fit_const_b);
+  //  cout << arc << setw(20) << rad.interp(arc) << setw(20) << height.interp(arc) << setw(20) << rad_deriv << setw(20) << height_deriv << setw(20) << rad_deriv2 << setw(20) << height_deriv2 << endl;
   //  out << setw(20) << arc << setw(20) << rad_deriv << setw(20) << height_deriv << setw(20) << rad_deriv2 << setw(20) << height_deriv2 << endl;
 
 
