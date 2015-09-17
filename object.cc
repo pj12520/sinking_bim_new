@@ -203,10 +203,14 @@ void Up_interf(surf *interf)
   double prod[n_fit];
   double arc_recip[n_fit];
 
+
   for (int i = 0; i < n_fit; i++)
     {
       prod[i] = arc[i] * arc[i] * arc[i] * vert[i];
       arc_recip[i] = 1.0 / arc[i];
+
+      //prod[i] = rad[i] * rad[i] * rad[i];
+      //rad_recip = 1.0 / rad[i];
       //      cout << i << " " << prod[i] << " " << vert_recip[i] << endl;
     }
   //Fit these coords to find fitting constants
@@ -223,6 +227,7 @@ void Up_interf(surf *interf)
 
   gsl_fit_linear(arc, 1, rad, 1, n_fit, &fit_const0, &fit_const1, &cov00, &cov01, &cov11, &chisq);
   gsl_fit_linear(arc_recip, 1, prod, 1, n_fit, &fit_const2, &fit_const3, &cov00, &cov01, &cov11, &chisq);
+  //gsl_fit_linear(rad_recip, 1, prod, 1, n_fit, &fit_const2, &fit_const3, &cov00, &cov01, &cov11, &chisq);
   
   //  cout << fit_const0 << " " << fit_const1 << " " << fit_const2 << " " << fit_const3 << endl;
 
@@ -256,18 +261,22 @@ void Up_interf(surf *interf)
 	}
       new_mid_vert[i] = vert_spline.interp(new_midpoints[i]);
 
-      if (new_midpoints[i] < 0.3)
+      if (new_midpoints[i] < 1.5)
 	{
 	  init_step = new_midpoints[i] / 2.0;
 	}
+      else if (max_arc - new_midpoints[i] < 1.5)
+	{
+	  init_step = (max_arc - new_midpoints[i]) / 2.0;
+	}
       else
 	{
-	  init_step = 0.3;
+	  init_step = 1.5;
 	}
-      if (i != 0)
-	{
-	  Normal(rad_spline, vert_spline, new_midpoints[i], 1.5, &(*interf).mid_norm_rad[i], &(*interf).mid_norm_vert[i], &(*interf).mid_div_norm[i], new_mid_rad[i], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
-	}
+      //      if (i != 0 && i != (*interf).n_int - 1)
+      //{
+	  Normal(rad_spline, vert_spline, new_midpoints[i], 1e-8, &(*interf).mid_norm_rad[i], &(*interf).mid_norm_vert[i], &(*interf).mid_div_norm[i], new_mid_rad[i], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
+	  //}
       //      else
       //{
       //  Normal(rad_spline, vert_spline, new_midpoints[i], 0.3, &(*interf).mid_norm_rad[i], &(*interf).mid_norm_vert[i], &(*interf).mid_div_norm[i], new_mid_rad[i], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert);
@@ -300,7 +309,7 @@ void Up_interf(surf *interf)
 	      (*interf).intervals[i].rad[j] = fit_const0 * (*interf).intervals[i].arc[j] + fit_const1;
 	      (*interf).intervals[i].vert[j] = fit_const2 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]) + fit_const3 / ((*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j]);
 
-	      Normal_fit(fit_const1, fit_const2, fit_const3, (*interf).intervals[i].arc[j], (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j], &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j]);
+	      //	      Normal_fit(fit_const1, fit_const2, fit_const3, (*interf).intervals[i].arc[j], (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j] * (*interf).intervals[i].arc[j], &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j]);
 	    }
 	  else
 	    {
@@ -320,8 +329,8 @@ void Up_interf(surf *interf)
 		{
 		  init_step = 1.5;
 		}
-	      Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], init_step, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
 	    }
+	  Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], 1e-8, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out);
 
 	}
     }

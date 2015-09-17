@@ -400,8 +400,12 @@ double Vert(Spline_interp vert_spline, double fit_const2, double fit_const3, dou
     {
       double arc3 = arc * arc * arc;
       double arc4 = arc3 * arc;
+      //double rad = fit_const0 + fit_const1 * arc;
+      //double rad3 = rad * rad * rad;
+      //double rad4 = rad3 * rad
 
-      vert = fit_const2 / arc3 + fit_const3 / arc4;
+	vert = fit_const2 / arc3 + fit_const3 / arc4;
+	//vert = fit_const2 / rad3 + fit_const3 / rad4;
     }
 
   return vert;
