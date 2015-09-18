@@ -45,6 +45,12 @@ double My_dfridr(double (*func)(Spline_interp, double, double, double, double, d
 //Function to calculate the second derivative of r(s) and z(s)
 double My_sec_dfridr(Spline_interp spline, const double x, const double h, double &err, double param1, double param2, double arc_max, double (*func)(Spline_interp, double, double, double, double, double), int vert_test, double param3);
 
+//Function to calculate the a derivative with a backward step
+double Back_deriv(Spline_interp spline, double arc, double step, double err);
+
+//Function to calculate the a second derivative with a backward step
+double Back_sec_deriv(Spline_interp spline, double arc, double step, double err);
+
 
 
 double dfridr(double (*func)(double), const double x, const double h, double &err)
@@ -610,5 +616,31 @@ double My_sec_dfridr(Spline_interp spline, const double x, const double h, doubl
 
   return ans;
 }
+
+
+//Function to calculate the a derivative with a backward step
+double Back_deriv(Spline_interp spline, double arc, double step, double err)
+{
+  double func = spline.interp(arc);
+
+  double func_minus = spline.interp(arc - step);
+
+  double deriv = (func - func_minus) / step;
+
+  return deriv;
+}
+
+//Function to calculate the a second derivative with a backward step
+double Back_sec_deriv(Spline_interp spline, double arc, double step, double err)
+{
+  double deriv = Back_deriv(spline, arc, step, err);
+
+  double deriv_minus = Back_deriv(spline, arc - step, step, err);
+
+  double sec_deriv = (deriv - deriv_minus) / step;
+
+  return sec_deriv;
+}
+
 
 #endif /* DFRIDR_H */

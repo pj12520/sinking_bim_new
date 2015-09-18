@@ -27,26 +27,29 @@ double
 rad_eval (double x, void * p) {
    struct rad_diff_params * rad_params 
      = (struct rad_diff_params *)p;
-   Spline_interp rad_spline = (rad_params->rad_spline);
+   Spline_interp &rad_spline = rad_params->*rad_spline;
+   //   Spline_interp *rad_spline = rad_params->&rad_spline;
    double fit_const0 = (rad_params->fit_const0);
    double fit_const1 = (rad_params->fit_const1);
    double arc_max = (rad_params->arc_max);
 
-   return  rad_spline.interp(x);
+   return  (*rad_spline).interp(x);
 }
 
+/*
 double
 vert_eval (double x, void * p) {
    struct vert_diff_params * vert_params
      = (struct vert_diff_params *)p;
-   Spline_interp vert_spline = (vert_params->vert_spline);
+   Spline_interp *vert_spline = vert_spline;
    double fit_const2 = (vert_params->fit_const2);
    double fit_const3 = (vert_params->fit_const3);
    double arc_max = (vert_params->arc_max);
 
-   return  vert_spline.interp(x);
+   return  (*vert_spline).interp(x);
 }
 */
+
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2)
 {
@@ -86,15 +89,37 @@ void Normal(Spline_interp rad, Spline_interp height, double arc, double init_ste
 rad_func.params = 
   double rad_deriv;
   gsl_deriv_central (&rad_eval, arc, 1e-8, &rad_deriv, &rad_deriv_error);
-  */
 
-  //    gsl_function rad_func;
-  //rad_func.function = &Spline_interp::interp;
+  rad_diff_params rad_params;
+  rad_params.fit_const0 = fit_const0;
+  rad_params.(&rad_spline) = rad;
+
+      gsl_function rad_func;
+      rad_func.function = &rad_eval;
   //  rad_func.function = &rad.interp;
-  double rad_deriv = My_dfridr(&Rad, arc, init_step, rad_deriv_error, rad, fit_const0, fit_const1, arc_max, 0, fit_const_a);
-  double height_deriv = My_dfridr(&Vert, arc, init_step, height_deriv_error, height, fit_const2, fit_const3, arc_max, 1, fit_const_b);
-  double rad_deriv2 = My_sec_dfridr(rad, arc, init_step, rad_deriv2_error, fit_const0, fit_const1, arc_max, &Rad, 0, fit_const_a);
-  double height_deriv2 = My_sec_dfridr(height, arc, init_step, height_deriv2_error, fit_const2, fit_const3, arc_max, &Vert, 1, fit_const_b);
+  */
+  //  rad_diff_params* rad_params;
+  //  rad_params->*rad_spline = rad;
+
+  double rad_deriv;
+  double height_deriv;
+  double rad_deriv2;
+  double height_deriv2;
+  /*  if (arc_max - arc < init_step)
+    {
+      rad_deriv = Back_deriv(rad, arc, 1, rad_deriv_error);
+      height_deriv = Back_deriv(height, arc, 1, height_deriv_error);
+      rad_deriv2 = Back_sec_deriv(rad, arc, 1, rad_deriv2_error);
+      height_deriv2 = Back_sec_deriv(height, arc, 1, height_deriv2_error);
+    }
+  else
+    {
+  */
+      rad_deriv = My_dfridr(&Rad, arc, init_step, rad_deriv_error, rad, fit_const0, fit_const1, arc_max, 0, fit_const_a);
+      height_deriv = My_dfridr(&Vert, arc, init_step, height_deriv_error, height, fit_const2, fit_const3, arc_max, 1, fit_const_b);
+      rad_deriv2 = My_sec_dfridr(rad, arc, init_step, rad_deriv2_error, fit_const0, fit_const1, arc_max, &Rad, 0, fit_const_a);
+      height_deriv2 = My_sec_dfridr(height, arc, init_step, height_deriv2_error, fit_const2, fit_const3, arc_max, &Vert, 1, fit_const_b);
+    
   //  cout << arc << setw(20) << rad.interp(arc) << setw(20) << height.interp(arc) << setw(20) << rad_deriv << setw(20) << height_deriv << setw(20) << rad_deriv2 << setw(20) << height_deriv2 << endl;
   //  out << setw(20) << arc << setw(20) << rad_deriv << setw(20) << height_deriv << setw(20) << rad_deriv2 << setw(20) << height_deriv2 << endl;
 

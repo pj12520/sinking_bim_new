@@ -12,7 +12,9 @@
 
 using std::ofstream; //Using for debugging purposes only
 
-//struct rad_diff_params { Spline_interp rad_spline(vector<double>&, vector<double>&, double, double); double fit_const0; double fit_const1; double arc_max; };
+//struct rad_diff_params { Spline_interp *rad_spline(vector<double>&, vector<double>&, double, double); double fit_const0; double fit_const1; double arc_max; };
+//struct rad_diff_params { Spline_interp *rad_spline; double fit_const0; double fit_const1; double arc_max; };
+//struct vert_diff_params { Spline_interp *vert_spline(vector<double>&, vector<double>&, double, double); double fit_const2; double fit_const3; double arc_max; };
 //struct rad_diff_params { Spline_interp rad_spline(const Spline_interp&); double fit_const0; double fit_const1; double arc_max; };
 //struct vert_diff_params { Spline_interp vert_spline; double fit_const2; double fit_const3; double arc_max; };
 
