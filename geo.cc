@@ -88,7 +88,9 @@ rad_func.params =
   gsl_deriv_central (&rad_eval, arc, 1e-8, &rad_deriv, &rad_deriv_error);
   */
 
-
+  //    gsl_function rad_func;
+  //rad_func.function = &Spline_interp::interp;
+  //  rad_func.function = &rad.interp;
   double rad_deriv = My_dfridr(&Rad, arc, init_step, rad_deriv_error, rad, fit_const0, fit_const1, arc_max, 0, fit_const_a);
   double height_deriv = My_dfridr(&Vert, arc, init_step, height_deriv_error, height, fit_const2, fit_const3, arc_max, 1, fit_const_b);
   double rad_deriv2 = My_sec_dfridr(rad, arc, init_step, rad_deriv2_error, fit_const0, fit_const1, arc_max, &Rad, 0, fit_const_a);

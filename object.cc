@@ -346,7 +346,7 @@ void Up_interf(surf *interf)
 	      (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
 	      (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
 
-	      if ((*interf).intervals[i].arc[j] < 3)
+	      if ((*interf).intervals[i].arc[j] < 3.0)
 		{
 		  init_step = (*interf).intervals[i].arc[j] / 2.0;
 		  //init_step = 1.5;
