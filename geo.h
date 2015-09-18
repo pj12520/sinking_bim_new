@@ -13,11 +13,18 @@
 using std::ofstream; //Using for debugging purposes only
 
 
+//struct rad_diff_params { Spline_interp *rad_spline(vector<double>&, vector<double>&, double, double); double fit_const0; double fit_const1; double arc_max; };
+//struct rad_diff_params { Spline_interp *rad_spline; double fit_const0; double fit_const1; double arc_max; };
+//struct vert_diff_params { Spline_interp *vert_spline(vector<double>&, vector<double>&, double, double); double fit_const2; double fit_const3; double arc_max; };
+//struct rad_diff_params { Spline_interp rad_spline(const Spline_interp&); double fit_const0; double fit_const1; double arc_max; };
+//struct vert_diff_params { Spline_interp vert_spline; double fit_const2; double fit_const3; double arc_max; };
+
+
 //Function to calculate hypotenuse of a right angled triangle given the length of the other sides.
 double Pythag(double side1, double side2);
 
 //Function to calculate the components of the normal vector and it's divergence at a point along the interface
-void Normal(Spline_interp rad, Spline_interp height, double arc, double init_step, double *norm_rad, double *norm_vert, double *div_norm, double rad_coord, vector<double>* midpoints, vector<double>* pos_rad, vector<double>* pos_vert, double fit_const0, double fit_const1, double fit_const2, double fit_const3, double arc_max, ofstream& out);
+void Normal(Spline_interp rad, Spline_interp height, double arc, double init_step, double *norm_rad, double *norm_vert, double *div_norm, double rad_coord, vector<double>* midpoints, vector<double>* pos_rad, vector<double>* pos_vert, double fit_const0, double fit_const1, double fit_const2, double fit_const3, double arc_max, ofstream& out, double fit_const_a, double fit_const_b);
 
 //Function to calculate the normal components and the divergence of the normal to the interface when it is described by the extrapolated functions
 void Normal_fit(double fit_const1, double fit_const2, double fit_const3, double arc, double arc4, double *norm_rad, double *norm_vert, double *div_norm, double rad_coord);
@@ -42,7 +49,7 @@ void Rotate(vector<double>* init_vector, vector<double>* final_vector, double th
 */
 
 //Function to calculate the volume of upper phase fluid entrained below z=0
-double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos);
+double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos, double fit_const_b);
 
 
 #endif /* GEO_H */
