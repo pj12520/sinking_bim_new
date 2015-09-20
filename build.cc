@@ -180,8 +180,8 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		  coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] += matrix_B22[k] * Gauss_int_wts[k];
 		}
 
-	      coeffs[i + interf.n_int][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int] / 2.0;
-	      coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+	      coeffs[i + interf.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int] / 2.0;
+	      coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 	      //	      cout << i << " " << j << " " << coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] << " " << endl;
 	    }
 
@@ -200,11 +200,11 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		  coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] += matrix_B22[k] * Gauss_int_wts[k];
 		}
 
-	      coeffs[i][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i][j+ 2 * interf.n_int] / 2.0;
+	      coeffs[i][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i][j+ 2 * interf.n_int] / 2.0;
 	      coeffs[i][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 
-	      coeffs[i + interf.n_int][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int] / 2.0;
-	      coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+	      coeffs[i + interf.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int] / 2.0;
+	      coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 
 	    }  
 	}
@@ -217,21 +217,21 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
       if (i == 0)
 	{
 	  source_rad = 0.0;
-	  source_vert = sphere.height + 1.0;
+	  source_vert = sphere.height + sphere.aspect;
 
 	  source_rad_2 = 0.0;
 	}
       else if (i == sphere.n_int - 1)
 	{
 	  source_rad = 0.0;
-	  source_vert = sphere.height - 1.0;
+	  source_vert = sphere.height - sphere.aspect;
 
 	  source_rad_2 = 0.0;
 	}
       else
 	{
 	  source_rad = sin(sphere.midpoints[i]);
-	  source_vert = sphere.height + cos(sphere.midpoints[i]);
+	  source_vert = sphere.height + sphere.aspect * cos(sphere.midpoints[i]);
 
 	  source_rad_2 = source_rad * source_rad;
 	}
@@ -296,8 +296,8 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] += matrix_B22[k] * Gauss_int_wts[k];
 		}
 
-	      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
-	      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+	      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
+	      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 	    }
 	  else
 	    {
@@ -330,13 +330,13 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] += (matrix_B22_reg[k] + g2[k] * log(4.0 * source_rad_2 * diff / (sum * theta_diff_2)) + 2.0 * (g2[k] + ellip1_b0 / (4.0 * PI * source_rad)) * log(fabs(theta_diff) / (2.0 * source_rad))) * Gauss_int_wts[k];
 		    }
 		  
-		  coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] / 2.0 - ellip1_b0 / (2.0 * (sphere.n_int - 1.0) * source_rad) * (log(PI / (4.0 * (sphere.n_int - 1.0) * source_rad)) - 1.0);
+		  coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] = sphere.aspect * (sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] / 2.0 - ellip1_b0 / (2.0 * (sphere.n_int - 1.0) * source_rad) * (log(PI / (4.0 * (sphere.n_int - 1.0) * source_rad)) - 1.0));
 
-		  coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 
-		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
 
-		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0 - ellip1_b0 / (2.0 * (sphere.n_int - 1.0) * source_rad) * (log(PI / (4.0 * (sphere.n_int - 1.0) * source_rad)) - 1.0);
+		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * (sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0 - ellip1_b0 / (2.0 * (sphere.n_int - 1.0) * source_rad) * (log(PI / (4.0 * (sphere.n_int - 1.0) * source_rad)) - 1.0));
 		}
 
 	      else
@@ -351,11 +351,11 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		      coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] += matrix_B22[k] * Gauss_int_wts[k];
 		    }
 
-		  coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int] / 2.0;
-		  coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int][j+ 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 
-		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
-		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int] / 2.0;
+		  coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + 2 * interf.n_int + sphere.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 		}
 	    }
 	}
@@ -429,21 +429,21 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
       if (i == 0)
 	{
 	  source_rad = 0.0;
-	  source_vert = sphere.height + 1.0;
+	  source_vert = sphere.height + sphere.aspect;
 
 	  source_rad_2 = 0.0;
 	}
       else if (i == sphere.n_int - 1)
 	{
 	  source_rad = 0.0;
-	  source_vert = sphere.height - 1.0;
+	  source_vert = sphere.height - sphere.aspect;
 
 	  source_rad_2 = 0.0;
 	}
       else
 	{
 	  source_rad = sin(sphere.midpoints[i]);
-	  source_vert = sphere.height + cos(sphere.midpoints[i]);
+	  source_vert = sphere.height + sphere.aspect * cos(sphere.midpoints[i]);
 	}
 
       source_rad_2 = source_rad * source_rad;
