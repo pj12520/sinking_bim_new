@@ -12,6 +12,7 @@
 
 using std::ofstream; //Using for debugging purposes only
 
+
 //struct rad_diff_params { Spline_interp *rad_spline(vector<double>&, vector<double>&, double, double); double fit_const0; double fit_const1; double arc_max; };
 //struct rad_diff_params { Spline_interp *rad_spline; double fit_const0; double fit_const1; double arc_max; };
 //struct vert_diff_params { Spline_interp *vert_spline(vector<double>&, vector<double>&, double, double); double fit_const2; double fit_const3; double arc_max; };
@@ -47,6 +48,8 @@ double Normal_height(Spline_interp rad, Spline_interp height, double arc, double
 void Rotate(vector<double>* init_vector, vector<double>* final_vector, double theta);
 */
 
+//Function to calculate the volume of upper phase fluid entrained below z=0
+double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos, double fit_const_b, double arc_trunc);
 
 
 #endif /* GEO_H */
