@@ -61,7 +61,7 @@ void Create_interf(surf *interf, int n_int, double max_arc)
     }
   Create_interf_int(&(*interf).intervals, n_int, max_arc);
 
-  (*interf).ent_vol - 0.0;
+  (*interf).ent_vol = 0.0;
 }
 
 //Function to find the midpoints in a set of n_int equally spaced intervals
