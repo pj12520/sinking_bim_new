@@ -390,7 +390,7 @@ void Up_sphere(particle *sphere)
     {
       for (int j = 0; j < 4; j++)
 	{
-	  (*sphere).intervals[i].vert[j] = (*sphere).height + cos((*sphere).intervals[i].theta[j]);
+	  (*sphere).intervals[i].vert[j] = (*sphere).height + (*sphere).aspect * cos((*sphere).intervals[i].theta[j]);
 	}
     }
 }

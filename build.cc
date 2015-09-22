@@ -201,7 +201,7 @@ void Build(vector<vector<double> >* matrix, vector<double>* vec, particle sphere
 		}
 
 	      coeffs[i][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i][j+ 2 * interf.n_int] / 2.0;
-	      coeffs[i][j + 2 * interf.n_int + sphere.n_int] = sphere.intervals[j].width * coeffs[i][j + 2 * interf.n_int + sphere.n_int] / 2.0;
+	      coeffs[i][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i][j + 2 * interf.n_int + sphere.n_int] / 2.0;
 
 	      coeffs[i + interf.n_int][j + 2 * interf.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int] / 2.0;
 	      coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] = sphere.aspect * sphere.intervals[j].width * coeffs[i + interf.n_int][j + 2 * interf.n_int + sphere.n_int] / 2.0;
