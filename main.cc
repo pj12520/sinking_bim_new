@@ -133,7 +133,7 @@ int main(int argc, char *argv[])
       crit = min_sep / max_vel;
       if(t_step > 0.1 * crit)
 	{
-	  cout << "CFL value = " << crit << " t_step = " << t_step << endl;
+	  //	  cout << "CFL value = " << crit << " t_step = " << t_step << endl;
 	}
 
       /////////////////////////////////////////////////
@@ -160,9 +160,11 @@ int main(int argc, char *argv[])
 	}
 
       //Testing - Test the solution for the sphere velocity ///////////////////////////
-      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
+            cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
+      //      cout << setw(20) << input.aspect << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       ////////////////////////////////////////////////////////////////////////////////
 
+      
       //Outout the sphere position and velocity
       sphere_out << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << interf.ent_vol << endl;
       //Perform the 1st time step
