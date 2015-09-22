@@ -49,7 +49,7 @@ void Rotate(vector<double>* init_vector, vector<double>* final_vector, double th
 */
 
 //Function to calculate the volume of upper phase fluid entrained below z=0
-double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos, double fit_const_b);
+double Ent_vol(Spline_interp rad, Spline_interp vert, double max_arc, int n_int, double fit_const2, double fit_const3, double sphere_pos, double fit_const_b, double arc_trunc);
 
 
 #endif /* GEO_H */

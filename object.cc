@@ -371,7 +371,8 @@ void Up_interf(surf *interf, double sphere_pos)
   //  out.close();
 
   //Calculate the entrained volume
-  (*interf).ent_vol = Ent_vol(rad_spline, vert_spline, max_arc, (*interf).n_int, fit_const2, fit_const3, sphere_pos, fit_const_b);
+  //  (*interf).ent_vol = Ent_vol(rad_spline, vert_spline, max_arc, (*interf).n_int, fit_const2, fit_const3, sphere_pos, fit_const_b);
+  (*interf).ent_vol = Ent_vol(rad_spline, vert_spline, max_arc, 200, fit_const2, fit_const3, sphere_pos, fit_const_b, max_arc);
 
   //Move the new points into the interf object
   for (int i = 0; i < (*interf).n_int; i++)
