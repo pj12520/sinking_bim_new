@@ -35,12 +35,13 @@ void Dimless_in(string file, dimless_in *input)
   //  read >> input->t_step; //Initial time step
   read >> input->init_height; //Initial height of sphere
   read >> input ->max_it; //Maximum number of iterations
+  read >> input ->aspect; //Apect ratio
   read.close();
 
 }
 
 //Function to output the state of the system
-void Out_sys(out_data data, double mdr, double bond, double viscos_rat)
+void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double aspect)
 {
   ofstream write;
 
@@ -67,15 +68,15 @@ void Out_sys(out_data data, double mdr, double bond, double viscos_rat)
     {
       if (i == 0)
 	{
-	  write << setw(20) << i << setw(20) << 0.0 << setw(20) << data.sphere_pos + 1.0 << endl;
+	  write << setw(20) << i << setw(20) << 0.0 << setw(20) << data.sphere_pos + aspect << endl;
 	}
       if (i == 99)
 	{
-	  write << setw(20) << i << setw(20) << 0.0 << setw(20) << data.sphere_pos - 1.0 << endl;
+	  write << setw(20) << i << setw(20) << 0.0 << setw(20) << data.sphere_pos - aspect << endl;
 	}
       else
 	{
-	  write << setw(20) << i << setw(20) << sin(PI * i / 100.0) << setw(20) << data.sphere_pos + cos(PI * i / 100.0) << endl;
+	  write << setw(20) << i << setw(20) << sin(PI * i / 100.0) << setw(20) << data.sphere_pos + aspect * cos(PI * i / 100.0) << endl;
 	}
     }
 

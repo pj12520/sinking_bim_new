@@ -5,11 +5,14 @@
 #include <iostream> //Inlcuded for the purposes of debugging only
 
 #include "geo.h"
+#include "const.h"
 
 using std::vector;
 
 using std::cout; //Using for the purposes of debugging only
 using std::endl; //Using for the purposes of debugging only
+
+using math_const::PI;
 
 void Iterate(double n_int, vector<double>* unknown, vector<double>* arc, vector<double>* rad, vector<double>* vert, double *height, double t_step)
 {
@@ -52,9 +55,12 @@ void Iterate(double n_int, vector<double>* unknown, vector<double>* arc, vector<
 }
 
 //Function to evaluate whether or not the sphere and interface have collided yet
-int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, double sphere_pos)
+int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, double sphere_pos, double aspect)
 {
   double separation;
+  double theta;
+  double thickness;
+
   int break_criteria = 0;
 
   double min_step = (*arc)[1] - (*arc)[0];
@@ -62,7 +68,17 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
   for (int i = 0; i < (*arc).size(); i++)
     {
       separation = Pythag((*rad)[i], (*vert)[i] - sphere_pos);
-      if (separation - 1.0 < min_step)
+
+      if (aspect == 1.0)
+	{
+	  thickness = 1.0;
+	}
+      else
+	{
+	  theta = PI - atan((*rad)[i] / ((*vert)[i] - sphere_pos));
+	  thickness = sqrt(sin(theta) * sin(theta) + aspect * aspect * cos(theta) * cos(theta));
+	}
+      if (separation - thickness < min_step)
 	{
 	  break_criteria = 1;
 	  cout << "Sphere and interface collide" << endl;

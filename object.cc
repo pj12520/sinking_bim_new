@@ -26,14 +26,14 @@ using std::setw; //used only for debugging purposes
 using namespace Gauss;
 
 //Function to fill the properties of the particle structure
-void Create_sphere(particle *sphere, double height, int n_int)
+void Create_sphere(particle *sphere, double height, int n_int, double aspect)
 {
   (*sphere).height = height;
   (*sphere).n_int = n_int;
-
+  (*sphere).aspect = aspect;
   Find_midpoints(&(*sphere).midpoints, 0.0, PI, n_int);
 
-  Create_sphere_int(&(*sphere).intervals, n_int, height);
+  Create_sphere_int(&(*sphere).intervals, n_int, height, aspect);
 }
 
 //Function to fill the properties of the surf structure
@@ -61,7 +61,7 @@ void Create_interf(surf *interf, int n_int, double max_arc)
     }
   Create_interf_int(&(*interf).intervals, n_int, max_arc);
 
-  (*interf).ent_vol - 0.0;
+  (*interf).ent_vol = 0.0;
 }
 
 //Function to find the midpoints in a set of n_int equally spaced intervals
@@ -76,7 +76,7 @@ void Find_midpoints(vector<double>* midpoints, double start, double end, int n_i
 }
 
 //Function to create the intervals that cover the surface of the sphere
-void Create_sphere_int(vector<sphere_int>* intervals, int n_int, double height)
+void Create_sphere_int(vector<sphere_int>* intervals, int n_int, double height, double aspect)
 {
   double half_width = PI / (2.0 * (n_int - 1)); //This is half the width of the intermediate intervals. 
 
@@ -92,7 +92,7 @@ void Create_sphere_int(vector<sphere_int>* intervals, int n_int, double height)
       for (int j = 0; j < 4; j++)
 	{
 	  (*intervals)[i].rad[j] = sin((*intervals)[i].theta[j]);
-	  (*intervals)[i].vert[j] = height + cos((*intervals)[i].theta[j]);
+	  (*intervals)[i].vert[j] = height + aspect * cos((*intervals)[i].theta[j]);
 	}
     }
 }
@@ -391,7 +391,7 @@ void Up_sphere(particle *sphere)
     {
       for (int j = 0; j < 4; j++)
 	{
-	  (*sphere).intervals[i].vert[j] = (*sphere).height + cos((*sphere).intervals[i].theta[j]);
+	  (*sphere).intervals[i].vert[j] = (*sphere).height + (*sphere).aspect * cos((*sphere).intervals[i].theta[j]);
 	}
     }
 }

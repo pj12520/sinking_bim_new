@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
   //Create sphere
   particle sphere;
   sphere.intervals.resize(input.n_sphere);
-  Create_sphere(&sphere, input.init_height, input.n_sphere);
+  Create_sphere(&sphere, input.init_height, input.n_sphere, input.aspect);
   
   //Create interface
   surf interf;
@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //Check the separation between the sphere and the interface isn't smaller than the distance between collocation points
-      int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height);
+      int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height, input.aspect);
 
       if (break_criteria == 1)
 	{
@@ -211,7 +211,7 @@ int main(int argc, char *argv[])
 	{
 	  out_it[i] = i;
 
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat);
+	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
 	}
 
     }
@@ -228,7 +228,7 @@ int main(int argc, char *argv[])
 
       for (int i = 0; i < out_it.size(); i++)
 	{
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat);
+	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
 	}
     }
   else
@@ -247,7 +247,7 @@ int main(int argc, char *argv[])
 
       for (int i = 0; i < out_it.size(); i++)
 	{
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat);
+	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
 	}
     }
 

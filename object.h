@@ -47,6 +47,7 @@ struct particle
   int n_int; //Number of intervals used to discretise surface of sphere
   vector<double> midpoints; //Values of theta that give the midpoints of the intervals
   vector<sphere_int> intervals; //Array of interval structures 
+  double aspect; //Aspect ratio
 };
 
 //Structure to contain interface properties
@@ -68,7 +69,7 @@ struct surf
 
 
 //Function to fill the properties of the particle structure
-void Create_sphere(particle *sphere, double height, int n_int);
+void Create_sphere(particle *sphere, double height, int n_int, double aspect);
 
 //Function to fill the properties of the surf structure
 void Create_interf(surf *interf, int n_int, double max_arc);
@@ -77,7 +78,7 @@ void Create_interf(surf *interf, int n_int, double max_arc);
 void Find_midpoints(vector<double>* midpoints, double start, double end, int n_int);
 
 //Function to create the intervals that cover the surface of the sphere
-void Create_sphere_int(vector<sphere_int>* intervals, int n_int, double height);
+void Create_sphere_int(vector<sphere_int>* intervals, int n_int, double height, double aspect);
 
 //Function to create the intervals that cover the interface
 void Create_interf_int(vector<interf_int>* intervals, int n_int, double max_arc);
