@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd interv_sweep
+cd new_param1
 
 for i in $(ls -d */); do
 
@@ -14,21 +14,13 @@ for i in $(ls -d */); do
 
 	    cd ${k}
 
-	    for l in $(ls -d */); do
+	    export INPUT=${HOME}/sinking_bim/trunk/new_param1/${i}/${j}/${k}/dimensionless_input.dat
 
-		cd ${l}
+	    export RUNDIR=${HOME}/sinking_bim/trunk/new_param1/${i}/${j}/${k}
 
-		export INPUT=${HOME}/sinking_bim/trunk/interv_sweep/${i}/${j}/${k}/${l}/dimensionless_input.dat
+	    qsub -V ../../../../param_sweep.sh
 
-		export RUNDIR=${HOME}/sinking_bim/trunk/interv_sweep/${i}/${j}/${k}/${l}
-
-		qsub -V ../../../../../param_sweep.sh
-
-		sleep 10
-
-		cd ..
-
-	    done
+	    sleep 10
 
 	    cd ..
 
@@ -39,5 +31,8 @@ for i in $(ls -d */); do
     done
 
     cd ..
-   
+
 done
+
+cd ..
+   

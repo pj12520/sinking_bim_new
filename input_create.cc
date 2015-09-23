@@ -46,7 +46,7 @@ int main()
   double trunc = 15.0;
   //  double t_step = 0.01;
   double height = 3.0;
-  int max_it = 60000;
+  int max_it = 600000;
 
   //Create output directories 
 
@@ -60,7 +60,7 @@ int main()
 
   const char* up = "../";
 
-  const char* data = "new_data/";
+  const char* data = "new_param1/";
 
   chdir(data);
 
