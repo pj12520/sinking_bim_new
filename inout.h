@@ -30,6 +30,7 @@ struct dimless_in
 struct out_data
 {
   int it; //Iteration
+  double time; //Time
   double sphere_pos; //Position of centre of sphere
   vector<double> interf_rad; //Radial coordinates of points on interface
   vector<double> interf_vert; //Vertical coordinates of points on interface
