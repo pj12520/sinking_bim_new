@@ -76,6 +76,8 @@
 \def\ddashint{\Xint=}
 \def\dashint{\Xint-}
 
+\newcommand\Rey{\mbox{\textit{Re}}}  % Reynolds number
+
 \begin{document}
 \thispagestyle{empty}
 
@@ -188,7 +190,7 @@ and
 \rho(\boldsymbol{x},t) \left( \frac{\partial u_{i}(\boldsymbol{x},t)}{\partial t} + [u_{j}(\boldsymbol{x},t) \partial_{j}] u_{i}(\boldsymbol{x},t) \right) = - \partial_{i} P(\boldsymbol{x},t) - \rho(\boldsymbol{x},t) g + \eta \left(\partial_{j} \partial_{j} u_{i}(\boldsymbol{x},t) + \frac{\partial_{i} (\partial_{j} u_{j}(\boldsymbol{x},t))}{3} \right) ,
 \end{align} 
 
-Forming a coupled set of non-linear, partial differential equations for the velocity and pressure fields as functions of space $\boldsymbol{x}$ and time $t$, these represent mass and momentum conservation respectively and must be satisfied by all fluid phases within the system. For most practical applications, the fluids are assumed to be incompressible (have constant density) and so the continuity equation reduces to the incompressibility relation;
+Forming a coupled set of non-linear, partial differential equations for the velocity and pressure fields as functions of space $\boldsymbol{x}$ and time $t$, these represent mass and momentum conservation respectively and must be satisfied by all Newtonian fluid phases within the system. For most practical applications, the fluids are assumed to be incompressible (have constant density) and so the continuity equation reduces to the incompressibility relation;
 
 \begin{equation}
 \label{equ:incom}
@@ -206,7 +208,7 @@ The equations of motion can be expressed in an alternative form by defining the 
 
 \begin{equation}
 \label{equ:stress}
-T_{ij}(\boldsymbol{x},t) = -P_{\text{d}}(\boldsymbol{x},t)  \delta_{ij} + \eta(\partial_{i} u_{j}(\boldsymbol{x},t) + \partial_{j} u_{i}(\boldsymbol{x},t)), 
+T_{ij}(\boldsymbol{x},t) = -P_{\text{d}}(\boldsymbol{x},t)  \delta_{ij} + \eta[\partial_{i} u_{j}(\boldsymbol{x},t) + \partial_{j} u_{i}(\boldsymbol{x},t)], 
 \end{equation}
 
 \begin{equation}
@@ -237,10 +239,10 @@ and
 
 \begin{equation}
 \label{equ:nodim_t}
-t = \frac{L_{\text{c}} t'}{U_{\text{c}}}
+t = \frac{L_{\text{c}} t'}{U_{\text{c}}}.
 \end{equation}
 
-In the case of highly viscous flows the relevant scaling for the dynamic pressure uses a characteristic viscosity $\eta_{\text{c}}$ and is given by\citet{Lee82}
+In the case of highly viscous flows the relevant scaling for the dynamic pressure uses a characteristic viscosity $\eta_{\text{c}}$ and is given by \citep{Lee82}
 
 \begin{equation}
 \label{equ:nodim_p_highRE}
@@ -265,24 +267,31 @@ and
 
 \begin{equation}
 \label{equ:NS_low_Reynolds}
-\text{Re} \left(\frac{\partial u'_{i}(\boldsymbol{x'},t')}{\partial t'} + (u'_{j}(\boldsymbol{x'},t') \partial'_{j}) u'_{i}(\boldsymbol{x'},t') \right) = \partial'_{j} T'_{ij}(\boldsymbol{x'},t') ,
+\Rey \left(\frac{\partial u'_{i}(\boldsymbol{x'},t')}{\partial t'} + (u'_{j}(\boldsymbol{x'},t') \partial'_{j}) u'_{i}(\boldsymbol{x'},t') \right) = \partial'_{j} T'_{ij}(\boldsymbol{x'},t') ,
 \end{equation}
 
-where the Reynolds number is defined as
+where the Reynolds number $\Rey$ is defined as
 
 \begin{equation}
 \label{equ:Reynolds}
-\text{Re} = \frac{\rho L_{\text{c}} U_{\text{c}}}{\eta_{\text{c}}}
+\Rey = \frac{\rho L_{\text{c}} U_{\text{c}}}{\eta_{\text{c}}}
 \end{equation}
 
 As we are considering the case of low Reynolds number ($\text{Re} \ll 1$), we can neglect the inertial terms on the right hand side and the equation reduces to the Stokes equation \citep{Batchelor67, Kim05}
 
 \begin{equation}
 \label{equ:Stokes}
-\partial'_{i} T'_{ij}(\boldsymbol{x'},t') = 0 .
+\partial'_{i} T'_{ij}(\boldsymbol{x'}) = 0 .
 \end{equation}
 
+Note that the explicit time dependence has now vanished from the Stokes equations. However it is still valid to use the equations for time dependent flows by making use of the quasi-static assumption which requires that
 
+\begin{equation}
+\label{equ:quasi_stat}
+\frac{L_{\text{c}}^{2} \rho}{\eta_{\text{C}}} \ll \tau
+\end{equation}
+
+where $\tau$ is a typical timescale for a change in flow geometry.
 \subsection{Boundary Conditions}
 \label{subsec:BC}
 
