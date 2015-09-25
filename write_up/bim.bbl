@@ -1,4 +1,4 @@
-\begin{thebibliography}{22}
+\begin{thebibliography}{23}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,6 +14,11 @@ Milton Abramowitz and Irene~A. Stegun.
 G.~K. Batchelor.
 \newblock \emph{An {I}ntroduction to {F}luid {D}ynamics}.
 \newblock Cambridge {U}niversity {P}ress, first edition, 1967.
+
+\bibitem[Boas(1983)]{Boas83}
+M.~L. Boas.
+\newblock \emph{Mathematical methods in the physical sciences}.
+\newblock Wiley, second edition, 1983.
 
 \bibitem[Brackbill et~al.(1992)Brackbill, Kothe, and Zemach]{Brackbill92}
 J.U. Brackbill, D.B. Kothe, and C.~Zemach.

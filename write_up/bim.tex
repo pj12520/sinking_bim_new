@@ -41,6 +41,7 @@
 \renewcommand{\headrulewidth}{0.2pt}
 \renewcommand{\footrulewidth}{0.2pt}
 
+\newcommand\Rey{\mbox{\textit{Re}}}  % Reynolds number
 \newcommand\Bo{\mbox{\textit{Bo}}}  % Bond number
 \newcommand\Ca{\mbox{\textit{Ca}}} %Capillary number
 
@@ -76,7 +77,6 @@
 \def\ddashint{\Xint=}
 \def\dashint{\Xint-}
 
-\newcommand\Rey{\mbox{\textit{Re}}}  % Reynolds number
 
 \begin{document}
 \thispagestyle{empty}
@@ -284,14 +284,15 @@ As we are considering the case of low Reynolds number ($\text{Re} \ll 1$), we ca
 \partial'_{i} T'_{ij}(\boldsymbol{x'}) = 0 .
 \end{equation}
 
-Note that the explicit time dependence has now vanished from the Stokes equations. However it is still valid to use the equations for time dependent flows by making use of the quasi-static assumption which requires that
+Note that the explicit time dependence has now vanished from the Stokes equations. However, it is still valid to use the equations for time dependent flows where the boundary conditions change with time, if the quasi-static assumption is satisfied;
 
 \begin{equation}
 \label{equ:quasi_stat}
 \frac{L_{\text{c}}^{2} \rho}{\eta_{\text{C}}} \ll \tau
 \end{equation}
 
-where $\tau$ is a typical timescale for a change in flow geometry.
+where $\tau$ is a typical timescale for a change in flow geometry. Physically, this means that the velocity and stress fields of the fluid instantaneously respond to changes in the boundary conditions \citep{Manga94}.
+
 \subsection{Boundary Conditions}
 \label{subsec:BC}
 
@@ -300,7 +301,7 @@ In order to complete the formulation of any fluid dynamics problem, it is necess
 \subsubsection{Fluid-Solid Boundary}
 \label{subsubsec:BC_fluid-solid}
 
-At low Reynolds number for a fluid-solid boundary defined the surface $\mathcal{S}$ (see figure~\ref{fig:fluid-solid_boundary}), the kinematic boundary condition is one of no-slip; the fluid velocity at the boundary is the same as that of the solid $U'_{\text{s},i}$. This is easily expressed in dimensionless form as
+At low Reynolds number, for a fluid-solid boundary defined the surface $\mathcal{S}$ (see figure~\ref{fig:fluid-solid_boundary}), the kinematic boundary condition is one of no-slip; the fluid velocity at the boundary is the same as that of the solid $U'_{\text{s},i}$. This is easily expressed in dimensionless form as
 
 \begin{equation}
 \label{equ:lowRE_fluid-solid}
@@ -326,12 +327,12 @@ where $m_{i}(\boldsymbol{x'})$ is the normal vector to $\mathcal{S}$ directed in
 \eta_{\text{c}} U_{\text{c}} L_{\text{c}} \int_{\mathcal{S}} f_{i}(\boldsymbol{x'}) \mathrm{d} \mathcal{S'} = F_{i} ,
 \end{equation}
 
-where we have defined $f_{i}(\boldsymbol{x'})$ as the dimensionless traction vector defined on the surface $\mathcal{S}$, $m_{i}(\boldsymbol{x'}) T'_{ij}(\boldsymbol{x'})$.
+where $f_{i}(\boldsymbol{x'}) =m_{i}(\boldsymbol{x'}) T'_{ij}(\boldsymbol{x'})$, is defined as the dimensionless traction vector defined on the surface $\mathcal{S}$, .
 
 \subsubsection{Fluid-Fluid Boundary}
 \label{subsubsec:BC_fluid-fluid}
 
-For a boundary $\mathcal{I}$ between two fluids labelled 1 and 2 (figure~\ref{fig:fluid-fluid_boundary}), the kinematic boundary condition states that the velocity of the two fluids must be continuous across the interface \citep{Kim05}. Defining the velocity is fluid $l$ as $u_{l}$ this can be expressed in dimensionless form as
+For a boundary $\mathcal{I}$ between two fluids labelled 1 and 2 (figure~\ref{fig:fluid-fluid_boundary}), the kinematic boundary condition states that the velocity of the two fluids must be continuous across the interface \citep{Kim05}. Defining the velocity of fluid $l$ as $u_{l}$ this can be expressed in dimensionless form as
 
 \begin{equation}
 \label{equ:fluid_fluid_kin}
@@ -343,12 +344,13 @@ $$\includegraphics[width=80mm]{fluid_fluid.eps}$$
 \caption{Fluid-fluid boundary $\mathcal{I}$ with normal vector $\boldsymbol{n}$. \label{fig:fluid-fluid_boundary}}
 \end{figure}
 
-The dynamic boundary condition is an expression of the balance between the stress discontinuity across the interface and the interfacial tension (IFT) $\sigma$ \citep{Batchelor67}. With out definition of the stress tensor this is given as \citep{Manga94}:
+The dynamic boundary condition is an expression of the balance between the stress discontinuity across the interface and the interfacial tension (IFT) $\sigma$ \citep{Batchelor67}. With our definition of the stress tensor this is given as \citep{Manga94}:
 
-\begin{equation}
+\begin{align}
 \label{equ:fluid_fluid_dyn}
-n_{i}(\boldsymbol{x}) [T_{1,ij}(\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i}(\boldsymbol{x}) [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \sigma(\boldsymbol{x}) n_{j}(\boldsymbol{x}) [\partial_{\text{s},i} n_{i}(\boldsymbol{x})] - \partial_{\text{s},j} \sigma (\boldsymbol{x}) , \quad \text{when } \boldsymbol{x} \in \mathcal{I} .
-\end{equation}
+n_{i}(\boldsymbol{x}) [T_{1,ij}(\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i}(\boldsymbol{x}) [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \\ \nonumber
+\sigma(\boldsymbol{x}) n_{j}(\boldsymbol{x}) [\partial_{\text{s},i} n_{i}(\boldsymbol{x})] - \partial_{\text{s},j} \sigma (\boldsymbol{x}) , \quad \text{when } \boldsymbol{x} \in \mathcal{I} .
+\end{align}
 
 The operator $\partial_{\text{s},i}$ is defined as the tangential gradient operator within the surface $\mathcal{I}$:
 
@@ -366,28 +368,31 @@ When this takes the normal vector as its argument it can be shown that \citep{Br
 
 The presence of spatial gradients in the interfacial tension can lead to so-called Marangoni effects \citep{Thomson1855, Gibbs1878}. However, for our purposes we will assume that the interfacial tension is uniform across the interface $\mathcal{I}$ and so the last term on the right hand side vanishes;
 
-\begin{equation}
+\begin{align}
 \label{equ:fluid_fluid_dyn_nograd}
-n_{i}(\boldsymbol{x}) [{T}_{1,ij} (\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i} [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \sigma(\boldsymbol{x}) n_{i}(\boldsymbol{x}) \partial_{i} n_{j}(\boldsymbol{x}),  \quad \text{when }\boldsymbol{x} \in \mathcal{I}.
-\end{equation}
+n_{i}(\boldsymbol{x}) [{T}_{1,ij} (\boldsymbol{x}) - \rho_{1} g_{k} x_{k} \delta_{ij}] - n_{i} [T_{2,ij}(\boldsymbol{x}) - \rho_{2} g_{k} x_{k} \delta_{ij}] = \\ \nonumber
+\sigma(\boldsymbol{x}) n_{i}(\boldsymbol{x}) \partial_{i} n_{j}(\boldsymbol{x}),  \quad \text{when }\boldsymbol{x} \in \mathcal{I}.
+\end{align}
 
 Like the equations of motion, this can be non-dimensionalised using equations~\ref{equ:nodim_l} to~\ref{equ:nodim_T}:
 
 \begin{equation}
 \label{equ:nodim_fluid_fluid_dyn}
-\text{Ca } n_{i}(\boldsymbol{x'}) [T'_{1,ij}(\boldsymbol{x'}) - T'_{2,ij}(\boldsymbol{x'})] + \text{Bo}(\hat{z}_{i} x'_{i}) n_{j}(\boldsymbol{x'}) = n_{j}(\boldsymbol{x'}) \partial'_{i} n_{i}(\boldsymbol{x'}) .
+n_{i}(\boldsymbol{x'}) [T'_{1,ij}(\boldsymbol{x'}) - T'_{2,ij}(\boldsymbol{x'})] \Ca + \Bo (\hat{z}_{i} x'_{i}) n_{j}(\boldsymbol{x'}) = n_{j}(\boldsymbol{x'}) \partial'_{i} n_{i}(\boldsymbol{x'}) .
 \end{equation}
 
-The capillary number $\text{Ca}$ and  Bond number $\text{Bo}$ are dimensionless numbers defined as:
+The capillary number $\Ca$ and  Bond number $\Bo$ are dimensionless numbers defined as:
 
 \begin{equation}
 \label{equ:cap}
-\text{Ca} = \frac{\eta_{\text{c}} U_{\text{c}}}{\sigma}
+\Ca = \frac{\eta_{\text{c}} U_{\text{c}}}{\sigma},
 \end{equation}
+
+and
 
 \begin{equation}
 \label{equ:Bond}
-\text{Bo} = \frac{(\rho_{2} - \rho_{1}) g L_{\text{c}}^{2}}{\sigma}
+\Bo = \frac{(\rho_{2} - \rho_{1}) g L_{\text{c}}^{2}}{\sigma}.
 \end{equation}
 
 \subsection{Greens functions}
@@ -407,7 +412,7 @@ and
 \partial'_{i} \hat{T}_{ij}(\boldsymbol{x'} - \boldsymbol{y'}) + \mathcal{F}_{j} \delta(\boldsymbol{x'} - \boldsymbol{y'}) = 0 , 
 \end{equation}
 
-where $\mathcal{F}_{i}$ is a arbitrary constant vector. Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved following \citet{Ladyzhenskaya63}, using Fourier transforms (appendix~\ref{app:Greens}) to show that
+where $\mathcal{F}_{i}$ is a arbitrary constant vector, $\delta(\boldsymbol{x'} - \boldsymbol{y'})$ is the Dirac delta-function (appendix~\ref{app:delta}) and both $\hat{u}_{i}(\boldsymbol{x'})$ and $\hat{T}_{ij}(\boldsymbol{x'}) \to 0$ as $|\boldsymbol{x'}| \to \infty$. Equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def} can be solved following \citet{Ladyzhenskaya63} to show that (see appendix~\ref{app:Greens}) \citep{Kim05}
 
 \begin{equation}
 \label{equ:vel_green}
@@ -440,14 +445,14 @@ We have defined $\xi = \xi_{i} \xi_{i}$.
 \subsection{Integral Representation of Stokes Equations}
 \label{subsec:int_rep}
 
-We now substitute the Greens functions and unknown velocity and stress field solutions into the Lorentz Reciprocal Theorem (equation~\ref{equ:LRT} in appendix~\ref{app:Lorentz}) and simplfify using equations~\ref{equ:stokes} and~\ref{equ:stress_green_def} to find
+We now substitute the Greens functions and unknown velocity and stress field solutions into the Lorentz Reciprocal Theorem (equation~\ref{equ:LRT} in appendix~\ref{app:Lorentz}) and simplfify using equations~\ref{equ:Stokes} and~\ref{equ:stress_green_def} to find
 
 \begin{equation}
 \label{equ:gen_int_rep}
 \dashint_{\mathcal{V}} u'_{k}(\boldsymbol{x'}) \delta(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \frac{1}{\Lambda} \dashint_{\mathcal{S}} J_{ik}(\boldsymbol{\xi}) T'_{ij}(\boldsymbol{x'}) n_{j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{S}} u'_{i}(\boldsymbol{x'}) K_{ijk}(\boldsymbol{\xi}) n_{j}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} .
 \end{equation}
 
-Finally make the transformation $\boldsymbol{x'} \leftrightarrow \boldsymbol{y'}$ and use the symmetry properties of the kernels (equations~\ref{equ:j_sym} and~\ref{equ:k_sym} in appendix~\ref{app:Greens}) and the delta function (equation~\ref{equ:delta_sym} in appendix~\ref{app:delta}) to obtain the general form of the integral representation of the Stokes equations;
+Here the integrals are defined in the sense of the Cauchy Principle Value (CPV) to account for the possibility that the kernels $J_{ij}$ and $K_{ijk}$ have singular points in the range of integration. Finally make the transformation $\boldsymbol{x'} \leftrightarrow \boldsymbol{y'}$ and use the symmetry properties of the kernels (equations~\ref{equ:j_sym} and~\ref{equ:k_sym} in appendix~\ref{app:Greens}) and the delta function (equation~\ref{equ:delta_sym} in appendix~\ref{app:delta}) to obtain the general form of the integral representation of the Stokes equations;
 
 \begin{equation}
 \label{equ:Stokes_int}
@@ -474,29 +479,29 @@ Using the definition of the delta function (equation~\ref{equ:dirac} in appendix
 \subsection{Problem Statement}
 \label{subsec:theory}
 
-We are interested in the low Reynolds number gravitational settling of a sphere towards a fluid-fluid interface (figure~\ref{fig:params}). We denote the upper(lower) phase as fluid 1(2). The physical parameters motivate the choice of scaling variables. The characteristic lengthscale is chosen to be the sphere radius $a$, characteristic viscosity that of the upper fluid $\eta_{1}$, and characteristic velocity to be the terminal velocity of the sphere in the upper fluid\citep{Reynolds1886};
+We are interested in the low Reynolds number, on-axis gravitational settling of a spheroid towards a fluid-fluid interface (figure~\ref{fig:params}). We denote the upper(lower) phase as fluid 1(2). The physical parameters motivate the choice of scaling variables. The characteristic lengthscale is chosen to be the horizontal minor axis $a$, characteristic viscosity that of the upper fluid $\eta_{1}$, and characteristic velocity to be the terminal velocity of a sphere of radius $a$ in the upper fluid\citep{Reynolds1886};
 
 \begin{equation}
 \label{equ:char_vel}
 U_{\text{c}} = \frac{2 (\rho_{\text{s}} - \rho_{1}) g a^{2}}{9 \eta_{1}} ,
 \end{equation}
 
-where $\rho_{1}$ is the density of fluid 1, $\rho_{\text{s}}$ the sphere density, and $g = 9.81$ m s$^{-1}$ the acceleration due to gravity. Defining $\rho_{2}$ as the density of fluid 2 and $\sigma$ as the IFT, this means the capillary and Bond numbers can be expressed as:
+where $\rho_{1}$ is the density of fluid 1, $\rho_{\text{s}}$ the spheroid density, and $g = 9.81$ m s$^{-1}$ the acceleration due to gravity. Defining $\rho_{2}$ as the density of fluid 2 and $\sigma$ as the IFT, this means the capillary and Bond numbers can be expressed as:
 
 \begin{equation}
 \label{equ:cap_spec}
-\text{Ca} = \frac{(\rho_{\text{s}} - \rho_{1}) g a^{2}}{\sigma},
+\Ca = \frac{(\rho_{\text{s}} - \rho_{1}) g a^{2}}{\sigma},
 \end{equation}
 
 \begin{equation}
 \label{equ:bond_spec}
-\text{Bo} = \frac{(\rho_{2} - \rho_{1}) g a^{2}}{\sigma}.
+\Bo = \frac{(\rho_{2} - \rho_{1}) g a^{2}}{\sigma}.
 \end{equation}
 
 
   \begin{figure}
     $$\includegraphics[width=0.8\textwidth]{formulation.eps}$$
-    \caption{Diagrammatic representation of the system. A sphere falls under gravity, at low Reynolds number, towards an initially horizontal interface between two density stratified, immiscible semi-infinite fluids. See table~\ref{tab:symbols} for definition of symbols. \label{fig:params}}
+    \caption{Diagrammatic representation of the system. A spheroid falls on-axis under gravity, at low Reynolds number, towards an initially horizontal interface between two density stratified, immiscible, semi-infinite fluids. \label{fig:params}}
   \end{figure}
 
 
@@ -518,7 +523,7 @@ where $P'_{\text{d},l}$ and $u'_{l,i}$ are the dimensionless dynamic pressure an
     \end{array} \right.\ .
 \end{equation}
 
-where $\eta_{2}$ is the dynamic viscosity of the lower phase. Note $\lambda$ is the viscosity ratio of the two fluids. Additionally $\mathcal{V}_{1(2)}$ dentotes the volume of fluid 1(2), $\mathcal{I}$ the interface and $\mathcal{S}$ the sphere surface. $\boldsymbol{m}$ and $\boldsymbol{n}$ are the normal vectors to the sphere surface and interface respectively and both are directed into fluid 1. We use cylindrical polar coordinates to describe the system with $r$ the radial coordinate with respect to the symmetry axis, $\phi$ the azimuthal coordinate, and $z$ the vertical coordinate with respect to the plane of the initial, undeformed interface. Additionally we make use of the polar angle $\theta$ defined with respect to the centre of the sphere and the arc-length $s$ defined as the distance along the interface from the symmetry axis in any azimuthal plane.
+where $\eta_{2}$ is the dynamic viscosity of the lower phase. Note $\lambda$ is the viscosity ratio of the two fluids. Additionally $\mathcal{V}_{1(2)}$ dentotes the volume of fluid 1(2), $\mathcal{I}$ the interface and $\mathcal{S}$ the spheroid surface. $\boldsymbol{m}$ and $\boldsymbol{n}$ are the normal vectors to the spheroid surface and interface respectively and both are directed into fluid 1. We use cylindrical polar coordinates to describe the system with $r$ the radial coordinate with respect to the symmetry axis, $\phi$ the azimuthal coordinate, and $z$ the vertical coordinate with respect to the plane of the initial, undeformed interface. Additionally we make use of the polar angle $\theta$ defined with respect to the centre of the spheroid and the arc-length $s$ defined as the distance along the interface from the symmetry axis in any azimuthal plane.
 
 It is straightforward to apply the general equations of motion and boundary conditions to the problem. The equations of motion, which must be satsified in both fluid domains, appear as 
 
@@ -530,7 +535,7 @@ It is straightforward to apply the general equations of motion and boundary cond
 and 
 
 \begin{equation}
-\label{equ:stokes}
+\label{equ:prob_stokes}
 \partial_{\text{i}}' T_{l,ij}'(\boldsymbol{x'}) = 0.
 \end{equation}
 
@@ -552,50 +557,50 @@ The dynamic boundary condition is also imposed at the interface;
 
 \begin{equation}
 \label{equ:BC_dyn_int}
-\text{Ca } n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2,ij}'(\boldsymbol{x'})] + \text{Bo} \hat{z}_{i} x_{i}' n_{j}(\boldsymbol{x'}) = n_{j}(\boldsymbol{x'}) \partial_{i}' n_{i}(\boldsymbol{x'}), \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
+n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2,ij}'(\boldsymbol{x'})] \Ca + \hat{z}_{i} x_{i}' n_{j}(\boldsymbol{x'}) \Bo = n_{j}(\boldsymbol{x'}) \partial_{i}' n_{i}(\boldsymbol{x'}), \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
 \end{equation}
 
 However we can define the modified density ratio (MDR) D as
 
 \begin{equation}
 \label{equ:dim_dens_rat}
-D = \frac{\text{Ca}}{\text{Bo}} = \frac{\rho_{\text{s}} - \rho_{1}}{\rho_{2} - \rho_{1}}.
+D = \frac{\Ca}{\Bo} = \frac{\rho_{\text{s}} - \rho_{1}}{\rho_{2} - \rho_{1}}.
 \end{equation}
 
 This means equation~\ref{equ:BC_dyn_int} can be re-expressed as
 
 \begin{equation}
 \label{equ:d_int}
-D \text{Bo } n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2, ij}'(\boldsymbol{x'})] = n_{j}(\boldsymbol{x'})(\partial_{i}' n_{i}(\boldsymbol{x'}) - \text{Bo} \hat{z}_{i} x_{i}'), \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
+n_{i}(\boldsymbol{x'}) [T_{1, ij}'(\boldsymbol{x'}) - T_{2, ij}'(\boldsymbol{x'})] D \Bo = n_{j}(\boldsymbol{x'})(\partial_{i}' n_{i}(\boldsymbol{x'}) - \hat{z}_{i} x_{i}' \Bo , \quad \text{when } \boldsymbol{x'} \in \mathcal{I}.
 \end{equation}
 
-The kinematic boundary condition on the sphere surface is 
+The kinematic boundary condition on the spheroid surface is 
 
 \begin{equation}
 \label{equ:BC_kin_spere}
 u_{1,i}'(\boldsymbol{x'}) = U_{\text{s},i}', \quad \boldsymbol{x'} \in \mathcal{S}.
 \end{equation}
 
-where $U_{\text{s},i}$ is the velocity of the sphere. The final boundary condition is the dynamic boundary condition on the sphere. The force on the fluid due to the sphere originates from the balance between gravity and buoyancy;
+where $U_{\text{s},i}$ is the velocity of the spheroid. The final boundary condition is the dynamic boundary condition on the spheroid. The force on the fluid due to the spheroid originates from the balance between gravity and buoyancy;
 
 \begin{equation}
 \label{equ:sphere_force}
-F_{i} = \frac{4 \pi a^{3} (\rho_{\text{s}} - \rho_{1}) g \hat{z}_{i}}{3}.
+F_{i} = -\frac{4 \pi a^{2} b (\rho_{\text{s}} - \rho_{1}) g \hat{z}_{i}}{3},
 \end{equation}
 
-Substituting this into equation~\ref{equ:nodim_fluid_solid} and using equation~\ref{equ:char_vel} we obtain
+where b is the vertical minor axis. Substituting this into equation~\ref{equ:nodim_fluid_solid} and using equation~\ref{equ:char_vel} we obtain
 
 \begin{equation}
 \label{equ:BC_dyn_sphere}
-\int_{\mathcal{S}} f_{i}(\boldsymbol{x'}) \mathrm{d} \mathcal{S}' = 6 \pi \hat{z}_{i} \quad \text{when } \boldsymbol{x'} \in \mathcal{S}.
+\int_{\mathcal{S}} f_{i}(\boldsymbol{x'}) \mathrm{d} \mathcal{S}' = -6 \pi \hat{z}_{i} \quad \text{when } \boldsymbol{x'} \in \mathcal{S}.
 \end{equation}
 
-The dimensionless numbers that describe the system are the set $\{\lambda, D, \text{Bo}\}$.
+Defining the aspect ratio of the spheroid $R = b / a$, the dimensionless numbers that describe the system are the set $\{\lambda, D, \Bo, R\}$.
 
 \subsection{Integral Representation}
 \label{subsec:prob_int_rep}
 
-To recast the problem in an integral representation, we need to apply equation~\ref{equ:Stokes_int_domain} to each fluid separately. The domain of fluid 1 is bound by the sphere surface and interface, and extends to infinity as $r, z \to \infty$. The boundary condition at infinity (equation~\ref{equ:BC_inf}) ensures that the contribution to the surface integrals in equation~\ref{equ:Stokes_int_domain} vanishes meaning that just the sphere surface and interface contribute. Additionally the no-slip boundary condition on the sphere surface (equation~\ref{equ:BC_kin_spere}), the divergence theorem (appendix~\ref{app:div_theory}) and the definition of the Greens function for pressure (equation~\ref{equ:stress_green_def}) can be used to show that the integral of $u'_{1,i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi} m_{j}(\boldsymbol{y'})$ over the sphere surface vanishes. Hence the boundary integral equation for fluid 1 can be written as 
+To recast the problem in an integral representation, we need to apply equation~\ref{equ:Stokes_int_domain} to each fluid separately. The domain of fluid 1 is bound by the spheroid surface and interface, and extends to infinity as $r, z \to \infty$. The boundary condition at infinity (equation~\ref{equ:BC_inf}) ensures that the contribution to the surface integrals in equation~\ref{equ:Stokes_int_domain} vanishes meaning that just the spheroid surface and interface contribute. Additionally the no-slip boundary condition on the spheroid surface (equation~\ref{equ:BC_kin_spere}), the divergence theorem (appendix~\ref{app:div_theory}) and the definition of the Greens function for pressure (equation~\ref{equ:stress_green_def}) can be used to show that the integral of $u'_{1,i}(\boldsymbol{y'}) K_{ijk}(\boldsymbol{\xi} m_{j}(\boldsymbol{y'})$ over the spheroid surface vanishes. Hence the boundary integral equation for fluid 1 can be written as 
 
 
 \begin{align}
@@ -610,7 +615,7 @@ To recast the problem in an integral representation, we need to apply equation~\
 \right.\ .
 \end{align}
 
-For fluid 2, the contribution to the surface integrals at infinity again vanishes leaving just a contribution from the interface. Using the kinemtic boundary condition at the interface (equation~\ref{equ:BC_kin_int_nodim}) the boundary integrap equation for fluid 2 can be written as (the minus sign occurs since the normal vector is directed out of fluid 2);
+For fluid 2, the contribution to the surface integrals at infinity again vanishes leaving just a contribution from the interface. Using the kinemtic boundary condition at the interface (equation~\ref{equ:BC_kin_int_nodim}) the boundary integral equation for fluid 2 can be written as (the minus sign occurs since the normal vector is directed out of fluid 2);
 
 \begin{equation}
 \label{equ:bie_fluid2}
@@ -636,24 +641,24 @@ This together with equation~\ref{equ:BC_dyn_sphere} completely describes the sys
 \subsection{Axisymmetric Simplification}
 \label{subsec:axi_sym}
 
-We can exploit the axial symmetry of the system to chose the point $\boldsymbol{x'}$ such that it lies in the plane defined by $\phi = 0$. Hence in Cartesian coordinates $\boldsymbol{x'} = (x_{r}, 0, x_{z})$. This also means we can write $\boldsymbol{y'} = (y_{r} \cos \phi, y_{r} \sin \phi, y_{z})$. On the surface of the sphere $y_{r} = y_{r}(\theta)$ and $y_{z} = y_{z}(\theta)$, and on the interface $y_{r(z)} = y_{r(z)}(s)$. Additionally $\boldsymbol{f}_{} = [f_{r}(\theta) \cos \phi, f_{r}(\theta) \sin \phi, f_{z}(\theta)]$ and $\boldsymbol{n} = [n_{r}(s) \cos\phi, n_{r}(s) \sin\phi, n_{z}(s)]$. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals in equations~\ref{equ:I1} and~\ref{equ:BC_dyn_sphere}. To achieve this, the Cartesian components of each equation are considered separately. For equation~\ref{equ:I1}, it can be shown that both the left and right hand sides of the 2-component equation are identically zero. For equation~\ref{equ:BC_dyn_sphere} this is true for the 1- and 2-components. To show this, $J_{ij}$ and $K_{ijk}$ are first expanded in terms of in terms of the components of $\boldsymbol{x'}$ and $\boldsymbol{y'}$ before the integration over $phi$ is carried out. This leaves three integral equations which can be expressed as
+We can exploit the axial symmetry of the system to chose the point $\boldsymbol{x'}$ such that it lies in the plane defined by $\phi = 0$. Hence in Cartesian coordinates $\boldsymbol{x'} = (x_{r}, 0, x_{z})$. This also means we can write $\boldsymbol{y'} = (y_{r} \cos \phi, y_{r} \sin \phi, y_{z})$. On the surface of the spheroid $y_{r} = y_{r}(\theta)$ and $y_{z} = y_{z}(\theta)$, and on the interface $y_{r} = y_{r}(s)$ and $y_{z} = y_{z}(s)$. Additionally $\boldsymbol{f}_{} = [f_{r}(\theta) \cos \phi, f_{r}(\theta) \sin \phi, f_{z}(\theta)]$ and $\boldsymbol{n} = [n_{r}(s) \cos\phi, n_{r}(s) \sin\phi, n_{z}(s)]$. Since the system is axisymmetric, it is useful to extract the azimuthal integration from the surface integrals in equations~\ref{equ:BC_dyn_sphere} and~\ref{equ:I1}. To achieve this, the Cartesian components of each equation are considered separately. For equation~\ref{equ:I1}, it can be shown that both the left and right hand sides of the 2-component equation are identically zero. For equation~\ref{equ:BC_dyn_sphere} this is true for the 1- and 2-components. To show this, $J_{ij}$ and $K_{ijk}$ are first expanded in terms of in terms of the components of $\boldsymbol{x'}$ and $\boldsymbol{y'}$ before the integration over $/phi$ is carried out. This leaves three integral equations which can be expressed as
 
 \begin{align}
 \label{equ:cont_ie_1}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) \Psi_{\beta}(s) \mathrm{d}s \nonumber \\
+R \int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} \left(A_{\alpha\beta}(\boldsymbol{x'},s) y_{r}(s) - \frac{(1 + \lambda)\delta_{\alpha\beta} \delta(s - s_{0})}{2}\right) \Psi_{\beta}(s) \mathrm{d}s \nonumber \\
 = - \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{I},
 \end{align}
 
 \begin{equation}
 \label{equ:cont_ie_2}
-\int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) \Psi_{\beta}(s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
+R \int_{\theta = 0}^{\pi} B_{\alpha\beta}(\boldsymbol{x'},\theta) \Phi_{\beta}(\theta) \mathrm{d}\theta + \int_{s = 0}^{\infty} A_{\alpha\beta}(\boldsymbol{x'},s) \Psi_{\beta}(s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = \int_{s = 0}^{\infty} C_{\alpha}(\boldsymbol{x'},s) y_{r}(s) \mathrm{d}s, \quad \text{when } \boldsymbol{x'} \in \mathcal{S}, 
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:cont_ie_3}
-\int_{\theta = 0}^{\pi} \Phi_{2}(\theta) \mathrm{d}\theta = 3, 
+\int_{\theta = 0}^{\pi} \Phi_{2}(\theta) \mathrm{d}\theta = -3, 
 \end{equation}
 
 where the quantities $\boldsymbol{A}$, $\boldsymbol{B}$, $\boldsymbol{C}$, $\boldsymbol{\Psi}$, $\boldsymbol{\Phi}$ and $\boldsymbol{\Theta}$ are defined as:
@@ -708,9 +713,9 @@ u'_{1,z}(s) \\
 \setlength{\arraycolsep}{5pt}
 \renewcommand{\arraystretch}{1.3}
 \boldsymbol{\Phi} = \left( \begin{matrix}
-f_{\text{s},r}(\theta) \sin\theta \\[-5pt]
-f_{\text{s},z}(\theta) \sin\theta \\
-\end{matrix} \right)  ,
+f_{\text{s},r}(\theta) \\[-5pt]
+f_{\text{s},z}(\theta) \\
+\end{matrix} \right) \sin^{2}\theta \left(1 + \frac{\cot^{2}\theta}{R^{2}}\right)^{1/2}  ,
 \label{equ:vec_b}
 \end{equation}
 
@@ -733,41 +738,46 @@ The aziumthal integrals inside the definitions of $\boldsymbol{A}$, $\boldsymbol
 \section{Numerical Method}
 \label{sec:num_meth}
 
-Equations~\ref{equ:cont_ie_1} to~\ref{equ:cont_ie_3} are a coupled set of integral equations for the unknowns $\boldsymbol{\Psi(s)}$, $\boldsymbol{\Phi(\theta)}$ and $\boldsymbol{\Theta}$. These solutions can be found numerically by discretising the system which allows the integral equations to be expressed as a linear system of algerbraic equations which are then solved using LU decomposition and Gaussian elimination \citep{Riley06, Press07}. Once the interfacial and sphere velocities are solved for, the system is iterated forward in time and the process is repeated. 
+Equations~\ref{equ:cont_ie_1} to~\ref{equ:cont_ie_3} are a coupled set of integral equations for the unknowns $\boldsymbol{\Psi}(s)$, $\boldsymbol{\Phi}(\theta)$ and $\boldsymbol{\Theta}$. These solutions can be found numerically by discretising the system which allows the integral equations to be expressed as a linear system of algerbraic equations which are then solved using LU decomposition and Gaussian elimination \citep{Riley06, Press07}. Once the interfacial and sphere velocities are solved for, the system is iterated forward in time, and the process is repeated. 
 
 \subsection{Discretisation and Linear System}
 \label{subsec:discrete}
 
-To discretise the set of equations, the interface and sphere surface are divided into intervals. The interface is divided into $N$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at a arc-length $s_{i}$ and is of thinkness $\Delta_{s,i}$.  The interface is truncated at the arc-length $s_{N}$. The sphere surface is discretised in $M$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at polar coordinate $\theta_{i}$ and has a thickness $\Delta_{\theta,i}$. A schematic of the discretisation scheme is depicted in figure~\ref{fig:discrete}. 
+To discretise the set of equations, the interface and sphere surface are divided into intervals. The interface is divided into $N$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at arc-length $s_{i}$ and is of thinkness $\Delta_{s,i}$.  The interface is truncated at the arc-length $s_{N}$. The sphere surface is discretised in $M$ axisymmetric rings, where the $i^{\text{th}}$ ring is centred at polar coordinate $\theta_{i}$ and has a thickness $\Delta_{\theta,i}$. A schematic of the discretisation scheme is depicted in figure~\ref{fig:discrete}. 
 
   \begin{figure}
     $$\includegraphics[width=0.8\textwidth]{discrete.eps}$$
-    \caption{Diagrammatic representation of the discretisation of the system. Both interface and sphere surface are divided into axisymmetric rings centred on the symmetry axis. \label{fig:discrete}}
+    \caption{Diagrammatic representation of the discretisation of the system. Both interface and spheroid surface are divided into axisymmetric rings centred on the symmetry axis. \label{fig:discrete}}
   \end{figure}
 
-We now choose $\boldsymbol{x'} = \boldsymbol{x}_{i}$ where $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(\theta_{i})$ on $\mathcal{S}$ and $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(s_{i})$ on $\mathcal{I}$. That is, the point $\boldsymbol{x'}$ is chosen to be the midpoint of one of the intervals. Then, we can express the integrals as discrete sums over each element. We then make the approximation that the unknowns $\boldsymbol{\Psi(s)}$ and $\boldsymbol{\Phi(\theta)}$ are constant over the width of an interval and for interval $i$, $\boldsymbol{\Psi(s)} = \Psi(s_{i})$ and $\boldsymbol{\Phi(\theta)} = \Phi(\theta_{i})$. This allows us to obtain the discrete form of the integral equations:
+We now choose $\boldsymbol{x'} = \boldsymbol{x}_{i}$ where $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(\theta_{i})$ on $\mathcal{S}$ and $\boldsymbol{x}_{i} = \boldsymbol{x}_{i}(s_{i})$ on $\mathcal{I}$. That is, the point $\boldsymbol{x'}$ is chosen to be the midpoint of one of the intervals. Then, we can express the integrals as discrete sums over each element. We then make the approximation that the unknowns $\boldsymbol{\Psi}(s)$ and $\boldsymbol{\Phi}(\theta)$ are constant over the width of an interval and for interval $i$, $\boldsymbol{\Psi}(s) = \boldsymbol{\Psi}(s_{i})$ and $\boldsymbol{\Phi}(\theta) = \boldsymbol{\Phi}(\theta_{i})$. This allows us to obtain the discrete form of the integral equations:
 
 \begin{align}
 \label{equ:dis_ie_1}
-\sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(s_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} \left(A_{\alpha\beta}(s_{j},s) y_{r}(s) - \frac{(1 + \lambda) \delta_{\alpha\beta} \delta(s - s_{j})}{2}\right) \mathrm{d}s \nonumber \\
+R \sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(s_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} \left(A_{\alpha\beta}(s_{j},s) y_{r}(s) - \frac{(1 + \lambda) \delta_{\alpha\beta} \delta(s - s_{j})}{2}\right) \mathrm{d}s \nonumber \\
 = - \sum_{i = 1}^{N} \int_{\Delta_{s,i}} C_{\alpha}(s_{j},s) y_{r}(s) \mathrm{d}s,
 \end{align}
 
 \begin{equation}
 \label{equ:dis_ie_2}
-\sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(\theta_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} A_{\alpha\beta}(\theta_{j},s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = - \sum_{i = 1}^{N} \int_{\Delta_{s,i}} C_{\alpha}(\theta_{j},s) y_{r}(s) \mathrm{d}s,
+R \sum_{i = 1}^{M} \Phi_{\beta}(\theta_{i}) \int_{\Delta_{\theta,i}} B_{\alpha\beta}(\theta_{j},\theta) \mathrm{d}\theta + \sum_{i=1}^{N} \Psi_{\beta}(s_{i}) \int_{\Delta_{s,i}} A_{\alpha\beta}(\theta_{j},s) y_{r}(s) \mathrm{d}s - \Theta_{\alpha} = - \sum_{i = 1}^{N} \int_{\Delta_{s,i}} C_{\alpha}(\theta_{j},s) y_{r}(s) \mathrm{d}s,
 \end{equation}
 
 and 
 
 \begin{equation}
 \label{equ:dis_ie_3}
-\sum_{i = 1}^{M} \Phi_{2}(\theta_{i}) \int_{\Delta_{\theta,i}} \mathrm{d}\theta = 3.
+\sum_{i = 1}^{M} \Phi_{2}(\theta_{i}) \int_{\Delta_{\theta,i}} \mathrm{d}\theta = -3.
 \end{equation}
 
 This is seemingly a set of $2(N + M) + 1$ linear equations for $2(N + M) + 1$ unknowns; $\Phi_{\alpha}(\theta_{i})$, $\Psi_{\alpha}(s_{j})$ and $\Theta_{1}$ (recall that $\Theta_{2} = 0$) where $\alpha = 1,2$, $i = 1,2,...,M$ and $j = 1,2,...,N$. However we can use physical arguments to simplify the system further. First by symmetry, the radial interfacial velocity must vanish on the symmetry axis i.e. $\Psi_{1}(s_{1}) = 0$. Additionally, the radial tractions on the sphere on the axis must also vanish meaning $\Phi_{1}(\theta_{1}) = \Phi_{1}(\theta_{M}) = 0$. Indeed, it can be shown that the coefficients of these terms vanish by using the expressions for $A_{\alpha\beta}$, $B_{\alpha\beta}$ and $C_{\alpha}$, given in appendix~\ref{subapp:spec_case},for the case that the collocation point is on the symmetry axis. Hence the equations where these terms appear are redundant and can be removed from the linear system. This leaves us with a system of $2(N + M - 1)$ linear equations for $2(N + M - 1)$ unknowns.
 
-These equations can be recast as a matrix equation $L_{\mu\nu} X_{\mu} = Y_{\nu}$ where the unknown quantities are the elements $X_{\mu}$. The elements $L_{\mu\nu}$ and $Y_{\nu}$ contain integrals that are evaluated numerically using 4-point Gaussian-Legendre quadrature \citep{Riley06}. To calculate integrals over the interface, it is necessary to evaluate the components of normal vector and its divergence at discrete points along the interface. To do this, a cubic splines are fitted to the collocation points describing the interface (WAITING FOR DE BOER BOOK TO REF THIS) using routines given in \citet{Press07} so that the interface is described parametrically with $r = r(s)$ and $z = z(s)$. Remembering that for a surface $H(r,z) = z - f(r)$, the components of the normal vector are given by $n_{i} = \partial_{i} H / \partial_{j}H \partial_{j}H$ \citep{Riley06}, the following expressions can be obtained
+\subsection{Evaluation of the coefficients}
+\label{subsec:eval_coeff}
+
+These equations can be recast as a matrix equation $L_{\mu\nu} X_{\mu} = Y_{\nu}$ where the unknown quantities are the elements $X_{\mu}$. The elements $L_{\mu\nu}$ and $Y_{\nu}$ are the coefficients of the system and contain integrals that need to be evaluated numerically. If $\boldsymbol{x'}_{j}$ is not within the range of integration, then this is done using 4-point Gaussian-Legendre quadrature \citep{Riley06}. However if $\boldsymbol{x'}_{j}$ is in the integration range, then the integrand is singular at the point $\boldsymbol{y'} = \boldsymbol{x'}_{j}$ and care needs to be taken when evaluating the integral. 
+
+To calculate integrals over the interface, it is necessary to evaluate the components of normal vector and its divergence at discrete points along the interface. To do this, a cubic splines are fitted to the collocation points describing the interface (WAITING FOR DE BOER BOOK TO REF THIS) using routines given in \citet{Press07} so that the interface is described parametrically with $r = r(s)$ and $z = z(s)$. Remembering that for a surface $H(r,z) = z - f(r)$, the components of the normal vector are given by $n_{i} = \partial_{i} H / \partial_{j}H \partial_{j}H$ \citep{Riley06}, the following expressions can be obtained
 
 \begin{equation}
 \label{equ:norm_rad}
@@ -817,7 +827,6 @@ The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) 
 Due to gradients in the velocity tangential to the fluid interface the distribution of collocation points is altered during this time stepping process so the collocation points are redistributed between each time step. Following the redistribution the linear system is reconstructed for the new geometry and solved using the same procedure. The process continues in this fashion until the separtation between the sphere and the interface, or two different parts of the interface equals the local separation between collocation points as the discretisation no longer provides an accurate approximation to the continuous system
 
 \appendix
-
 \section{Greens Functions for Stokes Flow}
 \label{app:Greens}
 
@@ -1135,8 +1144,19 @@ Consider a pair of velocity fields $u_{i}$ and $u'_{i}$, and a pair of stress fi
 \dashint_{\mathcal{S}} n_{j}(\boldsymbol{x'}) T'_{ij}(\boldsymbol{x'}) \hat{u}_{i}(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{V}} [\partial'_{j} T'_{ij}(\boldsymbol{x'})] \hat{u}_{i}(\boldsymbol{\xi}) \mathrm{d} \boldsymbol{x'}^{3} = \dashint_{\mathcal{S}} n_{j}(\boldsymbol{x'}) \hat{T}_{ij}(\boldsymbol{\xi}) u'_{i}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{2} - \dashint_{\mathcal{V}} [\partial'_{j}\hat{T}_{ij}(\boldsymbol{\xi})] u'_{i}(\boldsymbol{x'}) \mathrm{d} \boldsymbol{x'}^{3} .
 \end{equation}
 
-Our definition of the theorem has defined the integrals in the sense of the Cauchy Principle Value (CPV) \citep{Riley06} to allow for the case that one or more of the fields may be singular at some point in the domain (as in the case of Greens functions). For the case that all of the fields are regular, then the CPV integral just evaluates to the regular interval. In the proof of equation~\ref{equ:LRT} given by \citet{Kim05} it is straightforward to extend their result to ours just by taking care when defining the integrals. 
+Our definition of the theorem has defined the integrals in the sense of the Cauchy Principle Value (CPV) (appendix~\ref{app:CPV}) to allow for the case that one or more of the fields may be singular at some point in the domain (as in the case of Greens functions). For the case that all of the fields are regular, then the CPV integral just evaluates to the regular interval. In the proof of equation~\ref{equ:LRT} given by \citet{Kim05} it is straightforward to extend their result to ours just by taking care when defining the integrals. 
 
+\section{Cauchy Principle Value}
+\label{app:CPV}
+
+Consider a function $f(x)$ such that $f(x = x_{0}) \to \infty$. Hence we need to take care when defining an integral of $f(x)$ over a range which contains $x_{0}$. We denote the Cauchy Principle Value of an integral with a horizontal line through the integral sign and for a singularity at the point $x_{0}$ it is defined such that \citep{Boas83}
+
+\begin{equation}
+\label{equ:CPV}
+\dashint_{a}^{b} f(x) \mathrm{d}x = \lim_{\epsilon \to 0} \left( \int_{a}^{x_{0} - \epsilon} f(x) \mathrm{d}x + \int_{x_{0} + \epsilon}^{b} f(x) \mathrm{d}x \right)
+\end{equation}
+
+This can be readily extended to higher dimensional integrals by performing the integration everywhere except in a small region around the singular point, and then finding the limiting value of the integral as the size of that region tends to zero. Also, for the case that the function is actually regular throughout this region, then the CPV equates to the standard integral.
 \section{Elliptic Integrals}
 \label{app:ellip}
 
