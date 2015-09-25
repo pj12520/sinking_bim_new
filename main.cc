@@ -66,7 +66,32 @@ int main(int argc, char *argv[])
   int it = 0;
   double time = 0.0;
 
-  double t_step = min(0.01, 0.01 * input.mdr * input.bond);
+  double min_tstep;
+  //Contraint on time step from quasi-static condition
+  if (input.bond < 1)
+    {
+      if (input.viscos_rat < 1)
+	{
+	  min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
+	}
+      else
+	{
+	  min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
+	}
+    }
+  else
+    {
+      if (input.viscos_rat < 1)
+	{
+	  min_tstep = min(0.01, 0.01 * 2.0 * input.mdr * input.bond * input.viscos_rat / 9.0);
+	}
+      else
+	{
+	  min_tstep = min(0.01, 0.01 * 2.0 * input.mdr * input.bond / 9.0);
+	}
+    }
+
+  double t_step = min_tstep;
   //  double t_step = 0.01;
 
   //Testing - Variables used to check timestep
@@ -131,10 +156,8 @@ int main(int argc, char *argv[])
       //Testing - check time step////////////////////////
       min_sep = interf.intervals[0].width;
       crit = min_sep / max_vel;
-      if(t_step > 0.1 * crit)
-	{
-	  //	  cout << "CFL value = " << crit << " t_step = " << t_step << endl;
-	}
+
+      t_step = min(min_tstep, crit);
 
       /////////////////////////////////////////////////
 
@@ -146,6 +169,7 @@ int main(int argc, char *argv[])
       output.resize(output.size() + 1);
 
       output[output.size() - 1].it = it;
+      output[output.size() - 1].time = time;
       output[output.size() - 1].sphere_pos = sphere.height;
 
       for (int i = 0; i < interf.n_int; i++)
@@ -160,7 +184,7 @@ int main(int argc, char *argv[])
 	}
 
       //Testing - Test the solution for the sphere velocity ///////////////////////////
-      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
+      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << t_step << endl;
       //      cout << setw(20) << input.aspect << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       //cout << setw(20) << sphere.aspect << setw(20) << sphere.n_int << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       ////////////////////////////////////////////////////////////////////////////////
@@ -206,6 +230,8 @@ int main(int argc, char *argv[])
   //Need to output the configuration at 20 iterations plus the initial and final ones
   int n_it = it - 1; //Number of iterations that occured
 
+  double final_time = time - t_step;
+
   if (n_it < 20)
     {
       vector<int> out_it(n_it + 1);
@@ -218,36 +244,24 @@ int main(int argc, char *argv[])
 	}
 
     }
-  else if (n_it % 20 == 0)
+  else 
     {
       vector<int> out_it(21);
-
       out_it[0] = 0;
+      out_it[20] = n_it;
 
-      for (int i = 1; i < out_it.size(); i++)
+      for (int i = 1; i < 20; i++)
 	{
-	  out_it[i] = n_it * i / 20;
+	  double factor = i * final_time / 20.0;
+
+	  for (int j = 1; j < output.size(); j++)
+	    {
+	      if (factor <= output[j].time && factor >= output[j - 1].time)
+		{
+		  out_it[i] = output[j].it;
+		}
+	    }
 	}
-
-      for (int i = 0; i < out_it.size(); i++)
-	{
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
-	}
-    }
-  else
-    {
-      vector<int> out_it(22);
-
-      out_it[0] = 0;
-      out_it[21] = n_it;
-
-      int rem = n_it % 20;
-
-      for (int i = 1; i < out_it.size() - 1; i++)
-	{
-	  out_it[i] = (n_it - rem) * i / 20;
-	}
-
       for (int i = 0; i < out_it.size(); i++)
 	{
 	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
