@@ -775,8 +775,44 @@ This is seemingly a set of $2(N + M) + 1$ linear equations for $2(N + M) + 1$ un
 \subsection{Evaluation of the coefficients}
 \label{subsec:eval_coeff}
 
-These equations can be recast as a matrix equation $L_{\mu\nu} X_{\mu} = Y_{\nu}$ where the unknown quantities are the elements $X_{\mu}$. The elements $L_{\mu\nu}$ and $Y_{\nu}$ are the coefficients of the system and contain integrals that need to be evaluated numerically. If $\boldsymbol{x'}_{j}$ is not within the range of integration, then this is done using 4-point Gaussian-Legendre quadrature \citep{Riley06}. However if $\boldsymbol{x'}_{j}$ is in the integration range, then the integrand is singular at the point $\boldsymbol{y'} = \boldsymbol{x'}_{j}$ and care needs to be taken when evaluating the integral. 
+These equations can be recast as a matrix equation $L_{\mu\nu} X_{\mu} = Y_{\nu}$ where the unknown quantities are the elements $X_{\mu}$. The elements $L_{\mu\nu}$ and $Y_{\nu}$ are the coefficients of the system and contain integrals that need to be evaluated numerically. If $\boldsymbol{x'}_{j}$ is not within the range of integration, then this is done using 4-point Gaussian-Legendre quadrature \citep{Riley06}. However if $\boldsymbol{x'}_{j}$ is in the integration range, then the integrand is singular at the point $\boldsymbol{y'} = \boldsymbol{x'}_{j}$ and care needs to be taken when evaluating the integral. First, the order of the singularity needs to be determined. To do this, write $\boldsymbol{y'} = \boldsymbol{x'}_{j} + \epsilon \boldsymbol{t}$, where $\epsilon = \theta - \theta_{j}$ on the sphere, and $\epsilon = s - s_{j}$ on the interface, and $\boldsymbol{t}$ is the tangent to the curve. The integrands are then expanded in terms of $\epsilon$. Table~\ref{tab:sing} shows the order of the singularity of each component of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$.
 
+\begin{table}
+\centering
+\caption{The order of the singularity of the components of $\boldsymbol{A}$, $\boldsymbol{B}$ and $\boldsymbol{C}$. \label{tab:sing}}
+\begin{tabular}{|c|c||c|c||c|c|}
+  \hline
+  $A_{11}$ & $1 / \epsilon$ & $B_{11}$ & $\ln|\epsilon|$ & $C_{1}$  & $\ln|\epsilon|$\\
+  $A_{12}$ & 0 & $B_{12}$ & 0 & $C_{2}$  & $\ln|\epsilon|$\\
+  $A_{21}$ & 0 & $B_{21}$ & 0  &   & \\
+  $A_{22}$ & 0 & $B_{22}$ & $\ln|\epsilon|$ &   & \\
+  \hline
+\end{tabular} 
+\end{table}
+
+We then re-write the integrand as the sum of a regular and singular part. Denoting the integrand by $I(\zeta, \zeta_{i})$ (where $\zeta$ represents $\theta$ or $s$ depending on whether the integration is over the sphere or the interface) this can be written as $I(\zeta, \zeta_{i}) = I_{r}(\zeta, \zeta_{i}) + I_{s}(\zeta, \zeta_{i})$ where $I_{r}$ is the regular part and $I_{s}$ is the singular part. The singular part can then be written as
+
+\begin{equation}
+\label{equ:sing_meth}
+I(\zeta, \zeta_{i})_{s} = [I_{s}(\zeta, \zeta_{i}) -L(\zeta, \zeta_{i})] + L(\zeta, \zeta_{i}),
+\end{equation}
+
+where $L$ is the leading order contribution to $I_{s}$. The terms in square parenthesese now form a regular function. For the case that the integral is $1/\epsilon$ singular, the final term can be expressed as
+
+\begin{equation}
+\label{equ:recip_sing}
+L(\zeta, \zeta_{i}) = \frac{g(\zeta, \zeta_{i})}{\epsilon} = \frac{g(\zeta, \zeta_{i}) - g(\zeta_{i}, \zeta_{i})}{\epsilon} + \frac{g(\zeta_{i}, \zeta_{i})}{\epsilon}.
+\end{equation}
+
+Similarly, if the integral if $\ln|\epsilon|$ singular
+
+\begin{equation}
+\label{equ:ln_sing}
+L(\zeta, \zeta_{i}) = g(\zeta, \zeta_{i}) \ln|\epsilon| = [g(\zeta, \zeta_{i}) - g(\zeta_{i}, \zeta_{i})]\ln|\epsilon| + g(\zeta_{i}, \zeta_{i})\ln|\epsilon|
+\end{equation}
+
+In both these cases, the first term on the right hand side is regular and the last term is singular but can be integrated analytically. This means that the irregular integrand can be expressed as the sum of a regular function that can be integrated numerically and an irregular function that can be integrated analytically. 
+ 
 To calculate integrals over the interface, it is necessary to evaluate the components of normal vector and its divergence at discrete points along the interface. To do this, a cubic splines are fitted to the collocation points describing the interface (WAITING FOR DE BOER BOOK TO REF THIS) using routines given in \citet{Press07} so that the interface is described parametrically with $r = r(s)$ and $z = z(s)$. Remembering that for a surface $H(r,z) = z - f(r)$, the components of the normal vector are given by $n_{i} = \partial_{i} H / \partial_{j}H \partial_{j}H$ \citep{Riley06}, the following expressions can be obtained
 
 \begin{equation}
@@ -801,7 +837,7 @@ These expressions are given in given in \citep{Manga94} except for a minus sign 
 \subsection{Temporal Iteration}
 \label{subsec:time}
 
-The system is iterated forward in time using an explicit first order Euler method \citep{Manga94} with timestep $\Delta t$. This means the position of the sphere $z_{s}$ at time $t + \Delta t$ is found using 
+The system is iterated forward in time using an explicit first order Euler method \citep{Manga94} with timestep $\Delta t$. This means the position of the sphere $z_{s}$ at time $t + \Delta t$ is found using the discrete form of
 
 \begin{equation}
 \label{equ:sphere_it}
@@ -822,9 +858,17 @@ and
 x_{z}(s_{i})(t + \Delta t) = u_{z}(s_{i},t) \Delta t.
 \end{equation}
 
-The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) criterion \citep{Courant28}.
+The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) criterion \citep{Courant28}, and physically to ensure the timestep is less than the timescale over which the system geometry changes (see quasi-static assumption - equation~\ref{equ:quasi_stat}).
 
 Due to gradients in the velocity tangential to the fluid interface the distribution of collocation points is altered during this time stepping process so the collocation points are redistributed between each time step. Following the redistribution the linear system is reconstructed for the new geometry and solved using the same procedure. The process continues in this fashion until the separtation between the sphere and the interface, or two different parts of the interface equals the local separation between collocation points as the discretisation no longer provides an accurate approximation to the continuous system
+
+
+\section{Model Testing}
+\label{sec:test}
+
+\subsection{Uniform and Infinite Fluid}
+\label{subsec:no_interf}
+
 
 \appendix
 \section{Greens Functions for Stokes Flow}
@@ -1127,7 +1171,7 @@ It also needs to be noted that the Dirac delta function can be expressed as \cit
 \section{Divergence Theorem}
 \label{app:div_theory}
 
-The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with outward normal $n_{i}$, then for a continuous and differentiable vector field $a_{i}$ \cite{Riley06}
+The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with outward normal $n_{i}$, then for a continuous and differentiable vector field $a_{i}$ \citep{Riley06}
 
 \begin{equation}
 \label{equ:div_theory}
@@ -1137,7 +1181,7 @@ The divergence theorem states that for a volume $\mathcal{V}$ bounded by a surfa
 \section{Lorentz Reciprocal Theorem}
 \label{app:Lorentz}
 
-Consider a pair of velocity fields $u_{i}$ and $u'_{i}$, and a pair of stress fields $T_{ij}$ and $T'_{ij}$ defined over a domain $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with normal $n_{i}$. Now suppose that that both $u_{i}$ and $T_{ij}$, and $u'_{i}$ and $T'_{ij}$ are both solutions to the coupled equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def}. The Lorentz reciprocal theorem then states that \citep{Kim05}
+Consider a pair of velocity fields $u_{i}$ and $u'_{i}$, and a pair of stress fields $T_{ij}$ and $T'_{ij}$ defined over a domain $\mathcal{V}$ bounded by a surface $\mathcal{S}$ with normal $n_{i}$. Now suppose that that both $u_{i}$ and $T_{ij}$, and $u'_{i}$ and $T'_{ij}$ are both solutions to the Stokes equations with a point source term (equations~\ref{equ:vel_green_def} and~\ref{equ:stress_green_def}). The Lorentz reciprocal theorem then states that \citep{Kim05}
 
 \begin{equation}
 \label{equ:LRT}

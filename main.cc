@@ -68,27 +68,15 @@ int main(int argc, char *argv[])
 
   double min_tstep;
   //Contraint on time step from quasi-static condition
-  if (input.bond < 1)
+  if (input.viscos_rat < 1)
     {
-      if (input.viscos_rat < 1)
-	{
-	  min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
-	}
-      else
-	{
-	  min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
-	}
+      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
+      min_tstep = min(min_tstep, 0.01 * 2.0 * input.mdr * input.bond * input.viscos_rat / 9.0);
     }
   else
     {
-      if (input.viscos_rat < 1)
-	{
-	  min_tstep = min(0.01, 0.01 * 2.0 * input.mdr * input.bond * input.viscos_rat / 9.0);
-	}
-      else
-	{
-	  min_tstep = min(0.01, 0.01 * 2.0 * input.mdr * input.bond / 9.0);
-	}
+      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
+      min_tstep = min(min_tstep, 0.01 * 2.0 * input.mdr * input.bond / 9.0);
     }
 
   double t_step = min_tstep;
@@ -157,7 +145,7 @@ int main(int argc, char *argv[])
       min_sep = interf.intervals[0].width;
       crit = min_sep / max_vel;
 
-      t_step = min(min_tstep, crit);
+      t_step = min(min_tstep, 0.1 * crit);
 
       /////////////////////////////////////////////////
 
