@@ -858,7 +858,7 @@ and
 x_{z}(s_{i})(t + \Delta t) = u_{z}(s_{i},t) \Delta t.
 \end{equation}
 
-The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) criterion \citep{Courant28}, and physically to ensure the timestep is less than the timescale over which the system geometry changes (see quasi-static assumption - equation~\ref{equ:quasi_stat}).
+The value of the timestep chosen is limited by the Courant-Friedrich-Lewy (CFL) criterion \citep{Courant28}, and physically to ensure the timestep is less than the timescale over which the system geometry changes (see quasi-static assumption - equation~\ref{equ:quasi_stat}). Changes in system geometry are driven by two sources: the gravitational settling of the sphere, and capillary forces acting due to the deformed interface. Therefore $\tau \sim \min[a / \max(U_{\text{t},1}, U_{\text{t},2}), a \min(\eta_{1},\eta{2}) / \sigma]$ where $U_{\text{t},l}$ is the terminal velocity of a sphere of radius $a$ in fluid $l$. Hence the quasi-static assumption can be expressed in dimensionless form as
 
 Due to gradients in the velocity tangential to the fluid interface the distribution of collocation points is altered during this time stepping process so the collocation points are redistributed between each time step. Following the redistribution the linear system is reconstructed for the new geometry and solved using the same procedure. The process continues in this fashion until the separtation between the sphere and the interface, or two different parts of the interface equals the local separation between collocation points as the discretisation no longer provides an accurate approximation to the continuous system
 
@@ -869,7 +869,7 @@ Due to gradients in the velocity tangential to the fluid interface the distribut
 \subsection{Uniform and Infinite Fluid}
 \label{subsec:no_interf}
 
-
+To test the model, we can remove the interface and fluid 2 leaving us with the problem of the steady gravitational settling of a spheroid through fluid 1 which is uniform and infinite in extent. The terminal velocity of a spheroid settling on axis can be solved for analytically 
 \appendix
 \section{Greens Functions for Stokes Flow}
 \label{app:Greens}
