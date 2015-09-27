@@ -869,7 +869,38 @@ Due to gradients in the velocity tangential to the fluid interface the distribut
 \subsection{Uniform and Infinite Fluid}
 \label{subsec:no_interf}
 
-To test the model, we can remove the interface and fluid 2 leaving us with the problem of the steady gravitational settling of a spheroid through fluid 1 which is uniform and infinite in extent. The terminal velocity of a spheroid settling on axis can be solved for analytically 
+To test the model, we can remove the interface and fluid 2 leaving us with the problem of the steady gravitational settling of a spheroid through fluid 1 which is uniform and infinite in extent. The terminal velocity of a spheroid settling on axis can be solved for analytically \citep{Happel73} and in our dimensionless scheme is given by
+
+\begin{equation}
+\label{equ:term_vel}
+U'_{t} = \frac{1}{K},
+\end{equation}
+
+where
+
+\begin{equation}
+\label{equ:Stokes_corr}
+K = \begin{cases}
+    \frac{4}{3 (\lambda_{0}^{2} + 1)^{1/2} [\lambda_{0} - (\lambda_{0}^{2} - 1) \cot^{-1} \lambda_{0}]}       & \quad \text{when } R < 1\\
+    \frac{4}{3 (\lambda_{0}^{2} - 1)^{1/2} [(\lambda_{0}^{2} + 1) \coth^{-1}\lambda_{0} - \lambda_{0}]}  & \quad \text{when } R > 1\\
+    1 & \quad \text{when } R = 1, \\
+  \end{cases}
+\end{equation}
+
+and 
+
+\begin{equation}
+\label{equ:Stokes_const}
+\lambda_{0} = \frac{R}{|R^{2} - 1|^{1/2}}.
+\end{equation}
+
+For the case that $\lambda = 1$ and a flat interface the integrals over the interface in equations~\ref{equ:dis_ie_1} to~\ref{equ:dis_ie_3} vanish and the system reduces to that of the case of a spheroid settling in an infinite and uniform fluid. Figure~\ref{fig:Happel_test} shows the analytical result for the terminal velocity from \citet{Happel73} compared with that calculated by our model. It can be seen that agreement is excellent for aspect ratios in the range 0.1-10.
+
+  \begin{figure}
+    $$\includegraphics[width=0.6\textwidth, angle=270]{Happel_test.eps}$$
+    \caption{Curve shows analytical solution for dimensionless terminal velocity vs. aspect ratio (equation~\ref{equ:Stokes_corr}. Points show calculated values from model. There is excellent agreement for oblate spheroids but the error increases with aspect ratio. \label{fig:Happel_test}}
+  \end{figure}
+
 \appendix
 \section{Greens Functions for Stokes Flow}
 \label{app:Greens}
