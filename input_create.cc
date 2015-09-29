@@ -19,7 +19,7 @@ int main()
 
   vector<double> mod_dens_rat_data(4);
   vector<double> bond_data(7);
-  vector<double> viscos_rat_data(6);
+  vector<double> viscos_rat_data(7);
 
   mod_dens_rat_data[0] = 1.0;
   mod_dens_rat_data[1] = 10.0;
@@ -37,9 +37,10 @@ int main()
   viscos_rat_data[0] = 0.001;
   viscos_rat_data[1] = 0.01;
   viscos_rat_data[2] = 0.1;
-  viscos_rat_data[3] = 10;
-  viscos_rat_data[4] = 100;
-  viscos_rat_data[5] = 1000;
+  viscos_rat_data[3] = 1;
+  viscos_rat_data[4] = 10;
+  viscos_rat_data[5] = 100;
+  viscos_rat_data[6] = 1000;
 
   int n_sphere = 100;
   int n_interf = 100;
@@ -47,7 +48,7 @@ int main()
   //  double t_step = 0.01;
   double height = 3.0;
   int max_it = 600000;
-
+  double aspect = 1.0;
   //Create output directories 
 
   string D_dir_name;
@@ -108,7 +109,7 @@ int main()
 	      //	      fout << t_step << endl;
 	      fout << height << endl;
 	      fout <<max_it << endl;
-
+	      fout << aspect << endl;
 	      fout << "Input file containing the dimensionless numbers that characterise the system" << endl;
 
 	      fout << "Bond Number" << endl;
@@ -121,7 +122,7 @@ int main()
 	      //	      fout << "Time step" << endl;
 	      fout << "Initial height of sphere" << endl;
 	      fout << "Maximum number of iterations" << endl;
-
+	      fout << "Aspect Ratio" << endl;
 	      fout.close();
 
 	      chdir(up);

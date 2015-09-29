@@ -18,7 +18,7 @@ for i in $(ls -d */); do
 	    
 	    export RUNDIR=${HOME}/sinking_bim/trunk/testing/aux_param/data2/${i}/${j}/${k}
 
-	    qsub -V ../../../../param_sweep.sh
+	    qsub -V ../../../../../../param_sweep.sh
 
 	    sleep 10
 

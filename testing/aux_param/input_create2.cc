@@ -75,6 +75,7 @@ int main()
   const char* interf_dir = "n_interf/";
   const char* trunc_dir = "truncation/";
 
+  chdir(data);
   //Move into directory for sweep over number of interface intervals
   chdir(interf_dir);
 
