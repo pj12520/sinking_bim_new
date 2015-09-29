@@ -70,15 +70,15 @@ int main(int argc, char *argv[])
   //Contraint on time step from quasi-static condition
   if (input.viscos_rat < 1)
     {
-      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
-      min_tstep = min(min_tstep, 0.01 * 2.0 * input.mdr * input.bond * input.viscos_rat / 9.0);
+      //      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
+      min_tstep = min(0.01, 0.01 * input.mdr * input.bond * input.viscos_rat);
     }
   else
     {
-      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
-      min_tstep = min(min_tstep, 0.01 * 2.0 * input.mdr * input.bond / 9.0);
+      //      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
+      min_tstep = min(0.01, 0.01 * input.mdr * input.bond);
     }
-
+  //  min_tstep = 0.01;
   double t_step = min_tstep;
   //  double t_step = 0.01;
 
@@ -86,6 +86,15 @@ int main(int argc, char *argv[])
   double max_vel;
   double min_sep;
   double crit;
+
+  double max_rad_vel;
+  double max_vert_vel;
+
+  double rad_crit;
+  double vert_crit;
+
+  double min_vert_sep;
+  double min_rad_sep;
 
   //Vectors to store the interfacial velocity
   vector<double> rad_vel(input.n_int);
@@ -126,6 +135,12 @@ int main(int argc, char *argv[])
 	      vert_vel[i] = unknown[i + input.n_int - 1];
 
 	      max_vel = max(fabs(vert_vel[i]), fabs(unknown[unknown.size()-1])); //Testing - used in time step test
+
+	      max_rad_vel = 0.0;
+	      max_vert_vel = fabs(vert_vel[i]);
+
+	      min_rad_sep = interf.mid_rad[1] - interf.mid_rad[0];
+	      min_vert_sep = interf.mid_vert[1] - interf.mid_vert[0];
 	    }
 	  else
 	    {
@@ -137,6 +152,27 @@ int main(int argc, char *argv[])
 		{
 		  max_vel = max(fabs(rad_vel[i]), fabs(vert_vel[i]));
 		}
+
+	      if (fabs(rad_vel[i]) > max_rad_vel)
+		{
+		  max_rad_vel = fabs(rad_vel[i]);
+		}
+
+	      if (fabs(vert_vel[i]) > max_vert_vel)
+		{
+		  max_vert_vel = fabs(vert_vel[i]);
+		}
+
+		if (interf.mid_rad[i] - interf.mid_rad[i - 1] < min_rad_sep)
+		  {
+		    min_rad_sep = interf.mid_rad[i] - interf.mid_rad[i - 1];
+		  }
+
+		if (interf.mid_vert[i] - interf.mid_vert[i - 1] < min_vert_sep)
+		  {
+		    min_vert_sep = interf.mid_vert[i] - interf.mid_vert[i - 1];
+		  }
+
 	      ////////////////////////////////////////
 	    }
 	}
@@ -145,7 +181,10 @@ int main(int argc, char *argv[])
       min_sep = interf.intervals[0].width;
       crit = min_sep / max_vel;
 
-      t_step = min(min_tstep, 0.1 * crit);
+      vert_crit = min_vert_sep / max_vert_vel;
+      rad_crit = min_rad_sep / max_rad_vel;
+
+      t_step = min(min_tstep, crit);
 
       /////////////////////////////////////////////////
 
@@ -172,7 +211,7 @@ int main(int argc, char *argv[])
 	}
 
       //Testing - Test the solution for the sphere velocity ///////////////////////////
-      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << t_step << endl;
+      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << t_step << setw(20) << rad_crit << setw(20) << vert_crit << endl;
       //      cout << setw(20) << input.aspect << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       //cout << setw(20) << sphere.aspect << setw(20) << sphere.n_int << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       ////////////////////////////////////////////////////////////////////////////////

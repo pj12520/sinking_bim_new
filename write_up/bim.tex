@@ -901,6 +901,66 @@ For the case that $\lambda = 1$ and a flat interface the integrals over the inte
     \caption{Curve shows analytical solution for dimensionless terminal velocity vs. aspect ratio (equation~\ref{equ:Stokes_corr}. Points show calculated values from model. There is excellent agreement for oblate spheroids but the error increases with aspect ratio. \label{fig:Happel_test}}
   \end{figure}
 
+We tested the senstivity of the results to the number of intervals on the sphere. Figure~\ref{fig:height_vol_test} shows the fractional error on the calculated terminal velocity as a function of the number of intervals used to discretise the sphere, $M$ for both a prolate and oblate spheroid, and a sphere. For $M \geq 100$, the fractional error is less than 0.003. It is also clear here that the error increases with $R$. 
+
+  \begin{figure}
+    $$\includegraphics[width=0.4\textwidth, angle=270]{int_test.eps}$$
+    \caption{Plot showing the fractional error on the calculated terminal velocity of a spheroid in an infinite and uniform fluid as a function of the number of intervals used to discretise the sphere. Results are shown for $R = 0.5$, $1$ and $2$. When 100 intervals are used, the fractional error is less than 0.003 and this decreases as the number of intervals increases. It can also be seen that as $R$ increases so does the error. \label{fig:height_vol_test}}
+  \end{figure}
+
+\subsection{Initial Height of Sphere}
+\label{subsec:init_pos}
+
+The interface will deform as the particle approaches and so we require the initial position of the particle to be far enough above the interface that the results are insensitive to the initial position. We tested the model for parameter values $R = 1$, $D = 10 $, $\Bo = 1000$ and both $\lambda = 0.1$ and $\lambda = 10$. Figure~\ref{fig:height_test_pos} shows the position of the sphere against time for the different viscosity ratios. It is seen that the position curves converge for an initial position greater than or equal to 5 sphere radii above the interface. Figure~\ref{fig:height_vol_test} shows that the same is true when considering the volume of upper phase fluid entrained below the plane $z = 0$.
+
+    \begin{figure}
+      \centering
+      \begin{subfigure}[b]{0.5\textwidth}
+          $$\includegraphics[width=0.6\textwidth, angle=270]{lambda=0_1_height.eps}$$
+        \caption{}
+        \label{fig:height_test_pos_tail}
+      \end{subfigure}%
+      ~
+      \begin{subfigure}[b]{0.5\textwidth}
+        $$\includegraphics[width=0.6\textwidth, angle=270]{lambda=10_height.eps}$$
+        \caption{}
+        \label{fig:height_test_pos_film}
+      \end{subfigure}
+      \caption{Plot of the vertical position of a sphere versus time for different initial sphere positions for $D = 10$ and $\Bo = 1000$. a) $\lambda = 0.1$ - For initial positions greater or equal than 5 radii above the interface, the position curves quickly converge. b) $\lambda = 10$ - For initial positions greater or equal than 5 radii above the interface, the position curves are indistingusihable. For an initial position of 3, the curve quickly converges to the others.}\label{fig:height_test_pos}
+    \end{figure}
+
+  \begin{figure}
+    $$\includegraphics[width=0.4\textwidth, angle=270]{height_vol_test.eps}$$
+    \caption{Curves showing the volume of upper phase fluid entrained below the plane $z = 0$ as a function of time, for different initial sphere positions and $D = 10$, $\Bo = 1000$ and $\lambda = 0.1$. It is seen that the curves converge for an initial position greater than or equal to 5 sphere radii above the interface. \label{fig:height_vol_test}}
+  \end{figure}
+
+\subsection{Truncation Length}
+\label{subsec:trunc_length}
+
+The model is also tested for its sentitivity with respect to the radial coordinate $r = r_{N}$ at which the interface is truncated. Figure~\ref{fig:trunc_test_pos} shows the position of the sphere as a function of time for different $r_{N}$. It is seen that for $r_{N} \geq 10$ there is no change to the results. Figure~\ref{fig:trunc_vol_test} shows the dependence of the entrained volume as a function of time on the truncation radius. For $r_{N} \geq 20$ the curves are identical from the start of the simulation, and for $r_{N} = 10$ the curve converges to the others during the run.
+
+
+    \begin{figure}
+      \centering
+      \begin{subfigure}[b]{0.5\textwidth}
+          $$\includegraphics[width=0.6\textwidth, angle=270]{lambda=0_1_trunc.eps}$$
+        \caption{}
+        \label{fig:trunc_test_pos_tail}
+      \end{subfigure}%
+      ~
+      \begin{subfigure}[b]{0.5\textwidth}
+        $$\includegraphics[width=0.6\textwidth, angle=270]{lambda=10_trunc.eps}$$
+        \caption{}
+        \label{fig:trunc_test_pos_film}
+      \end{subfigure}
+      \caption{Plot of the vertical position of a sphere versus time for different truncation radii for $D = 10$, $\Bo = 1000$ and both $\lambda = 0.1$ (a) and $\lambda = 10$ (b). The curves are identical for all truncation radii greater than or equal to 10.}\label{fig:trunc_test_pos}
+    \end{figure}
+
+  \begin{figure}
+    $$\includegraphics[width=0.4\textwidth, angle=270]{trunc_vol_test.eps}$$
+    \caption{Curves showing the volume of upper phase fluid entrained below the plane $z = 0$ as a function of time, for different truncation radii and $D = 10$, $\Bo = 1000$ and $\lambda = 0.1$. It is seen that the curves for $r_{N} \geq 20$ are identical from the start of the simulation, although the curve for $r_{N} = 10$ converges to the other curves during the run. \label{fig:trunc_vol_test}}
+  \end{figure}
+
 \appendix
 \section{Greens Functions for Stokes Flow}
 \label{app:Greens}

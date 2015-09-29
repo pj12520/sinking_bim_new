@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.18)  27 SEP 2015 12:03
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.12.18)  28 SEP 2015 11:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -441,6 +441,9 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 
 LaTeX Warning: Label `equ:int_it' multiply defined.
 
+
+LaTeX Warning: Label `fig:height_vol_test' multiply defined.
+
 )
 \openout1 = `bim.aux'.
 
@@ -525,7 +528,7 @@ o.pdf fluid_solid.eps>
 (epstopdf)             \includegraphics on input line 312.
 Package epstopdf Info: Output file is already uptodate.
 
-<fluid_solid-eps-converted-to.pdf, id=203, 464.73625pt x 135.50626pt>
+<fluid_solid-eps-converted-to.pdf, id=211, 464.73625pt x 135.50626pt>
 File: fluid_solid-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fluid_solid-eps-converted-to.pdf>
@@ -547,7 +550,7 @@ o.pdf fluid_fluid.eps>
 (epstopdf)             \includegraphics on input line 343.
 Package epstopdf Info: Output file is already uptodate.
 
-<fluid_fluid-eps-converted-to.pdf, id=229, 412.54124pt x 174.6525pt>
+<fluid_fluid-eps-converted-to.pdf, id=237, 412.54124pt x 174.6525pt>
 File: fluid_fluid-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fluid_fluid-eps-converted-to.pdf> [7 <./fluid_fluid-eps-converted-to.pdf>]
@@ -563,7 +566,7 @@ o.pdf formulation.eps>
 (epstopdf)             \includegraphics on input line 503.
 Package epstopdf Info: Output file is already uptodate.
 
-<formulation-eps-converted-to.pdf, id=330, 301.125pt x 259.97125pt>
+<formulation-eps-converted-to.pdf, id=338, 301.125pt x 259.97125pt>
 File: formulation-eps-converted-to.pdf Graphic file (type pdf)
 
 <use formulation-eps-converted-to.pdf> [11] [12 <./formulation-eps-converted-to
@@ -597,7 +600,7 @@ Package epstopdf Info: Source file: <discrete.eps>
 df discrete.eps>
 (epstopdf)             \includegraphics on input line 749.
 Package epstopdf Info: Output file is already uptodate.
- <discrete-eps-converted-to.pdf, id=451, 301.125pt x 254.9525pt>
+ <discrete-eps-converted-to.pdf, id=459, 301.125pt x 254.9525pt>
 File: discrete-eps-converted-to.pdf Graphic file (type pdf)
 
 <use discrete-eps-converted-to.pdf>
@@ -630,12 +633,126 @@ o.pdf Happel_test.eps>
 (epstopdf)             \includegraphics on input line 900.
 Package epstopdf Info: Output file is already uptodate.
 
-<Happel_test-eps-converted-to.pdf, id=551, 505.89pt x 722.7pt>
+<Happel_test-eps-converted-to.pdf, id=559, 505.89pt x 722.7pt>
 File: Happel_test-eps-converted-to.pdf Graphic file (type pdf)
 
-<use Happel_test-eps-converted-to.pdf> [25 <./Happel_test-eps-converted-to.pdf>
-] [26] [27] [28] [29] [30] [31]
-Overfull \hbox (62.7897pt too wide) detected at line 1220
+<use Happel_test-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <int_test.eps>
+(epstopdf)                    date: 2015-09-23 10:53:49
+(epstopdf)                    size: 22379 bytes
+(epstopdf)             Output file: <int_test-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:42:29
+(epstopdf)                    size: 6984 bytes
+(epstopdf)             Command: <epstopdf --outfile=int_test-eps-converted-to.p
+df int_test.eps>
+(epstopdf)             \includegraphics on input line 907.
+Package epstopdf Info: Output file is already uptodate.
+
+<int_test-eps-converted-to.pdf, id=563, 505.89pt x 722.7pt>
+File: int_test-eps-converted-to.pdf Graphic file (type pdf)
+
+<use int_test-eps-converted-to.pdf> [25 <./Happel_test-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <lambda=0_1_height.eps>
+(epstopdf)                    date: 2015-09-24 17:34:38
+(epstopdf)                    size: 65053 bytes
+(epstopdf)             Output file: <lambda=0_1_height-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:21:49
+(epstopdf)                    size: 32866 bytes
+(epstopdf)             Command: <epstopdf --outfile=lambda=0_1_height-eps-conve
+rted-to.pdf lambda=0_1_height.eps>
+(epstopdf)             \includegraphics on input line 919.
+Package epstopdf Info: Output file is already uptodate.
+
+<lambda=0_1_height-eps-converted-to.pdf, id=578, 505.89pt x 722.7pt>
+File: lambda=0_1_height-eps-converted-to.pdf Graphic file (type pdf)
+
+<use lambda=0_1_height-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <lambda=10_height.eps>
+(epstopdf)                    date: 2015-09-24 17:34:38
+(epstopdf)                    size: 67243 bytes
+(epstopdf)             Output file: <lambda=10_height-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:21:47
+(epstopdf)                    size: 33729 bytes
+(epstopdf)             Command: <epstopdf --outfile=lambda=10_height-eps-conver
+ted-to.pdf lambda=10_height.eps>
+(epstopdf)             \includegraphics on input line 925.
+Package epstopdf Info: Output file is already uptodate.
+
+<lambda=10_height-eps-converted-to.pdf, id=579, 505.89pt x 722.7pt>
+File: lambda=10_height-eps-converted-to.pdf Graphic file (type pdf)
+
+<use lambda=10_height-eps-converted-to.pdf>
+Overfull \hbox (5.22217pt too wide) in paragraph at lines 918--929
+ [][]  [] 
+ []
+
+Package epstopdf Info: Source file: <height_vol_test.eps>
+(epstopdf)                    date: 2015-09-24 17:34:38
+(epstopdf)                    size: 59624 bytes
+(epstopdf)             Output file: <height_vol_test-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:32:51
+(epstopdf)                    size: 33461 bytes
+(epstopdf)             Command: <epstopdf --outfile=height_vol_test-eps-convert
+ed-to.pdf height_vol_test.eps>
+(epstopdf)             \includegraphics on input line 933.
+Package epstopdf Info: Output file is already uptodate.
+<height_vol_test-eps-converted-to.pdf, id=580, 505.89pt x 722.7pt>
+File: height_vol_test-eps-converted-to.pdf Graphic file (type pdf)
+
+<use height_vol_test-eps-converted-to.pdf> [26 <./int_test-eps-converted-to.pdf
+>] [27 <./lambda=0_1_height-eps-converted-to.pdf> <./lambda=10_height-eps-conve
+rted-to.pdf> <./height_vol_test-eps-converted-to.pdf>]
+Package epstopdf Info: Source file: <lambda=0_1_trunc.eps>
+(epstopdf)                    date: 2015-09-26 10:17:14
+(epstopdf)                    size: 73483 bytes
+(epstopdf)             Output file: <lambda=0_1_trunc-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:56:26
+(epstopdf)                    size: 22574 bytes
+(epstopdf)             Command: <epstopdf --outfile=lambda=0_1_trunc-eps-conver
+ted-to.pdf lambda=0_1_trunc.eps>
+(epstopdf)             \includegraphics on input line 946.
+Package epstopdf Info: Output file is already uptodate.
+
+<lambda=0_1_trunc-eps-converted-to.pdf, id=613, 505.89pt x 722.7pt>
+File: lambda=0_1_trunc-eps-converted-to.pdf Graphic file (type pdf)
+
+<use lambda=0_1_trunc-eps-converted-to.pdf>
+Package epstopdf Info: Source file: <lambda=10_trunc.eps>
+(epstopdf)                    date: 2015-09-26 10:17:14
+(epstopdf)                    size: 75431 bytes
+(epstopdf)             Output file: <lambda=10_trunc-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 10:56:26
+(epstopdf)                    size: 30892 bytes
+(epstopdf)             Command: <epstopdf --outfile=lambda=10_trunc-eps-convert
+ed-to.pdf lambda=10_trunc.eps>
+(epstopdf)             \includegraphics on input line 952.
+Package epstopdf Info: Output file is already uptodate.
+
+<lambda=10_trunc-eps-converted-to.pdf, id=614, 505.89pt x 722.7pt>
+File: lambda=10_trunc-eps-converted-to.pdf Graphic file (type pdf)
+
+<use lambda=10_trunc-eps-converted-to.pdf>
+Overfull \hbox (5.22217pt too wide) in paragraph at lines 945--956
+ [][]  [] 
+ []
+
+Package epstopdf Info: Source file: <trunc_vol_test.eps>
+(epstopdf)                    date: 2015-09-26 10:17:14
+(epstopdf)                    size: 67801 bytes
+(epstopdf)             Output file: <trunc_vol_test-eps-converted-to.pdf>
+(epstopdf)                    date: 2015-09-28 11:01:22
+(epstopdf)                    size: 34785 bytes
+(epstopdf)             Command: <epstopdf --outfile=trunc_vol_test-eps-converte
+d-to.pdf trunc_vol_test.eps>
+(epstopdf)             \includegraphics on input line 960.
+Package epstopdf Info: Output file is already uptodate.
+<trunc_vol_test-eps-converted-to.pdf, id=615, 505.89pt x 722.7pt>
+File: trunc_vol_test-eps-converted-to.pdf Graphic file (type pdf)
+
+<use trunc_vol_test-eps-converted-to.pdf> [28 <./lambda=0_1_trunc-eps-converted
+-to.pdf> <./lambda=10_trunc-eps-converted-to.pdf>] [29 <./trunc_vol_test-eps-co
+nverted-to.pdf>] [30] [31] [32] [33] [34] [35]
+Overfull \hbox (62.7897pt too wide) detected at line 1280
 []  [][] \OML/cmm/m/it/12 n[]\OT1/cmr/m/n/12 ([])\OML/cmm/m/it/12 T[]\OT1/cmr/m
 /n/12 ([])[]([])d[][] \OMS/cmsy/m/n/12 ^^@ []  [][]\OT1/cmr/m/n/12 [\OML/cmm/m/
 it/12 @[]T[]\OT1/cmr/m/n/12 ([])][]([])d[][] = []  [][] \OML/cmm/m/it/12 n[]\OT
@@ -644,690 +761,690 @@ m/n/12 ^^@ []  [][]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 @[][]\OT1/cmr/m/n/12 ([])]
 \OML/cmm/m/it/12 u[]\OT1/cmr/m/n/12 ([])d[][]\OML/cmm/m/it/12 :
  []
 
-[32] [33]
+[36] [37]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no © in font cmr12!
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1287.
+(hyperref)                removing `\<let>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@nomath' on input line 1287.
+(hyperref)                removing `\@nomath' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thinmuskip' on input line 1287.
+(hyperref)                removing `\thinmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\medmuskip' on input line 1287.
+(hyperref)                removing `\medmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\m@ne' on input line 1287.
+(hyperref)                removing `\m@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thickmuskip' on input line 1287.
+(hyperref)                removing `\thickmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ne' on input line 1287.
+(hyperref)                removing `\@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tw@' on input line 1287.
+(hyperref)                removing `\tw@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1287.
+(hyperref)                removing `\<def>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@tempa' on input line 1287.
+(hyperref)                removing `\@tempa' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1287.
+(hyperref)                removing `\new@ifnextchar' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchoice' on input line 1287.
+(hyperref)                removing `\mathchoice' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\displaystyle' on input line 1287.
+(hyperref)                removing `\displaystyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 1287.
+(hyperref)                removing `\textstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 1287.
+(hyperref)                removing `\scriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptscriptstyle' on input line 1287.
+(hyperref)                removing `\scriptscriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\endgroup' on input line 1287.
+(hyperref)                removing `\endgroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1287.
+(hyperref)                removing `\<let>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@nomath' on input line 1287.
+(hyperref)                removing `\@nomath' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thinmuskip' on input line 1287.
+(hyperref)                removing `\thinmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\medmuskip' on input line 1287.
+(hyperref)                removing `\medmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\m@ne' on input line 1287.
+(hyperref)                removing `\m@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thickmuskip' on input line 1287.
+(hyperref)                removing `\thickmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ne' on input line 1287.
+(hyperref)                removing `\@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tw@' on input line 1287.
+(hyperref)                removing `\tw@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1287.
+(hyperref)                removing `\<def>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@tempa' on input line 1287.
+(hyperref)                removing `\@tempa' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1287.
+(hyperref)                removing `\new@ifnextchar' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchoice' on input line 1287.
+(hyperref)                removing `\mathchoice' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\displaystyle' on input line 1287.
+(hyperref)                removing `\displaystyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 1287.
+(hyperref)                removing `\textstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 1287.
+(hyperref)                removing `\scriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptscriptstyle' on input line 1287.
+(hyperref)                removing `\scriptscriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\endgroup' on input line 1287.
+(hyperref)                removing `\endgroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<let>-command' on input line 1287.
+(hyperref)                removing `\<let>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@nomath' on input line 1287.
+(hyperref)                removing `\@nomath' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\begingroup' on input line 1287.
+(hyperref)                removing `\begingroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thinmuskip' on input line 1287.
+(hyperref)                removing `\thinmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\medmuskip' on input line 1287.
+(hyperref)                removing `\medmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\m@ne' on input line 1287.
+(hyperref)                removing `\m@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\thickmuskip' on input line 1287.
+(hyperref)                removing `\thickmuskip' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@ne' on input line 1287.
+(hyperref)                removing `\@ne' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\setbox' on input line 1287.
+(hyperref)                removing `\setbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\tw@' on input line 1287.
+(hyperref)                removing `\tw@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 1287.
+(hyperref)                removing `\<def>-command' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@tempa' on input line 1287.
+(hyperref)                removing `\@tempa' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\new@ifnextchar' on input line 1287.
+(hyperref)                removing `\new@ifnextchar' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathchoice' on input line 1287.
+(hyperref)                removing `\mathchoice' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\displaystyle' on input line 1287.
+(hyperref)                removing `\displaystyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\textstyle' on input line 1287.
+(hyperref)                removing `\textstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptstyle' on input line 1287.
+(hyperref)                removing `\scriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\hbox' on input line 1287.
+(hyperref)                removing `\hbox' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\mathsurround' on input line 1287.
+(hyperref)                removing `\mathsurround' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\z@' on input line 1287.
+(hyperref)                removing `\z@' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\scriptscriptstyle' on input line 1287.
+(hyperref)                removing `\scriptscriptstyle' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\endgroup' on input line 1287.
+(hyperref)                removing `\endgroup' on input line 1347.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1287.
+(hyperref)                removing `math shift' on input line 1347.
 
-[34] [35]
-Overfull \hbox (6.09344pt too wide) detected at line 1336
+[38]
+Overfull \hbox (6.09344pt too wide) detected at line 1396
 \OML/cmm/m/it/12 c[] \OT1/cmr/m/n/12 = []\OML/cmm/m/it/12 ;
  []
 
-[36] [37]
+[39] [40]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1437.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 1437.
+(hyperref)                removing `math shift' on input line 1497.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 1437.
+(hyperref)                removing `subscript' on input line 1497.
 
-[38] (./bim.bbl [39] [40]) [41] (./bim.aux)
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1497.
+
+[41] [42] (./bim.bbl [43] [44]) [45] (./bim.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8696 strings out of 495061
- 127473 string characters out of 1182620
+ 8765 strings out of 495061
+ 129380 string characters out of 1182620
  237443 words of memory out of 3000000
- 11436 multiletter control sequences out of 15000+50000
+ 11487 multiletter control sequences out of 15000+50000
  24329 words of font info for 91 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,19n,58p,1368b,439s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,19n,58p,1368b,449s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmbsy6.pfb></us
 r/share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmbsy8.pfb></usr/shar
 e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-tex
@@ -1348,9 +1465,9 @@ xlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts
 c/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
 m/cmsy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb
 >
-Output written on bim.pdf (41 pages, 499262 bytes).
+Output written on bim.pdf (45 pages, 690011 bytes).
 PDF statistics:
- 933 PDF objects out of 1000 (max. 8388607)
- 259 named destinations out of 1000 (max. 500000)
- 250 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1009 PDF objects out of 1200 (max. 8388607)
+ 270 named destinations out of 1000 (max. 500000)
+ 301 words of extra memory for PDF output out of 10000 (max. 10000000)
 

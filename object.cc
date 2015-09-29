@@ -289,7 +289,7 @@ void Up_interf(surf *interf, double sphere_pos)
 	}
       new_mid_vert[i] = vert_spline.interp(new_midpoints[i]);
 
-      if (new_midpoints[i] < 3.0)
+      if (new_midpoints[i] < 10e-8)
 	{
 	  init_step = new_midpoints[i] / 2.0;
 	}
@@ -300,7 +300,7 @@ void Up_interf(surf *interf, double sphere_pos)
       //}
       else
 	{
-	  init_step = 3.0;
+	  init_step = 10e-8;
 	}
       //      if (i != 0 && i != (*interf).n_int - 1)
       //{
@@ -348,7 +348,7 @@ void Up_interf(surf *interf, double sphere_pos)
 	      (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
 	      (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
 
-	      if ((*interf).intervals[i].arc[j] < 3.0)
+	      if ((*interf).intervals[i].arc[j] < 10e-8)
 		{
 		  init_step = (*interf).intervals[i].arc[j] / 2.0;
 		  //init_step = 1.5;
@@ -360,7 +360,7 @@ void Up_interf(surf *interf, double sphere_pos)
 		  //}
 	      else
 		{
-		  init_step = 3.0;
+		  init_step = 10e-8;
 		}
 	    }
 	  Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], init_step, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out, fit_const_a, fit_const_b);
