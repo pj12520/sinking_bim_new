@@ -175,7 +175,7 @@ void Abscissas(double* lower, double* upper, double max, int n_int, vector<doubl
 }
 
 //Function to update the properaties of the interface
-void Up_interf(surf *interf, double sphere_pos)
+void Up_interf(surf *interf, double sphere_pos, double diff_step)
 {
   double end_rad_deriv = fprime(&(*interf).midpoints[(*interf).n_int - 1], &(*interf).mid_rad[(*interf).n_int - 1], -1);
   double end_vert_deriv = fprime(&(*interf).midpoints[(*interf).n_int - 1], &(*interf).mid_vert[(*interf).n_int - 1], -1);
@@ -289,7 +289,7 @@ void Up_interf(surf *interf, double sphere_pos)
 	}
       new_mid_vert[i] = vert_spline.interp(new_midpoints[i]);
 
-      if (new_midpoints[i] < 10e-8)
+      if (new_midpoints[i] < diff_step)
 	{
 	  init_step = new_midpoints[i] / 2.0;
 	}
@@ -300,7 +300,7 @@ void Up_interf(surf *interf, double sphere_pos)
       //}
       else
 	{
-	  init_step = 10e-8;
+	  init_step = diff_step;
 	}
       //      if (i != 0 && i != (*interf).n_int - 1)
       //{
@@ -348,7 +348,7 @@ void Up_interf(surf *interf, double sphere_pos)
 	      (*interf).intervals[i].rad[j] = rad_spline.interp((*interf).intervals[i].arc[j]);
 	      (*interf).intervals[i].vert[j] = vert_spline.interp((*interf).intervals[i].arc[j]);
 
-	      if ((*interf).intervals[i].arc[j] < 10e-8)
+	      if ((*interf).intervals[i].arc[j] < diff_step)
 		{
 		  init_step = (*interf).intervals[i].arc[j] / 2.0;
 		  //init_step = 1.5;
@@ -360,7 +360,7 @@ void Up_interf(surf *interf, double sphere_pos)
 		  //}
 	      else
 		{
-		  init_step = 10e-8;
+		  init_step = diff_step;
 		}
 	    }
 	  Normal(rad_spline, vert_spline, (*interf).intervals[i].arc[j], init_step, &(*interf).intervals[i].norm_rad[j], &(*interf).intervals[i].norm_vert[j], &(*interf).intervals[i].div_norm[j], (*interf).intervals[i].rad[j], &(*interf).midpoints, &(*interf).mid_rad, &(*interf).mid_vert, fit_const0, fit_const1, fit_const2, fit_const3, max_arc, out, fit_const_a, fit_const_b);

@@ -87,7 +87,7 @@ void Create_interf_int(vector<interf_int>* intervals, int n_int, double max_arc)
 void Abscissas(double* lower, double* upper, double max, int n_int, vector<double>* points, double* width, double half_width, int interval, int sphere_test); 
 
 //Function to update the properaties of the interface
-void Up_interf(surf *interf, double sphere_pos);
+void Up_interf(surf *interf, double sphere_pos, double diff_step);
 
 //Function to update the properties of the sphere
 void Up_sphere(particle *sphere);

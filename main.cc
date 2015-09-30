@@ -227,7 +227,7 @@ int main(int argc, char *argv[])
       time = time + t_step;
 
       //Update the properties of the interface and sphere
-      Up_interf(&interf, sphere.height);
+      Up_interf(&interf, sphere.height, input.diff_step);
       Up_sphere(&sphere);
 
       //Testing - Check the new configuration of the system/////////////////////////////////////////////////

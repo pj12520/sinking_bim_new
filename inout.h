@@ -24,6 +24,7 @@ struct dimless_in
   double init_height; //Initial height of sphere
   int max_it; //Maximum number of iterations
   double aspect; //Aspect ratio of spheroid
+  double diff_step; //Initial step size for numerical differentiation
 };
 
 //Structure to contain data neccessary for output
