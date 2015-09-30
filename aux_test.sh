@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd testing/aux_param/data2
+cd testing/aux_param/data3
 
 for i in $(ls -d */); do
 
@@ -14,9 +14,9 @@ for i in $(ls -d */); do
 
 	    cd ${k}
 
-	    export INPUT=${HOME}/sinking_bim/trunk/testing/aux_param/data2/${i}/${j}/${k}/dimensionless_input.dat
+	    export INPUT=${HOME}/sinking_bim/trunk/testing/aux_param/data3/${i}/${j}/${k}/dimensionless_input.dat
 	    
-	    export RUNDIR=${HOME}/sinking_bim/trunk/testing/aux_param/data2/${i}/${j}/${k}
+	    export RUNDIR=${HOME}/sinking_bim/trunk/testing/aux_param/data3/${i}/${j}/${k}
 
 	    qsub -V ../../../../../../param_sweep.sh
 
