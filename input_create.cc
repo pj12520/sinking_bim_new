@@ -43,12 +43,14 @@ int main()
   viscos_rat_data[6] = 1000;
 
   int n_sphere = 100;
-  int n_interf = 100;
+  int n_interf = 400;
   double trunc = 15.0;
   //  double t_step = 0.01;
-  double height = 3.0;
-  int max_it = 600000;
+  double height = 5.0;
+  int max_it = 6000000;
   double aspect = 1.0;
+  double diff_step = 10e-8;
+
   //Create output directories 
 
   string D_dir_name;
@@ -61,7 +63,7 @@ int main()
 
   const char* up = "../";
 
-  const char* data = "new_param1/";
+  const char* data = "data/";
 
   chdir(data);
 
@@ -110,6 +112,8 @@ int main()
 	      fout << height << endl;
 	      fout <<max_it << endl;
 	      fout << aspect << endl;
+	      fout << diff_step << endl;
+
 	      fout << "Input file containing the dimensionless numbers that characterise the system" << endl;
 
 	      fout << "Bond Number" << endl;
@@ -123,6 +127,7 @@ int main()
 	      fout << "Initial height of sphere" << endl;
 	      fout << "Maximum number of iterations" << endl;
 	      fout << "Aspect Ratio" << endl;
+	      fout << "Initial step size used in the numerical differentiation" << endl;
 	      fout.close();
 
 	      chdir(up);
