@@ -18,7 +18,7 @@ int main()
   //Create arrays containing the different values of the dimensionless numbers over which we are sweeping
 
   vector<double> mod_dens_rat_data(4);
-  vector<double> bond_data(7);
+  vector<double> bond_data(6);
   vector<double> viscos_rat_data(7);
 
   mod_dens_rat_data[0] = 1.0;
@@ -26,13 +26,12 @@ int main()
   mod_dens_rat_data[2] = 100.0;
   mod_dens_rat_data[3] = 1000.0;
 
-  bond_data[0] = 0.001;
-  bond_data[1] = 0.01;
-  bond_data[2] = 0.1;
-  bond_data[3] = 1.0;
-  bond_data[4] = 10.0;
-  bond_data[5] = 100.0;
-  bond_data[6] = 1000.0;
+  bond_data[0] = 0.01;
+  bond_data[1] = 0.1;
+  bond_data[2] = 1.0;
+  bond_data[3] = 10.0;
+  bond_data[4] = 100.0;
+  bond_data[5] = 1000.0;
 
   viscos_rat_data[0] = 0.001;
   viscos_rat_data[1] = 0.01;
@@ -47,7 +46,7 @@ int main()
   double trunc = 15.0;
   //  double t_step = 0.01;
   double height = 5.0;
-  int max_it = 6000000;
+  int max_it = 600000;
   double aspect = 1.0;
   double diff_step = 10e-8;
 
