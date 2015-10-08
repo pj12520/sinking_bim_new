@@ -55,7 +55,7 @@ void Iterate(double n_int, vector<double>* unknown, vector<double>* arc, vector<
 }
 
 //Function to evaluate whether or not the sphere and interface have collided yet
-int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, double sphere_pos, double aspect)
+int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, double sphere_pos, double aspect, double particle_sep)
 {
   double separation;
   double theta;
@@ -63,7 +63,7 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
 
   int break_criteria = 0;
 
-  double min_step = (*arc)[1] - (*arc)[0];
+  double min_step = max((*arc)[1] - (*arc)[0], particle_sep);
 
   for (int i = 0; i < (*arc).size(); i++)
     {

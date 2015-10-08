@@ -14,6 +14,7 @@
 #include "solve.h"
 #include "vel.h"
 #include "geo.h"
+#include "ellip.h"
 
 using std::string;
 using std::ofstream;
@@ -68,16 +69,16 @@ int main(int argc, char *argv[])
 
   double min_tstep;
   //Contraint on time step from quasi-static condition
-  if (input.viscos_rat < 1)
-    {
+  //  if (input.viscos_rat < 1)
+  //{
       //      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) * input.viscos_rat / 9.0);
-      min_tstep = min(0.01, 0.01 * input.mdr * input.bond * input.viscos_rat);
-    }
-  else
-    {
+  //  min_tstep = min(0.01, 0.01 * input.mdr * input.bond * input.viscos_rat);
+  //}
+  //  else
+  //{
       //      min_tstep = min(0.01 / sqrt(input.bond), 0.01 * 2.0 * input.mdr * sqrt(input.bond) / 9.0);
       min_tstep = min(0.01, 0.01 * input.mdr * input.bond);
-    }
+      //}
   //  min_tstep = 0.01;
   double t_step = min_tstep;
   //  double t_step = 0.01;
@@ -235,7 +236,11 @@ int main(int argc, char *argv[])
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //Check the separation between the sphere and the interface isn't smaller than the distance between collocation points
-      int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height, input.aspect);
+      double perim_comp_param = 2 - input.aspect * input.aspect;
+      double perim = 2.0 * input.aspect * Ellip2(perim_comp_param);
+      double particle_sep = perim / input.n_sphere;
+
+      int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height, input.aspect, particle_sep);
 
       if (break_criteria == 1)
 	{

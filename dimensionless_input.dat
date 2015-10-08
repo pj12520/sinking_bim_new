@@ -1,13 +1,13 @@
-0.001
-1
-1000
+1000.0
+10.0
+10.0
 100
-400
+150
 15
 3
-100
+10000
 1
-10e-8
+1e-6
 Input file containing the dimensionless numbers that characterise the system
 Bond Number
 Modified Density Ratio
