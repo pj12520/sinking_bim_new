@@ -63,7 +63,7 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
 
   int break_criteria = 0;
 
-  double min_step = max((*arc)[1] - (*arc)[0], particle_sep);
+  double min_step = max((*arc)[2] - (*arc)[1], particle_sep);
 
   for (int i = 0; i < (*arc).size(); i++)
     {
