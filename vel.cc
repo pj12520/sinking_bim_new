@@ -68,16 +68,16 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
   for (int i = 0; i < (*arc).size(); i++)
     {
       separation = Pythag((*rad)[i], (*vert)[i] - sphere_pos);
-
+      
       if (aspect == 1.0)
 	{
 	  thickness = 1.0;
 	}
       else
-	{
-	  theta = PI - atan((*rad)[i] / ((*vert)[i] - sphere_pos));
+      {
+	  theta = PI - atan((*rad)[i] / (fabs((*vert)[i] - sphere_pos)));
 	  thickness = sqrt(sin(theta) * sin(theta) + aspect * aspect * cos(theta) * cos(theta));
-	}
+      }
       if (separation - thickness < min_step)
 	{
 	  break_criteria = 1;

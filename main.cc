@@ -258,7 +258,7 @@ int main(int argc, char *argv[])
     }
 
   sphere_out.close();
-
+  /*
   //Need to output the configuration at 20 iterations plus the initial and final ones
   int n_it = it - 1; //Number of iterations that occured
 
@@ -299,6 +299,19 @@ int main(int argc, char *argv[])
 	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
 	}
     }
+  */
+
+  //Output all data
+  int n_it = it - 1; //Number of iterations that occured
+  vector<int> out_it(n_it + 1);
+
+  for (int i = 0; i < out_it.size(); i++)
+    {
+      out_it[i] = i;
+      
+      Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
+    }
+
 
   return 0;
 }
