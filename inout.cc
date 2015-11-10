@@ -37,6 +37,7 @@ void Dimless_in(string file, dimless_in *input)
   read >> input ->max_it; //Maximum number of iterations
   read >> input ->aspect; //Apect ratio
   read >> input ->diff_step; //Initial step size for numerical differentiation
+  read >> input ->n_out; //Number of time steps at which output occurs
   read.close();
 
 }

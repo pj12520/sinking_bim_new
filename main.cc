@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
 
   double final_pos = sphere.height;
 
-  if (n_it < 40)
+  if (n_it < input.n_out)
     {
       vector<int> out_it(n_it + 1);
 
@@ -280,15 +280,15 @@ int main(int argc, char *argv[])
     }
   else 
     {
-      vector<int> out_it(41);
+      vector<int> out_it(input.n_out + 1);
       out_it[0] = 0;
-      out_it[40] = n_it;
+      out_it[input.n_out] = n_it;
 
-      for (int i = 1; i < 40; i++)
+      for (int i = 1; i < input.n_out; i++)
 	{
-	  double factor = i * final_time / 40.0;
+	  double factor = i * final_time / input.n_out;
 
-	  double space_factor = i * final_pos / 40.0;
+	  double space_factor = i * final_pos / input.n_out;
 
 	  /*	  for (int j = 1; j < output.size(); j++)
 	    {

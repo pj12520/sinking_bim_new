@@ -25,6 +25,7 @@ struct dimless_in
   int max_it; //Maximum number of iterations
   double aspect; //Aspect ratio of spheroid
   double diff_step; //Initial step size for numerical differentiation
+  int n_out; //Number of time steps at which output occurs
 };
 
 //Structure to contain data neccessary for output

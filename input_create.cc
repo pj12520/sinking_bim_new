@@ -49,6 +49,7 @@ int main()
   int max_it = 600000;
   double aspect = 1.0;
   double diff_step = 10e-6;
+  int n_out = 100;
 
   //Create output directories 
 
@@ -112,6 +113,7 @@ int main()
 	      fout <<max_it << endl;
 	      fout << aspect << endl;
 	      fout << diff_step << endl;
+	      fout << n_out << endl;
 
 	      fout << "Input file containing the dimensionless numbers that characterise the system" << endl;
 
@@ -127,6 +129,7 @@ int main()
 	      fout << "Maximum number of iterations" << endl;
 	      fout << "Aspect Ratio" << endl;
 	      fout << "Initial step size used in the numerical differentiation" << endl;
+	      fout << "Number of times at which output occurs" << endl;
 	      fout.close();
 
 	      chdir(up);
