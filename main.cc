@@ -258,13 +258,15 @@ int main(int argc, char *argv[])
     }
 
   sphere_out.close();
-  /*
+  
   //Need to output the configuration at 20 iterations plus the initial and final ones
   int n_it = it - 1; //Number of iterations that occured
 
   double final_time = time - t_step;
 
-  if (n_it < 20)
+  double final_pos = sphere.height;
+
+  if (n_it < 40)
     {
       vector<int> out_it(n_it + 1);
 
@@ -278,29 +280,40 @@ int main(int argc, char *argv[])
     }
   else 
     {
-      vector<int> out_it(21);
+      vector<int> out_it(41);
       out_it[0] = 0;
-      out_it[20] = n_it;
+      out_it[40] = n_it;
 
-      for (int i = 1; i < 20; i++)
+      for (int i = 1; i < 40; i++)
 	{
-	  double factor = i * final_time / 20.0;
+	  double factor = i * final_time / 40.0;
 
-	  for (int j = 1; j < output.size(); j++)
+	  double space_factor = i * final_pos / 40.0;
+
+	  /*	  for (int j = 1; j < output.size(); j++)
 	    {
 	      if (factor <= output[j].time && factor >= output[j - 1].time)
 		{
 		  out_it[i] = output[j].it;
 		}
 	    }
+	  */
+	  for (int j = 1; j < output.size(); j++)
+	    {
+	      if (space_factor <= output[j].sphere_pos && space_factor >= output[j - 1].sphere_pos)
+		{
+		  out_it[i] = output[j].it;
+		}
+	    }
 	}
+
       for (int i = 0; i < out_it.size(); i++)
 	{
 	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
 	}
     }
-  */
-
+  
+  /*
   //Output all data
   int n_it = it - 1; //Number of iterations that occured
   vector<int> out_it(n_it + 1);
@@ -311,7 +324,7 @@ int main(int argc, char *argv[])
       
       Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
     }
-
+  */
 
   return 0;
 }
