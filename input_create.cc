@@ -48,7 +48,7 @@ int main()
   double height = 5.0;
   int max_it = 600000;
   double aspect = 1.0;
-  double diff_step = 10e-8;
+  double diff_step = 10e-6;
 
   //Create output directories 
 
