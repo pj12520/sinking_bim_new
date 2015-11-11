@@ -7,7 +7,8 @@
 5
 2000
 1
-1e-6
+1e-5
+100
 Input file containing the dimensionless numbers that characterise the system
 Bond Number
 Modified Density Ratio
@@ -19,3 +20,4 @@ Initial height of sphere
 Maximum number of iterations
 Aspect Ratio
 Initial step size for numerical differentiation
+Number of time steps at which output occurs

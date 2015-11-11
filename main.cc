@@ -288,7 +288,7 @@ int main(int argc, char *argv[])
 	{
 	  double factor = i * final_time / input.n_out;
 
-	  double space_factor = i * final_pos / input.n_out;
+	  double space_factor = i * fabs(final_pos - input.init_height) / input.n_out;
 
 	  /*	  for (int j = 1; j < output.size(); j++)
 	    {
@@ -300,7 +300,7 @@ int main(int argc, char *argv[])
 	  */
 	  for (int j = 1; j < output.size(); j++)
 	    {
-	      if (space_factor <= output[j].sphere_pos && space_factor >= output[j - 1].sphere_pos)
+	      if (space_factor <= fabs(output[j].sphere_pos - input.init_height) && space_factor >= fabs(output[j - 1].sphere_pos - input.init_height))
 		{
 		  out_it[i] = output[j].it;
 		}
