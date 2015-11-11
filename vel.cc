@@ -78,7 +78,7 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
 	  theta = PI - atan((*rad)[i] / (fabs((*vert)[i] - sphere_pos)));
 	  thickness = sqrt(sin(theta) * sin(theta) + aspect * aspect * cos(theta) * cos(theta));
       }
-      if (separation - thickness < min_step)
+      if (separation - thickness <= min_step)
 	{
 	  break_criteria = 1;
 	  cout << "Sphere and interface collide" << endl;
@@ -87,7 +87,7 @@ int Break_Crit(vector<double>* arc, vector<double>* rad, vector<double>* vert, d
 
       if (i != 0)
 	{
-	  if ((*rad)[i] < (*rad)[i - 1] && (*rad)[i] < min_step)
+	  if ((*rad)[i] < (*rad)[i - 1] && (*rad)[i] <= min_step)
 	    {
 	      break_criteria = 2;
 	      cout << "Tail snaps" << endl;
