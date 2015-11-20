@@ -1,6 +1,6 @@
 #!/bin/bash 
 #
-#PBS -l walltime=24:00:00
+#PBS -l walltime=240:00:00
 
 # Add module--------------------------------------
 
