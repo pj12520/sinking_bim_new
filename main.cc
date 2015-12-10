@@ -113,6 +113,9 @@ int main(int argc, char *argv[])
   //Vectors of output data structures
   vector<out_data> output;
 
+  //Number of time steps after which step size increases by viscosity ratio.
+  int steps = 50000;
+
   while(it < input.max_it)
     {
       //Build the linear system
@@ -186,6 +189,11 @@ int main(int argc, char *argv[])
       rad_crit = min_rad_sep / max_rad_vel;
 
       t_step = min(min_tstep, crit);
+
+      if (it >= steps)
+	{
+	  t_step = 0.9 * input.viscos_rat * t_step;
+	}
 
       /////////////////////////////////////////////////
 
