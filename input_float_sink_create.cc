@@ -50,8 +50,8 @@ int main()
   int n_interf = 400;
   double trunc = 15.0;
   //  double t_step = 0.01;
-  double height = 5.0;
-  int max_it = 50000;
+  double height = 11.0;
+  int max_it = 100000;
   double aspect = 1.0;
   double diff_step = 1e-6;
   int n_out = 100;
