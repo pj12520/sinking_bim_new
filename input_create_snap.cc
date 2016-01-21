@@ -138,6 +138,7 @@ int main()
       Bo_convert.str(string());
 
     }
+  D_convert.str(string());
 
 
 
