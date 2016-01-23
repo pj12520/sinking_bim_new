@@ -41,7 +41,7 @@ int main()
   double trunc = 15.0;
   //  double t_step = 0.01;
   double height = 11.0;
-  int max_it = 2000;
+  int max_it = 5000;
   double aspect = 1.0;
   double diff_step = 1e-6;
   int n_out = 100;
