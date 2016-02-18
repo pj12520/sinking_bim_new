@@ -17,34 +17,36 @@ int main()
 
   //Create arrays containing the different values of the dimensionless numbers over which we are sweeping
 
-  vector<double> mod_dens_rat_data(6);
-  vector<double> bond_data(7);
-  vector<double> viscos_rat_data(2);
+  vector<double> mod_dens_rat_data(11);
+  vector<double> bond_data(5);
+  vector<double> viscos_rat_data(1);
 
-  mod_dens_rat_data[0] = 50.0;
-  mod_dens_rat_data[1] = 100.0;
-  mod_dens_rat_data[2] = 250.0;
-  mod_dens_rat_data[3] = 500.0;
-  mod_dens_rat_data[4] = 750.0;
-  mod_dens_rat_data[5] = 1000.0;
+  mod_dens_rat_data[0] = 1.0;
+  mod_dens_rat_data[1] = 1.1;
+  mod_dens_rat_data[2] = 1.2;
+  mod_dens_rat_data[3] = 1.3;
+  mod_dens_rat_data[4] = 1.4;
+  mod_dens_rat_data[5] = 1.5;
+  mod_dens_rat_data[6] = 1.6;
+  mod_dens_rat_data[7] = 1.7;
+  mod_dens_rat_data[8] = 1.8;
+  mod_dens_rat_data[9] = 1.9;
+  mod_dens_rat_data[10] = 2.0;
 
-  bond_data[0] = 1.0;
-  bond_data[1] = 5,0;
-  bond_data[2] = 10.0;
-  bond_data[3] = 50.0;
-  bond_data[4] = 100.0;
-  bond_data[5] = 500.0;
-  bond_data[6] = 1000.0;
+  bond_data[0] = 6.0;
+  bond_data[1] = 7.0;
+  bond_data[2] = 8.0;
+  bond_data[3] = 9.0;
+  bond_data[4] = 10.0;
 
-  viscos_rat_data[0] = 0.003;
-  viscos_rat_data[1] = 0.008;
+  viscos_rat_data[0] = 1.0;
 
   int n_sphere = 100;
   int n_interf = 400;
   double trunc = 15.0;
   //  double t_step = 0.01;
-  double height = 11.0;
-  int max_it = 5000;
+  double height = 5.0;
+  int max_it = 100000;
   double aspect = 1.0;
   double diff_step = 1e-6;
   int n_out = 100;
