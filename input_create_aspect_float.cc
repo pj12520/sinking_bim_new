@@ -19,7 +19,7 @@ int main()
 
   vector<double> mod_dens_rat_data(7);
   vector<double> bond_data(10);
-  vector<double> aspect(4);
+  vector<double> aspect(2);
 
   mod_dens_rat_data[0] = 2.0;
   mod_dens_rat_data[1] = 4.0;
@@ -40,16 +40,14 @@ int main()
   bond_data[8] = 100.0;
   bond_data[9] = 1000.0;
 
-  aspect[0] = 0.1;
-  aspect[1] = 0.5;
-  aspect[2] = 2;
-  aspect[3] = 10;
-
+  aspect[0] = 0.5;
+  aspect[1] = 2;
+ 
   int n_sphere = 100;
   int n_interf = 400;
   double trunc = 15.0;
   //  double t_step = 0.01;
-  double height = 11.0;
+  double height = 5.0;
   int max_it = 100000;
   double viscos_rat = 1.0;
   double diff_step = 1e-6;
