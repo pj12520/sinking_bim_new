@@ -17,43 +17,17 @@ int main()
 
   //Create arrays containing the different values of the dimensionless numbers over which we are sweeping
 
-  vector<double> mod_dens_rat_data(12);
-  vector<double> bond_data(18);
-  vector<double> viscos_rat_data(1);
+  vector<double> mod_dens_rat_data(1);
+  vector<double> bond_data(2);
+  vector<double> viscos_rat_data(2);
 
-  mod_dens_rat_data[0] = 4.0;
-  mod_dens_rat_data[1] = 8.0;
-  mod_dens_rat_data[2] = 10.0;
-  mod_dens_rat_data[3] = 12.0;
-  mod_dens_rat_data[4] = 16.0;
-  mod_dens_rat_data[5] = 20.0;
-  mod_dens_rat_data[6] = 50.0;
-  mod_dens_rat_data[7] = 100.0;
-  mod_dens_rat_data[8] = 250.0;
-  mod_dens_rat_data[9] = 500.0;
-  mod_dens_rat_data[10] = 750.0;
-  mod_dens_rat_data[11] = 1000.0;
+  mod_dens_rat_data[0] = 12.0;
 
-  bond_data[0] = 0.01;
-  bond_data[1] = 0.02;
-  bond_data[2] = 0.03;
-  bond_data[3] = 0.04;
-  bond_data[4] = 0.05;
-  bond_data[5] = 0.06;
-  bond_data[6] = 0.07;
-  bond_data[7] = 0.08;
-  bond_data[8] = 0.09;
-  bond_data[9] = 0.1;
-  bond_data[10] = 0.2;
-  bond_data[11] = 0.3;
-  bond_data[12] = 0.4;
-  bond_data[13] = 0.5;
-  bond_data[14] = 0.6;
-  bond_data[15] = 0.7;
-  bond_data[16] = 0.8;
-  bond_data[17] = 0.9;
+  bond_data[0] = 0.8;
+  bond_data[1] = 0.9;
 
   viscos_rat_data[0] = 0.001;
+  viscos_rat_data[1] = 0.01;
 
   int n_sphere = 100;
   int n_interf = 400;
@@ -77,13 +51,13 @@ int main()
 
   const char* up = "../";
 
-  const char* data = "lowBo_snap_data/";
+  const char* data = "lowBo_snap_fix_data/";
 
   chdir(data);
 
-  //Now D = 50
+  //Now D = 12
 
-  for (int i = 6; i < 7; i++)
+  for (int i = 0; i < mod_dens_rat_data.size(); i++)
     {
       D_convert << "D=" << mod_dens_rat_data[i];
 
@@ -91,7 +65,7 @@ int main()
 
       mkdir(D_dir_name.c_str(), S_IRWXU);
 
-      for (int j = 2; j < bond_data.size(); j++)
+      for (int j = 0; j < bond_data.size(); j++)
 	{
 	  Bo_convert << "Bo=" << bond_data[j];
 
