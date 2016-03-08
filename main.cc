@@ -244,10 +244,16 @@ int main(int argc, char *argv[])
       ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
       //Check the separation between the sphere and the interface isn't smaller than the distance between collocation points
-      double perim_comp_param = 2 - input.aspect * input.aspect;
-      double perim = 2.0 * input.aspect * Ellip2(perim_comp_param);
-      double particle_sep = perim / input.n_sphere;
+      //      double perim_comp_param = 2 - input.aspect * input.aspect;
+      //    double perim = 2.0 * input.aspect * Ellip2(perim_comp_param);
+      //    double particle_sep = perim / input.n_sphere;
+            double particle_sep = Pythag(sin(sphere.midpoints[1]) - sin(sphere.midpoints[0]), input.aspect * (cos(sphere.midpoints[1]) - cos(sphere.midpoints[0])));
 
+      for (int i = 2; i < input.n_sphere; i++)
+      {
+        particle_sep = max(particle_sep, Pythag(sin(sphere.midpoints[i]) - sin(sphere.midpoints[i - 1]), input.aspect * (cos(sphere.midpoints[i]) - cos(sphere.midpoints[i - 1]))));
+      }
+      cout << particle_sep << endl;
       int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height, input.aspect, particle_sep);
 
       if (break_criteria == 1)
