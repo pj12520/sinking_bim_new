@@ -1,6 +1,13 @@
-//Program to model the impact of a sphere onto a fluid fluid interface. The numerical method used is the boundary integral method with an axisymmetric geometry. The details can be found in Paul Jarvis's Ph.D thesis. 
+/**
 
-//To run the program use the command "./impact <infile>" where <infile> is an input data file.
+main.cc
+
+Primary source code file for the program impact. 
+
+@author Paul Jarvis
+@version 1.0 16/01/2017
+
+*/
 
 #include <string>
 #include <fstream>

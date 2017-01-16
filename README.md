@@ -55,7 +55,7 @@ Source code files "*.cc" - These contain all of the source code of the program. 
 
 ----
 
-Header files "*.h" - Included by the source files. Contain function declarations and definitions of relevant constants.
+Header files "*.h" - Included by the source files. Contain function declarations, structure definitions and definitions of relevant constants.
 
 ----
 
