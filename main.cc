@@ -1,11 +1,12 @@
-//Program to model the impact of a sphere onto a fluid fluid interface 
+//Program to model the impact of a sphere onto a fluid fluid interface. The numerical method used is the boundary integral method with an axisymmetric geometry. The details can be found in Paul Jarvis's Ph.D thesis. 
+
+//To run the program use the command "./impact <infile>" where <infile> is an input data file.
 
 #include <string>
 #include <fstream>
 #include <sstream>
-
-#include <iostream> //Currently only included for debugging purposes. Can be removed when program is functional
-#include <iomanip> //Currently only included for debugging purposes. Can be removed when program is functional
+#include <iostream> 
+#include <iomanip> 
 
 #include "inout.h"
 #include "object.h"
@@ -20,9 +21,9 @@ using std::string;
 using std::ofstream;
 using std::ostringstream;
 
-using std::cout; //Currently only used for debugging purposes. Can be removed when program is functional
-using std::endl; //Currently only used for debugging purposes. Can be removed when program is functional
-using std::setw; //Currently only used for debugging purposes. Can be removed when program is functional
+using std::cout; 
+using std::endl; 
+using std::setw; 
 
 int main(int argc, char *argv[])
 {
@@ -220,8 +221,8 @@ int main(int argc, char *argv[])
 	}
 
       //Testing - Test the solution for the sphere velocity ///////////////////////////
-      cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << t_step << setw(20) << rad_crit << setw(20) << vert_crit << endl;
-      //      cout << setw(20) << input.aspect << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
+      //cout << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << setw(20) << t_step << setw(20) << rad_crit << setw(20) << vert_crit << endl;
+      cout << setw(20) << input.aspect << setw(20) << it << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       //cout << setw(20) << sphere.aspect << setw(20) << sphere.n_int << setw(20) << time << setw(20) << sphere.height << setw(20) << unknown[unknown.size() - 1] << endl;
       ////////////////////////////////////////////////////////////////////////////////
 
@@ -253,7 +254,7 @@ int main(int argc, char *argv[])
       {
         particle_sep = max(particle_sep, Pythag(sin(sphere.midpoints[i]) - sin(sphere.midpoints[i - 1]), input.aspect * (cos(sphere.midpoints[i]) - cos(sphere.midpoints[i - 1]))));
       }
-      cout << particle_sep << endl;
+      //cout << particle_sep << endl;
       int break_criteria = Break_Crit(&interf.midpoints, &interf.mid_rad, &interf.mid_vert, sphere.height, input.aspect, particle_sep);
 
       if (break_criteria == 1)
