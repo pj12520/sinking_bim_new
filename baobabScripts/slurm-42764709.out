@@ -1,0 +1,4 @@
+/var/spool/slurmd/job42764709/slurm_script: line 17: cd: /home/users/j/jarvis/scratch/impactResults/D=1_Bo=1_lambda=1: No such file or directory
+terminate called after throwing an instance of 'std::length_error'
+srun: error: node001: task 0: Aborted
+  what():  vector::_M_default_append

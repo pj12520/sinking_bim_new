@@ -1,0 +1,4 @@
+/var/spool/slurmd/job42764704/slurm_script: line 17: cd: /home/users/j/jarvis/scratch/impactResults/D=1/Bo=1/lambda=1: No such file or directory
+terminate called after throwing an instance of 'std::bad_alloc'
+srun: error: node001: task 0: Aborted
+  what():  std::bad_alloc
