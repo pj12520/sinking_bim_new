@@ -43,12 +43,22 @@ void Dimless_in(string file, dimless_in *input)
 }
 
 //Function to output the state of the system
-void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double aspect)
+void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double aspect, int checkPtMark)
 {
   ofstream write;
+  string file;
 
-  //  string file = "D=" + static_cast<ostringstream*>( &(ostringstream() << mdr) )->str() + "/Bo=" + static_cast<ostringstream*>( &(ostringstream() << bond) )->str() + "/viscos_rat=" + static_cast<ostringstream*>( &(ostringstream() << viscos_rat) )->str() + "/interf_config" + static_cast<ostringstream*>( &(ostringstream() << it) )->str() + ".dat";
-  string file = "interf_config" + static_cast<ostringstream*>( &(ostringstream() << data.it) )->str() + ".dat";
+  if (checkPtMark == 1)
+    {
+      file = "checkPt.dat";
+    }
+  else
+    {
+      file = "interf_config" +
+	static_cast<ostringstream*>( &(ostringstream() << data.it) )->str() +
+	".dat";
+    }
+  
   write.open(file.c_str());
 
   write << setw(20) << "Interval" << "Radial" << setw(20) << "Vertical" << setw(20) << "Radial_vel" << setw(20) << "Vertical_vel" << endl;

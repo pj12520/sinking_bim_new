@@ -96,16 +96,18 @@ void Dimless_in(string file, dimless_in *input);
 
 Function to output the state of the system
 
-@param data       Structure containing the data to be output
-@param mdr        Modified density ratio
-@param bond       Bond number
-@param viscos_rat Viscosity ratio
-@param aspect     Spheroid aspect ratio
+@param data        Structure containing the data to be output
+@param mdr         Modified density ratio
+@param bond        Bond number
+@param viscos_rat  Viscosity ratio
+@param aspect      Spheroid aspect ratio
+@param checkPtMark Integer indicating if this is a checkpoint 
+                   (1 if yes, 0 if no)
 
 @return nothing
  */
 
 //Function to output the state of the system
-void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double aspect);
+void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double aspect, int checkPtMark);
 
 #endif /* INOUT_H */

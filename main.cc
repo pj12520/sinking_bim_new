@@ -275,8 +275,13 @@ int main(int argc, char *argv[])
 	  break;
 	}
 
-      //Output the system
-      //    Out_sys(it, sphere, interf, input.mdr, input.bond, input.viscos_rat);
+      //If this is a checkpoint, output the state of the system
+      if (it % 100 == 0)
+	{
+	  Out_sys(output[output.size() - 1], input.mdr, input.bond,
+		  input.viscos_rat, input.aspect, 1);
+	}
+      
     }
 
   sphere_out.close();
@@ -296,7 +301,8 @@ int main(int argc, char *argv[])
 	{
 	  out_it[i] = i;
 
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
+	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat,
+		  input.aspect, 0);
 	}
 
     }
@@ -331,7 +337,8 @@ int main(int argc, char *argv[])
 
       for (int i = 0; i < out_it.size(); i++)
 	{
-	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat, input.aspect);
+	  Out_sys(output[out_it[i]], input.mdr, input.bond, input.viscos_rat,
+		  input.aspect, 0);
 	}
     }
   
