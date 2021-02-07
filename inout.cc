@@ -48,9 +48,10 @@ void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double a
   ofstream write;
   string file;
 
+  //Output the interface
   if (checkPtMark == 1)
     {
-      file = "checkPt.dat";
+      file = "checkPtInterf.dat";
     }
   else
     {
@@ -70,8 +71,19 @@ void Out_sys(out_data data, double mdr, double bond, double viscos_rat, double a
 
   write.close();
 
-  //  file = "D=" + static_cast<ostringstream*>( &(ostringstream() << mdr) )->str() + "/Bo=" + static_cast<ostringstream*>( &(ostringstream() << bond) )->str() + "/viscos_rat=" + static_cast<ostringstream*>( &(ostringstream() << viscos_rat) )->str() + "/sphere_config" + static_cast<ostringstream*>( &(ostringstream() << it) )->str() + ".dat";
-  file = "sphere_config" + static_cast<ostringstream*>( &(ostringstream() << data.it) )->str() + ".dat";
+  //Output the sphere
+  if (checkPtMark == 1)
+    {
+      file = "checkPtSphere.dat";
+    }
+  else
+    {
+      file = "sphere_config" +
+	static_cast<ostringstream*>( &(ostringstream() << data.it) )->str() +
+	".dat";
+
+    }
+  
   write.open(file.c_str());
 
   write << setw(20) << "Interval" << setw(20) << "Radial" << setw(20) << "Vertical" << endl;
